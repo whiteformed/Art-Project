@@ -8,11 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class DecreaseDebtFragment extends Fragment {
+public class FragmentEditDebt extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_decrease_debt, container, false);
+        View view = inflater.inflate(R.layout.fragment_edit_debt, container, false);
 
         return view;
     }

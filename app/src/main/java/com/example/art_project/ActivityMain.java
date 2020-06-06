@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class ActivityMain extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,14 +27,12 @@ public class MainActivity extends AppCompatActivity {
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
 
         //Add fragments
-        viewPagerAdapter.addFragment(new MyDebtFragment(), "My Debt");
-        viewPagerAdapter.addFragment(new TheirDebtFragment(), "Their Debt");
+        viewPagerAdapter.addFragment(new FragmentMyDebt(), "My Debt");
+        viewPagerAdapter.addFragment(new FragmentTheirDebt(), "Their Debt");
 
         //Setup the adapter
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
-
-
 
         //Creating a FAB
         FloatingActionButton floatingActionButton = findViewById(R.id.fab);

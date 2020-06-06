@@ -13,7 +13,7 @@ import android.widget.AdapterView;
 
 import java.util.ArrayList;
 
-public class MyDebtFragment extends Fragment {
+public class FragmentMyDebt extends Fragment {
 
     private ArrayList<Debt> debtsArrayList = new ArrayList<>();
     private AdapterView.OnItemClickListener onItemClickListener;

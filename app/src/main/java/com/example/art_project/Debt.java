@@ -3,7 +3,7 @@ package com.example.art_project;
 import java.util.Date;
 
 public class Debt {
-    private int Status;         // 0 - My Debt, 1 - Their Debt
+    private int Status;         // 0 - I owe, 1 - Owe me
     private String ID;          // Persons unique identifier
     private String Name;        // Person's name
     private String Amount;      // Amount of Money

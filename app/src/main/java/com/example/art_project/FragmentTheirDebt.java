@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-public class TheirDebtFragment extends Fragment {
+public class FragmentTheirDebt extends Fragment {
 
     private ArrayList<Debt> debtsArrayList = new ArrayList<>();
 

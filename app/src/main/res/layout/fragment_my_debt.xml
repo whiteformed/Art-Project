@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    tools:context=".MyDebtFragment"
+    tools:context=".FragmentMyDebt"
     android:background="@color/colorLightGray">
     
     <androidx.recyclerview.widget.RecyclerView
