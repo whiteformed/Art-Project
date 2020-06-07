@@ -78,22 +78,24 @@ public class SqlDatabaseHelper extends SQLiteOpenHelper {
         return rowInserted != -1;
     }
 
-    public ArrayList<Person> getPersonList(String table) {
+    public ArrayList<Person> getPersonList(String table, String status) {
         ArrayList<Person> personArrayList = new ArrayList<>();
 
         SQLiteDatabase db = this.getReadableDatabase();
 
-        sqlCommand = "select * from " + table;
+        sqlCommand = "select * from " + table + " where "
+                + column_person_status + " = '" + status + "'";
+
         Cursor cursor = db.rawQuery(sqlCommand, null);
 
         if (cursor.moveToFirst()) {
             do {
-                Person debt = new Person(
+                Person person = new Person(
                         cursor.getString(cursor.getColumnIndex(column_person_status)),
                         cursor.getString(cursor.getColumnIndex(column_person_name)),
                         cursor.getString(cursor.getColumnIndex(column_person_amount)));
 
-                personArrayList.add(debt);
+                personArrayList.add(person);
             } while (cursor.moveToNext());
         }
 

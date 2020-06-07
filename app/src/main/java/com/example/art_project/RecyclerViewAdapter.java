@@ -20,19 +20,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     RecyclerViewAdapter(Context context, ArrayList<Person> personArrayList, String status) {
         this.context = context;
+        this.personArrayList = personArrayList;
         this.Status = status;
-        this.personArrayList = getItemsWithStatus(personArrayList, Status);
-    }
-
-    private ArrayList<Person> getItemsWithStatus(ArrayList<Person> personArrayList, String status) {
-        ArrayList<Person> resultArray = new ArrayList<>();
-
-        for (Person person : personArrayList) {
-            if (person.getStatus().equals(status))
-                resultArray.add(person);
-        }
-
-        return resultArray;
     }
 
     @NonNull
@@ -49,9 +38,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         String fullAmount = personArrayList.get(position).getAmount() + " RUB";
 
         if (Status.equals("0")) {
-            holder.iv.setImageResource(R.drawable.ic_trending_up);
-        } else if (Status.equals("1")) {
             holder.iv.setImageResource(R.drawable.ic_trending_down);
+        } else if (Status.equals("1")) {
+            holder.iv.setImageResource(R.drawable.ic_trending_up);
         }
 
         holder.tv_name.setText(personArrayList.get(position).getName());
