@@ -21,12 +21,12 @@ public class FragmentMyDebt extends Fragment implements AddButtonClickListener, 
 
     SqlDatabaseHelper sqlDatabaseHelper;
     ArrayList<Person> personArrayList = new ArrayList<>();
-    String status = "0";
+    int status = 0;
 
     private String tablePersons = SqlDatabaseHelper.getPersonsTableName();
 
     @Override
-    public void onItemClickListener(int pos) {
+    public void onItemClick(int pos) {
 
     }
 
@@ -39,8 +39,8 @@ public class FragmentMyDebt extends Fragment implements AddButtonClickListener, 
     }
 
     @Override
-    public void onAddButtonClicked(Person person) {
-        boolean result = sqlDatabaseHelper.insertPerson(tablePersons, person);
+    public void onAddButtonClick(Person person) {
+        boolean result = sqlDatabaseHelper.addPerson(tablePersons, person);
         updateList();
     }
 

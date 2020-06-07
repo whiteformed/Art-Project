@@ -57,24 +57,25 @@ public class DialogHelper {
         View.OnClickListener onButtonAddClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String status;
+                int status = -1;
 
                 if (sw.isChecked())
-                    status = "1";
-                else {
-                    status = "0";
+                    status = 1;
+                else if (!sw.isChecked()) {
+                    status = 0;
                 }
-                Person newPerson = new Person(status, et_name.getText().toString(), "0");
 
-                if (newPerson.getName().trim().equals("")) {
+                if (et_name.getText().toString().trim().equals("")) {
                     makeToast("No empty fields allowed!");
                 } else {
-                    if (status.equals("0"))
-                        fragmentMyDebtListener.onAddButtonClicked(newPerson);
+                    Person newPerson = new Person(status, et_name.getText().toString(), 0);
 
-                    if (status.equals("1"))
-                        fragmentTheirDebtListener.onAddButtonClicked(newPerson);
-
+                    if (status == 0) {
+                        fragmentMyDebtListener.onAddButtonClick(newPerson);
+                    }
+                    else if (status == 1) {
+                        fragmentTheirDebtListener.onAddButtonClick(newPerson);
+                    }
                     dialog.cancel();
                 }
             }

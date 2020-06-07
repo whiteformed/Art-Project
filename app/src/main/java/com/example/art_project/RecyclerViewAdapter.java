@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -16,9 +17,9 @@ import java.util.ArrayList;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.RecyclerViewHolder> {
     private Context context;
     private ArrayList<Person> personArrayList;
-    private String Status;
+    private int Status;
 
-    RecyclerViewAdapter(Context context, ArrayList<Person> personArrayList, String status) {
+    RecyclerViewAdapter(Context context, ArrayList<Person> personArrayList, int status) {
         this.context = context;
         this.personArrayList = personArrayList;
         this.Status = status;
@@ -28,7 +29,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
-        View view = layoutInflater.inflate(R.layout.recycler_view_item, parent, false);
+        View view = layoutInflater.inflate(R.layout.card_view_person, parent, false);
 
         return new RecyclerViewHolder(view);
     }
@@ -37,9 +38,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(@NonNull final RecyclerViewHolder holder, int position) {
         String fullAmount = personArrayList.get(position).getAmount() + " RUB";
 
-        if (Status.equals("0")) {
+        if (Status == 0) {
             holder.iv.setImageResource(R.drawable.ic_trending_down);
-        } else if (Status.equals("1")) {
+        } else if (Status == 1) {
             holder.iv.setImageResource(R.drawable.ic_trending_up);
         }
 
@@ -62,6 +63,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     static class RecyclerViewHolder extends RecyclerView.ViewHolder {
+        CardView cv;
         TextView tv_name;
         TextView tv_amount;
         ImageView iv;
@@ -69,9 +71,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         RecyclerViewHolder(View view) {
             super(view);
 
-            tv_name = view.findViewById(R.id.text_view_name);
-            tv_amount = view.findViewById(R.id.text_view_amount);
-            iv = view.findViewById(R.id.image_view);
+            cv = view.findViewById(R.id.cv_person);
+            tv_name = view.findViewById(R.id.tv_person_name);
+            tv_amount = view.findViewById(R.id.tv_person_amount);
+            iv = view.findViewById(R.id.iv_person_status);
         }
     }
 }

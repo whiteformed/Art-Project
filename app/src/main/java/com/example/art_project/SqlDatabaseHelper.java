@@ -19,12 +19,12 @@ public class SqlDatabaseHelper extends SQLiteOpenHelper {
     private static final String column_person_name = "name";
     private static final String column_person_amount = "amount";
 
-    private static final String table_debts = "debts";
-    private static final String column_debt_id = "id";
-    private static final String column_debt_status = "status";
-    private static final String column_debt_name = "name";
-    private static final String column_debt_amount = "amount";
-    private static final String column_debt_description = "description";
+    private static final String table_entries = "entries";
+    private static final String column_entry_id = "id";
+    private static final String column_entry_status = "status";
+    private static final String column_entry_person = "person";
+    private static final String column_entry_amount = "amount";
+    private static final String column_entry_comment = "comment";
 
     private String sqlCommand;
 
@@ -44,32 +44,32 @@ public class SqlDatabaseHelper extends SQLiteOpenHelper {
 
     private void createTables(SQLiteDatabase db) {
         sqlCommand = "create table "
-                + table_debts + " ("
-                + column_debt_id + " integer primary key autoincrement, "
-                + column_debt_status + " text, "
-                + column_debt_name + " text, "
-                + column_debt_amount + " text, "
-                + column_debt_description + " text)";
+                + table_persons + " ("
+                + column_person_id + " integer primary key autoincrement, "
+                + column_person_status + " integer, "
+                + column_person_name + " text, "
+                + column_person_amount + " integer)";
 
         db.execSQL(sqlCommand);
 
         sqlCommand = "create table "
-                + table_persons + " ("
-                + column_person_id + " integer primary key autoincrement, "
-                + column_person_status + " text, "
-                + column_person_name + " text, "
-                + column_person_amount + " text)";
+                + table_entries + " ("
+                + column_entry_id + " integer primary key autoincrement, "
+                + column_entry_status + " integer, "
+                + column_entry_person + " integer, "
+                + column_entry_amount + " integer, "
+                + column_entry_comment + " text)";
 
         db.execSQL(sqlCommand);
     }
 
-    public boolean insertPerson(String table, Person person) {
+    public boolean addPerson(String table, Person person) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
-        contentValues.put(column_person_status, person.getStatus().trim());
+        contentValues.put(column_person_status, person.getStatus());
         contentValues.put(column_person_name, person.getName().trim());
-        contentValues.put(column_person_amount, person.getAmount().trim());
+        contentValues.put(column_person_amount, person.getAmount());
 
         long rowInserted = db.insert(table, null, contentValues);
 
@@ -78,7 +78,7 @@ public class SqlDatabaseHelper extends SQLiteOpenHelper {
         return rowInserted != -1;
     }
 
-    public ArrayList<Person> getPersonList(String table, String status) {
+    public ArrayList<Person> getPersonList(String table, int status) {
         ArrayList<Person> personArrayList = new ArrayList<>();
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -91,9 +91,9 @@ public class SqlDatabaseHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 Person person = new Person(
-                        cursor.getString(cursor.getColumnIndex(column_person_status)),
+                        cursor.getInt(cursor.getColumnIndex(column_person_status)),
                         cursor.getString(cursor.getColumnIndex(column_person_name)),
-                        cursor.getString(cursor.getColumnIndex(column_person_amount)));
+                        cursor.getInt(cursor.getColumnIndex(column_person_amount)));
 
                 personArrayList.add(person);
             } while (cursor.moveToNext());
@@ -105,14 +105,14 @@ public class SqlDatabaseHelper extends SQLiteOpenHelper {
         return personArrayList;
     }
 
-    public boolean insertDebt(String table, Debt debt) {
+    public boolean addEntry(String table, Entry entry) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
-        contentValues.put(column_debt_status, debt.getStatus());
-        contentValues.put(column_debt_name, debt.getName().trim());
-        contentValues.put(column_debt_amount, debt.getAmount().trim());
-        contentValues.put(column_debt_description, debt.getDescription().trim());
+        contentValues.put(column_entry_status, entry.getStatus());
+        contentValues.put(column_entry_person, entry.getPerson());
+        contentValues.put(column_entry_amount, entry.getAmount());
+        contentValues.put(column_entry_comment, entry.getComment().trim());
 
         long rowInserted = db.insert(table, null, contentValues);
 
@@ -121,112 +121,91 @@ public class SqlDatabaseHelper extends SQLiteOpenHelper {
         return rowInserted != -1;
     }
 
-    public boolean insertDebtList(String table, ArrayList<Debt> debtArrayList) {
-        for (int i = 0; i < debtArrayList.size(); i++) {
-            if (!insertDebt(table, debtArrayList.get(i)))
+    public boolean addEntryList(ArrayList<Entry> entryArrayList) {
+        for (int i = 0; i < entryArrayList.size(); i++) {
+            if (!addEntry(table_entries, entryArrayList.get(i)))
                 return false;
         }
 
         return true;
     }
 
-    public boolean deleteDebt(String table, Debt debt) {
+    public boolean deleteEntry(Entry entry) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         String whereClause
-                = column_debt_status + " = '" + debt.getStatus() + "' and "
-                + column_debt_name + " = '" + debt.getName().trim() + "' and "
-                + column_debt_amount + " = '" + debt.getAmount().trim() + "' and "
-                + column_debt_description + " = '" + debt.getDescription().trim()+ "'";
+                = column_entry_status + " = '" + entry.getStatus() + "' and "
+                + column_entry_person + " = '" + entry.getPerson() + "' and "
+                + column_entry_amount + " = '" + entry.getAmount() + "' and "
+                + column_entry_comment + " = '" + entry.getComment().trim() + "'";
 
-        int rowsAffected = db.delete(table_debts, whereClause, null);
+        int rowsAffected = db.delete(table_entries, whereClause, null);
 
         db.close();
 
         return rowsAffected != 0;
     }
 
-    public boolean deleteDebtList(String table, ArrayList<Debt> debtArrayList) {
-        for (int i = 0; i < debtArrayList.size(); i++) {
-            if (!deleteDebt(table, debtArrayList.get(i)))
+    public boolean deleteEntryList(ArrayList<Entry> entryArrayList) {
+        for (int i = 0; i < entryArrayList.size(); i++) {
+            if (!deleteEntry(entryArrayList.get(i)))
                 return false;
         }
 
         return true;
     }
 
-    public boolean updateDebt(String table, Debt oldDebt, Debt newDebt) {
+    public boolean updateEntry(Entry oldEntry, Entry newEntry) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
-        contentValues.put(column_debt_status, newDebt.getStatus());
-        contentValues.put(column_debt_name, newDebt.getName().trim());
-        contentValues.put(column_debt_amount, newDebt.getAmount().trim());
-        contentValues.put(column_debt_description, newDebt.getDescription().trim());
+        contentValues.put(column_entry_status, newEntry.getStatus());
+        contentValues.put(column_entry_person, newEntry.getPerson());
+        contentValues.put(column_entry_amount, newEntry.getAmount());
+        contentValues.put(column_entry_comment, newEntry.getComment().trim());
 
         String whereClause
-                = column_debt_status + " = '" + oldDebt.getStatus() + "' and "
-                + column_debt_name + " = '" + oldDebt.getName().trim() + "' and "
-                + column_debt_amount + " = '" + oldDebt.getAmount().trim() + "'";
+                = column_entry_status + " = '" + oldEntry.getStatus() + "' and "
+                + column_entry_person + " = '" + oldEntry.getPerson() + "' and "
+                + column_entry_amount + " = '" + oldEntry.getAmount() + "' and "
+                + column_entry_comment + " = '" + oldEntry.getComment().trim() + "'";
 
-        int rowsAffected = db.update(table, contentValues, whereClause, null);
+        int rowsAffected = db.update(table_entries, contentValues, whereClause, null);
 
         return rowsAffected != 0;
     }
 
-    public boolean hasDebt(String table, Debt debt) {
-        SQLiteDatabase db = this.getReadableDatabase();
-
-        boolean exists = false;
-
-        sqlCommand = "select * from " + table + " where "
-                + column_debt_status + " = '" + debt.getStatus() + "' and "
-                + column_debt_name + " = '" + debt.getName().trim() + "' and "
-                + column_debt_amount + " = '" + debt.getAmount().trim() + "'";
-
-        Cursor cursor = db.rawQuery(sqlCommand, null);
-
-        if (cursor.moveToFirst()) {
-            exists = true;
-        }
-
-        cursor.close();
-        db.close();
-
-        return exists;
-    }
-
-    public ArrayList<Debt> getDebtList(String table) {
-        ArrayList<Debt> debtArrayList = new ArrayList<>();
+    public ArrayList<Entry> getEntryList() {
+        ArrayList<Entry> entryArrayList = new ArrayList<>();
 
         SQLiteDatabase db = this.getReadableDatabase();
 
-        sqlCommand = "select * from " + table;
+        sqlCommand = "select * from " + table_entries;
         Cursor cursor = db.rawQuery(sqlCommand, null);
 
         if (cursor.moveToFirst()) {
             do {
-                Debt debt = new Debt(
-                        cursor.getString(cursor.getColumnIndex(column_debt_status)),
-                        cursor.getString(cursor.getColumnIndex(column_debt_name)),
-                        cursor.getString(cursor.getColumnIndex(column_debt_amount)),
-                        cursor.getString(cursor.getColumnIndex(column_debt_description)));
+                Entry entry = new Entry(
+                        cursor.getInt(cursor.getColumnIndex(column_entry_status)),
+                        cursor.getInt(cursor.getColumnIndex(column_entry_person)),
+                        cursor.getInt(cursor.getColumnIndex(column_entry_amount)),
+                        cursor.getString(cursor.getColumnIndex(column_entry_comment)));
 
-                debtArrayList.add(debt);
+                entryArrayList.add(entry);
             } while (cursor.moveToNext());
         }
 
         cursor.close();
         db.close();
 
-        return debtArrayList;
+        return entryArrayList;
     }
 
     public static String getPersonsTableName() {
         return table_persons;
     }
 
-    public static String getDebtsTableName() {
-        return table_debts;
+    public static String getEntriesTableName() {
+        return table_entries;
     }
 }

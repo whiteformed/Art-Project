@@ -31,8 +31,8 @@ public class ActivityMain extends AppCompatActivity {
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
 
         //Add fragments
-        viewPagerAdapter.addFragment(new FragmentMyDebt(), "My Debt");
-        viewPagerAdapter.addFragment(new FragmentTheirDebt(), "Their Debt");
+        viewPagerAdapter.addFragment(new FragmentMyDebt(), "My Entry");
+        viewPagerAdapter.addFragment(new FragmentTheirDebt(), "Their Entry");
 
         //Setup the adapter
         viewPager.setAdapter(viewPagerAdapter);

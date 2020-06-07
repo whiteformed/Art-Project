@@ -11,11 +11,11 @@ public class AsynchronousTask extends AsyncTask<Void, Void, Void> {
     private SqlDatabaseHelper sqlDatabaseHelper;
     private String table;
     private ArrayList<Person> personArrayList;
-    private String status;
+    private int status;
 
     private static final String TAG = "AsynchronousTask";
 
-    AsynchronousTask(RecyclerViewAdapter recyclerViewAdapter, SqlDatabaseHelper sqlDatabaseHelper, String table, ArrayList<Person> personArrayList, String status) {
+    AsynchronousTask(RecyclerViewAdapter recyclerViewAdapter, SqlDatabaseHelper sqlDatabaseHelper, String table, ArrayList<Person> personArrayList, int status) {
         this.recyclerViewAdapter = recyclerViewAdapter;
         this.personArrayList = personArrayList;
         this.sqlDatabaseHelper = sqlDatabaseHelper;

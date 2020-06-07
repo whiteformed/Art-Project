@@ -1,21 +1,21 @@
 package com.example.art_project;
 
 public class Person {
-    private String Status;      // 0 - My Debt, 1 - Their Debt
-    private String Name;        // Person's name
-    private String Amount;      // Amount of Money
+    private int Status;      // 0 - My Entry, 1 - Their Entry
+    private String Name;     // Person's name
+    private int Amount;      // Amount of Money
 
-    Person (String status, String name, String amount) {
+    Person(int status, String name, int amount) {
         this.Status = status;
         this.Name = name;
         this.Amount = amount;
     }
 
-    public String getStatus() {
+    public int getStatus() {
         return Status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(int status) {
         Status = status;
     }
 
@@ -27,11 +27,11 @@ public class Person {
         Name = name;
     }
 
-    public String getAmount() {
+    public int getAmount() {
         return Amount;
     }
 
-    public void setAmount(String amount) {
+    public void setAmount(int amount) {
         Amount = amount;
     }
 }
