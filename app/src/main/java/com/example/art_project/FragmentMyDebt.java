@@ -40,7 +40,7 @@ public class FragmentMyDebt extends Fragment implements AddButtonClickListener, 
 
     @Override
     public void onAddButtonClick(Person person) {
-        boolean result = sqlDatabaseHelper.addPerson(tablePersons, person);
+        boolean result = sqlDatabaseHelper.addPerson(person);
         updateList();
     }
 

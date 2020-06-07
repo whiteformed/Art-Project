@@ -32,7 +32,7 @@ public class AsynchronousTask extends AsyncTask<Void, Void, Void> {
 
     private void getDataFromDatabase() {
         personArrayList.clear();
-        personArrayList.addAll(sqlDatabaseHelper.getPersonList(table, status));
+        personArrayList.addAll(sqlDatabaseHelper.getPersonList(status));
         Log.i(TAG, table + " has items " + personArrayList.size());
 
         if (!personArrayList.isEmpty()) {

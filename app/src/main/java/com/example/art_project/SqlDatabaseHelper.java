@@ -63,7 +63,7 @@ public class SqlDatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(sqlCommand);
     }
 
-    public boolean addPerson(String table, Person person) {
+    public boolean addPerson(Person person) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
@@ -71,19 +71,19 @@ public class SqlDatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(column_person_name, person.getName().trim());
         contentValues.put(column_person_amount, person.getAmount());
 
-        long rowInserted = db.insert(table, null, contentValues);
+        long rowInserted = db.insert(table_persons, null, contentValues);
 
         db.close();
 
         return rowInserted != -1;
     }
 
-    public ArrayList<Person> getPersonList(String table, int status) {
+    public ArrayList<Person> getPersonList(int status) {
         ArrayList<Person> personArrayList = new ArrayList<>();
 
         SQLiteDatabase db = this.getReadableDatabase();
 
-        sqlCommand = "select * from " + table + " where "
+        sqlCommand = "select * from " + table_persons + " where "
                 + column_person_status + " = '" + status + "'";
 
         Cursor cursor = db.rawQuery(sqlCommand, null);
@@ -105,7 +105,7 @@ public class SqlDatabaseHelper extends SQLiteOpenHelper {
         return personArrayList;
     }
 
-    public boolean addEntry(String table, Entry entry) {
+    public boolean addEntry(Entry entry) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
@@ -114,7 +114,7 @@ public class SqlDatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(column_entry_amount, entry.getAmount());
         contentValues.put(column_entry_comment, entry.getComment().trim());
 
-        long rowInserted = db.insert(table, null, contentValues);
+        long rowInserted = db.insert(table_entries, null, contentValues);
 
         db.close();
 
@@ -123,7 +123,7 @@ public class SqlDatabaseHelper extends SQLiteOpenHelper {
 
     public boolean addEntryList(ArrayList<Entry> entryArrayList) {
         for (int i = 0; i < entryArrayList.size(); i++) {
-            if (!addEntry(table_entries, entryArrayList.get(i)))
+            if (!addEntry(entryArrayList.get(i)))
                 return false;
         }
 

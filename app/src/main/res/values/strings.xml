@@ -5,6 +5,9 @@
     <string name="tv_application_version">v. 1.0.0</string>
     <string name="tv_author">Ovchinnikov Denis Olegovich</string>
 
+    <string name="ttl_my_debt">My Debt</string>
+    <string name="ttl_their_debt">Their Debt</string>
+
     <string name="tv_message_update">Update selected item</string>
     <string name="tv_message_add">Add a new Person</string>
     <string name="tv_i_owe">I OWE</string>
