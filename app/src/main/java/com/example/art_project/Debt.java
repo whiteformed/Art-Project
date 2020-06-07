@@ -3,19 +3,17 @@ package com.example.art_project;
 import java.util.Date;
 
 public class Debt {
-    private int Status;         // 0 - I owe, 1 - Owe me
-    private String ID;          // Persons unique identifier
+    private String Status;      // 0 - Inc, 1 - Dec
     private String Name;        // Person's name
     private String Amount;      // Amount of Money
-    //private String Description; // Any commentary on debt
-    //private Date DateInfo;      // Date information (Optional)
+    private String Description; // Any commentary on debt
 
-    Debt (int status, String id, String name, String amount)
+    Debt (String name, String status, String amount, String description)
     {
         this.Status = status;
-        this.ID = id;
         this.Name = name;
         this.Amount = amount;
+        this.Description = description;
     }
 
     public String getName() {
@@ -26,20 +24,12 @@ public class Debt {
         Name = name;
     }
 
-    public int getStatus() {
+    public String getStatus() {
         return Status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(String status) {
         this.Status = status;
-    }
-
-    public String getID() {
-        return ID;
-    }
-
-    public void setID(String ID) {
-        this.ID = ID;
     }
 
     public String getAmount() {
@@ -48,5 +38,13 @@ public class Debt {
 
     public void setAmount(String amount) {
         this.Amount = amount;
+    }
+
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setDescription(String description) {
+        Description = description;
     }
 }

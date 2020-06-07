@@ -1,5 +1,6 @@
 package com.example.art_project;
 
+import android.app.Dialog;
 import android.os.Bundle;
 
 import com.google.android.material.appbar.AppBarLayout;
@@ -10,9 +11,21 @@ import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
+import java.util.Objects;
+
 public class ActivityMain extends AppCompatActivity {
+    TabLayout tabLayout;
+    ViewPager viewPager;
+    ViewPagerAdapter viewPagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,11 +33,10 @@ public class ActivityMain extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Setup Pager View
-        TabLayout tabLayout = findViewById(R.id.tab_layout);
-        ViewPager viewPager = findViewById(R.id.view_pager);
-        AppBarLayout appBarLayout = findViewById(R.id.app_bar_layout);
+        tabLayout = findViewById(R.id.tab_layout);
+        viewPager = findViewById(R.id.view_pager);
 
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+        viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
 
         //Add fragments
         viewPagerAdapter.addFragment(new FragmentMyDebt(), "My Debt");
@@ -33,19 +45,5 @@ public class ActivityMain extends AppCompatActivity {
         //Setup the adapter
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
-
-        //Creating a FAB
-        FloatingActionButton floatingActionButton = findViewById(R.id.fab);
-
-        //Setup the onClick event for FAB
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Toast toast = Toast.makeText(getApplicationContext(),
-                        "Action", Toast.LENGTH_SHORT);
-                toast.show();
-            }
-        });
     }
 }

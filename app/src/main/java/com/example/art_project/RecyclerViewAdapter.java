@@ -1,7 +1,6 @@
 package com.example.art_project;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,26 +13,23 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import static androidx.constraintlayout.widget.Constraints.TAG;
-
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.RecyclerViewHolder> {
-
     private Context context;
-    private ArrayList<Debt> debts;
-    private int Status;
+    private ArrayList<Person> personArrayList;
+    private String Status;
 
-    RecyclerViewAdapter(Context context, ArrayList<Debt> debts, int status) {
+    RecyclerViewAdapter(Context context, ArrayList<Person> personArrayList, String status) {
         this.context = context;
         this.Status = status;
-        this.debts = getItemsWithStatus(debts, Status);
+        this.personArrayList = getItemsWithStatus(personArrayList, Status);
     }
 
-    private ArrayList<Debt> getItemsWithStatus(ArrayList<Debt> debts, int status) {
-        ArrayList<Debt> resultArray = new ArrayList<>();
+    private ArrayList<Person> getItemsWithStatus(ArrayList<Person> personArrayList, String status) {
+        ArrayList<Person> resultArray = new ArrayList<>();
 
-        for (Debt debt:debts) {
-            if (debt.getStatus() == status)
-                resultArray.add(debt);
+        for (Person person : personArrayList) {
+            if (person.getStatus().equals(status))
+                resultArray.add(person);
         }
 
         return resultArray;
@@ -50,43 +46,43 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull final RecyclerViewHolder holder, int position) {
+        String fullAmount = personArrayList.get(position).getAmount() + " RUB";
 
-        if (debts.get(position).getStatus() == Status) {
-            holder.imageView.setImageResource(R.drawable.ic_trending_down);
-
-            holder.textViewName.setText(debts.get(position).getName());
-
-            String amount = debts.get(position).getAmount() + " RUB";
-            holder.textViewAmount.setText(amount);
+        if (Status.equals("0")) {
+            holder.iv.setImageResource(R.drawable.ic_trending_up);
+        } else if (Status.equals("1")) {
+            holder.iv.setImageResource(R.drawable.ic_trending_down);
         }
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.tv_name.setText(personArrayList.get(position).getName());
+        holder.tv_amount.setText(fullAmount);
+
+        View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(context, String.valueOf(holder.getAdapterPosition()), Toast.LENGTH_SHORT).show();
-                Log.d(TAG, "onClick: clicked: " + holder.getAdapterPosition());
             }
-        });
+        };
+
+        holder.itemView.setOnClickListener(onClickListener);
     }
 
     @Override
     public int getItemCount() {
-        return debts.size();
+        return personArrayList.size();
     }
 
     static class RecyclerViewHolder extends RecyclerView.ViewHolder {
-
-        TextView textViewName;
-        TextView textViewAmount;
-        ImageView imageView;
+        TextView tv_name;
+        TextView tv_amount;
+        ImageView iv;
 
         RecyclerViewHolder(View view) {
-
             super(view);
 
-            textViewName = view.findViewById(R.id.text_view_name);
-            textViewAmount = view.findViewById(R.id.text_view_amount);
-            imageView = view.findViewById(R.id.image_view);
+            tv_name = view.findViewById(R.id.text_view_name);
+            tv_amount = view.findViewById(R.id.text_view_amount);
+            iv = view.findViewById(R.id.image_view);
         }
     }
 }

@@ -20,7 +20,7 @@
             android:layout_height="50dp"
             android:layout_margin="8dp"
             android:background="@drawable/ic_black_border"
-            android:contentDescription="@string/image_view_description" />
+            android:contentDescription="@string/iv_desc_dir" />
 
         <TextView
             android:id="@+id/text_view_name"
