@@ -9,7 +9,6 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
 
@@ -18,19 +17,19 @@ import java.util.Objects;
 public class DialogHelper {
     Context context;
 
-    AddButtonClickListener fragmentMyDebtListener;
-    AddButtonClickListener fragmentTheirDebtListener;
+    OnAddButtonClickListener fragmentMyDebtListener;
+    OnAddButtonClickListener fragmentTheirDebtListener;
 
     DialogHelper(Context context) {
         this.context = context;
     }
 
-    public void setListener(AddButtonClickListener addButtonClickListener) {
-        if (addButtonClickListener instanceof FragmentMyDebt)
-            this.fragmentMyDebtListener = addButtonClickListener;
+    public void setListener(OnAddButtonClickListener onAddButtonClickListener) {
+        if (onAddButtonClickListener instanceof FragmentMyDebt)
+            this.fragmentMyDebtListener = onAddButtonClickListener;
 
-        if (addButtonClickListener instanceof FragmentTheirDebt)
-            this.fragmentTheirDebtListener = addButtonClickListener;
+        if (onAddButtonClickListener instanceof FragmentTheirDebt)
+            this.fragmentTheirDebtListener = onAddButtonClickListener;
     }
 
     public Dialog createAddDialog() {

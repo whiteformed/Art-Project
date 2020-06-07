@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-public class FragmentTheirDebt extends Fragment implements AddButtonClickListener, RecyclerViewItemClickListener {
+public class FragmentTheirDebt extends Fragment implements OnAddButtonClickListener, OnRecyclerViewItemClickListener {
     View view;
     RecyclerView recyclerView;
     RecyclerViewAdapter recyclerViewAdapter;
