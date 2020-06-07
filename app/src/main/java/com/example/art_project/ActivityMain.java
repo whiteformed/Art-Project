@@ -52,7 +52,7 @@ public class ActivityMain extends AppCompatActivity {
         floatingActionButton.setOnClickListener(onClickListener);
     }
 
-    public DialogHelper getDialog() {
+    public DialogHelper getDialogHelper() {
         return dialogHelper;
     }
 }

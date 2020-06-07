@@ -25,10 +25,6 @@ public class DialogHelper {
         this.context = context;
     }
 
-    private void makeToast(String message) {
-        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
-    }
-
     public void setListener(AddButtonClickListener addButtonClickListener) {
         if (addButtonClickListener instanceof FragmentMyDebt)
             this.fragmentMyDebtListener = addButtonClickListener;
@@ -66,7 +62,7 @@ public class DialogHelper {
                 }
 
                 if (et_name.getText().toString().trim().equals("")) {
-                    makeToast("No empty fields allowed!");
+                    Toaster.makeToast(context, "No empty fields allowed!");
                 } else {
                     Person newPerson = new Person(status, et_name.getText().toString(), 0);
 

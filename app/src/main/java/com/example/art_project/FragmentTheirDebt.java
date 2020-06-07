@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -44,10 +43,6 @@ public class FragmentTheirDebt extends Fragment implements AddButtonClickListene
         updateList();
     }
 
-    private void makeToast(String message) {
-        Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
-    }
-
     private void updateList() {
         AsynchronousTask task = new AsynchronousTask(recyclerViewAdapter, sqlDatabaseHelper, tablePersons, personArrayList, status);
         task.execute();
@@ -57,7 +52,7 @@ public class FragmentTheirDebt extends Fragment implements AddButtonClickListene
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_person_list, container, false);
 
-        DialogHelper dialogHelper = ((ActivityMain) getNonNullActivity()).getDialog();
+        DialogHelper dialogHelper = ((ActivityMain) getNonNullActivity()).getDialogHelper();
         dialogHelper.setListener(this);
 
         recyclerView = view.findViewById(R.id.recycler_view);
