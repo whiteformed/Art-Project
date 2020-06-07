@@ -4,12 +4,12 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
-        View view = layoutInflater.inflate(R.layout.card_view_person, parent, false);
+        View view = layoutInflater.inflate(R.layout.card_person, parent, false);
 
         return new RecyclerViewHolder(view);
     }
@@ -63,7 +63,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     static class RecyclerViewHolder extends RecyclerView.ViewHolder {
-        CardView cv;
+        FrameLayout fl_card_person;
         TextView tv_name;
         TextView tv_amount;
         ImageView iv;
@@ -71,7 +71,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         RecyclerViewHolder(View view) {
             super(view);
 
-            cv = view.findViewById(R.id.cv_person);
+            fl_card_person = view.findViewById(R.id.fl_card_person);
             tv_name = view.findViewById(R.id.tv_person_name);
             tv_amount = view.findViewById(R.id.tv_person_amount);
             iv = view.findViewById(R.id.iv_person_status);
