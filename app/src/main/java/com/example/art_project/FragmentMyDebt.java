@@ -57,7 +57,8 @@ public class FragmentMyDebt extends Fragment implements AddButtonClickListener, 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_person_list, container, false);
 
-        ((ActivityMain) getNonNullActivity()).setListener(this);
+        DialogHelper dialogHelper = ((ActivityMain) getNonNullActivity()).getDialog();
+        dialogHelper.setListener(this);
 
         recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
