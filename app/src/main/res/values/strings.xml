@@ -1,15 +1,16 @@
 <resources>
     <string name="app_name">Art Project</string>
 
-    <string name="tv_application_name">Art Project</string>
+    <string name="tv_app_name">Art Project</string>
     <string name="tv_application_version">v. 1.0.0</string>
     <string name="tv_author">Ovchinnikov Denis Olegovich</string>
 
     <string name="ttl_my_debt">My Debt</string>
     <string name="ttl_their_debt">Their Debt</string>
 
+    <string name="msg_add">Add new Person to a list.</string>
+
     <string name="tv_message_update">Update selected item</string>
-    <string name="tv_message_add">Add a new Person</string>
     <string name="tv_i_owe">I OWE</string>
     <string name="tv_owe_me">OWE ME</string>
 
@@ -20,7 +21,7 @@
     <string name="btn_text_confirm">Confirm</string>
 
     <string name="iv_desc_app_name">App Name</string>
-    <string name="iv_desc_dir">Status Image</string>
+    <string name="iv_desc_status">Status Image</string>
 
-    <string name="hnt_persons_name">Name (30 sym at most)</string>
+    <string name="hnt_persons_name">Name</string>
 </resources>

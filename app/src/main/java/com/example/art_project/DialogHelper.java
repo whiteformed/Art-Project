@@ -6,47 +6,45 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
-import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
+
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
 
 public class DialogHelper {
     Context context;
 
-    OnAddButtonClickListener fragmentMyDebtListener;
-    OnAddButtonClickListener fragmentTheirDebtListener;
+    OnDataUpdated fragmentMyDebtListener;
+    OnDataUpdated fragmentTheirDebtListener;
 
     DialogHelper(Context context) {
         this.context = context;
     }
 
-    public void setListener(OnAddButtonClickListener onAddButtonClickListener) {
-        if (onAddButtonClickListener instanceof FragmentMyDebt)
-            this.fragmentMyDebtListener = onAddButtonClickListener;
+    public void setListener(OnDataUpdated onDataUpdated) {
+        if (onDataUpdated instanceof FragmentMyDebt)
+            this.fragmentMyDebtListener = onDataUpdated;
 
-        if (onAddButtonClickListener instanceof FragmentTheirDebt)
-            this.fragmentTheirDebtListener = onAddButtonClickListener;
+        if (onDataUpdated instanceof FragmentTheirDebt)
+            this.fragmentTheirDebtListener = onDataUpdated;
     }
 
     public Dialog createAddDialog() {
         final Dialog dialog = new Dialog(context);
-        dialog.setContentView(R.layout.dialog_insert_person);
+        dialog.setContentView(R.layout.dialog_add_person);
         dialog.setCancelable(true);
         Objects.requireNonNull(dialog.getWindow()).setLayout(context.getResources().getDisplayMetrics().widthPixels, ViewGroup.LayoutParams.WRAP_CONTENT);
 
-        TextView tv_message = dialog.findViewById(R.id.message_tv);
-        tv_message.setText(R.string.tv_message_add);
-
-        final EditText et_name = dialog.findViewById(R.id.et_name);
+        final TextInputLayout til_name = dialog.findViewById(R.id.til_name);
         final TextView tv_i_owe = dialog.findViewById(R.id.tv_i_owe);
         final TextView tv_owe_me = dialog.findViewById(R.id.tv_owe_me);
         final Switch sw = dialog.findViewById(R.id.sw);
 
-        Button btn_add = dialog.findViewById(R.id.button_add);
+        Button btn_add = dialog.findViewById(R.id.btn_add);
         btn_add.setText(R.string.btn_text_add);
 
         View.OnClickListener onButtonAddClickListener = new View.OnClickListener() {
@@ -60,16 +58,16 @@ public class DialogHelper {
                     status = 0;
                 }
 
-                if (et_name.getText().toString().trim().equals("")) {
+                if (Objects.requireNonNull(til_name.getEditText()).getText().toString().trim().equals("")) {
                     Toaster.makeToast(context, "No empty fields allowed!");
                 } else {
-                    Person newPerson = new Person(status, et_name.getText().toString(), 0);
+                    Person newPerson = new Person(status, til_name.getEditText().getText().toString(), 0);
 
                     if (status == 0) {
-                        fragmentMyDebtListener.onAddButtonClick(newPerson);
+                        fragmentMyDebtListener.onUpdate(newPerson);
                     }
                     else if (status == 1) {
-                        fragmentTheirDebtListener.onAddButtonClick(newPerson);
+                        fragmentTheirDebtListener.onUpdate(newPerson);
                     }
                     dialog.cancel();
                 }

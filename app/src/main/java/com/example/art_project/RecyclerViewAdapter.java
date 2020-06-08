@@ -53,7 +53,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 //todo show message when list is empty
                 //todo create person's debt list
                 //todo create transaction
-                Toast.makeText(context, String.valueOf(holder.getAdapterPosition()), Toast.LENGTH_SHORT).show();
+                Toaster.makeToast(context, String.valueOf(personArrayList.get(holder.getAdapterPosition()).getID()));
             }
         };
 

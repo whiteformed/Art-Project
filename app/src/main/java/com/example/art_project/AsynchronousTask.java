@@ -3,7 +3,6 @@ package com.example.art_project;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import java.sql.Struct;
 import java.util.ArrayList;
 
 public class AsynchronousTask extends AsyncTask<Void, Void, Void> {
@@ -32,7 +31,7 @@ public class AsynchronousTask extends AsyncTask<Void, Void, Void> {
 
     private void getDataFromDatabase() {
         personArrayList.clear();
-        personArrayList.addAll(sqlDatabaseHelper.getPersonList(status));
+        personArrayList.addAll(sqlDatabaseHelper.getPersonArrayList(status));
         Log.i(TAG, table + " has items " + personArrayList.size());
 
         if (!personArrayList.isEmpty()) {

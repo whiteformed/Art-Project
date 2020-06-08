@@ -1,16 +1,36 @@
 package com.example.art_project;
 
 public class Entry {
+    private int ID;             // Entry ID
     private int Status;         // 0 - Inc, 1 - Dec
-    private int Person;         // Person
+    private int Person_ID;         // Person
     private int Amount;         // Amount of Money
     private String Comment;     // Any comment
+    private String Date;        // Entry's adding date
 
-    Entry(int status, int person, int amount, String comment) {
+    Entry(int status, int personID, int amount, String comment, String date) {
         this.Status = status;
-        this.Person = person;
+        this.Person_ID = personID;
         this.Amount = amount;
         this.Comment = comment;
+        this.Date = date;
+    }
+
+    Entry(int id, int status, int personID, int amount, String comment, String date) {
+        this.ID = id;
+        this.Status = status;
+        this.Person_ID = personID;
+        this.Amount = amount;
+        this.Comment = comment;
+        this.Date = date;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
     public int getStatus() {
@@ -21,12 +41,12 @@ public class Entry {
         this.Status = status;
     }
 
-    public int getPerson() {
-        return Person;
+    public int getPersonID() {
+        return Person_ID;
     }
 
-    public void setPerson(int person) {
-        Person = person;
+    public void setPersonID(int person_ID) {
+        Person_ID = person_ID;
     }
 
     public int getAmount() {
@@ -43,5 +63,13 @@ public class Entry {
 
     public void setComment(String comment) {
         Comment = comment;
+    }
+
+    public String getDate() {
+        return Date;
+    }
+
+    public void setDate(String date) {
+        Date = date;
     }
 }

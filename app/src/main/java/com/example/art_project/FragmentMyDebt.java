@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-public class FragmentMyDebt extends Fragment implements OnAddButtonClickListener, OnRecyclerViewItemClickListener {
+public class FragmentMyDebt extends Fragment implements OnDataUpdated, OnRecyclerViewItemClickListener {
     View view;
     RecyclerView recyclerView;
     RecyclerViewAdapter recyclerViewAdapter;
@@ -38,7 +38,7 @@ public class FragmentMyDebt extends Fragment implements OnAddButtonClickListener
     }
 
     @Override
-    public void onAddButtonClick(Person person) {
+    public void onUpdate(Person person) {
         boolean result = sqlDatabaseHelper.addPerson(person);
         updateList();
     }
