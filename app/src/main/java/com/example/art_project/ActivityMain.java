@@ -45,7 +45,8 @@ public class ActivityMain extends AppCompatActivity {
         View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialogHelper.createAddDialog().show();
+                boolean defaultSwitchState = tabLayout.getSelectedTabPosition() != 0;
+                dialogHelper.createAddDialog((defaultSwitchState));
             }
         };
 

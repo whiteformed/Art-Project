@@ -33,19 +33,25 @@ public class DialogHelper {
             this.fragmentTheirDebtListener = onDataUpdateListener;
     }
 
-    public Dialog createAddDialog() {
+    public void createAddDialog(boolean defaultSwitchState) {
         final Dialog dialog = new Dialog(context);
         dialog.setContentView(R.layout.dialog_add_person);
         dialog.setCancelable(true);
         Objects.requireNonNull(dialog.getWindow()).setLayout(context.getResources().getDisplayMetrics().widthPixels, ViewGroup.LayoutParams.WRAP_CONTENT);
 
         final TextInputLayout til_name = dialog.findViewById(R.id.til_name);
+        til_name.setHint(context.getString(R.string.hnt_persons_name));
+        til_name.setHintAnimationEnabled(true);
+
+        final Switch sw = dialog.findViewById(R.id.sw);
+        sw.setChecked(defaultSwitchState);
+
         final TextView tv_i_owe = dialog.findViewById(R.id.tv_i_owe);
         final TextView tv_owe_me = dialog.findViewById(R.id.tv_owe_me);
-        final Switch sw = dialog.findViewById(R.id.sw);
 
         Button btn_add = dialog.findViewById(R.id.btn_add);
         btn_add.setText(R.string.btn_text_add);
+
 
         View.OnClickListener onButtonAddClickListener = new View.OnClickListener() {
             @Override
@@ -110,6 +116,6 @@ public class DialogHelper {
 
         btn_add.setOnClickListener(onButtonAddClickListener);
 
-        return dialog;
+        dialog.show();
     }
 }
