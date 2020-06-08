@@ -4,23 +4,21 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.RecyclerViewHolder> {
+public class PersonListAdapter extends RecyclerView.Adapter<PersonListAdapter.RecyclerViewHolder> {
     private Context context;
     private ArrayList<Person> personArrayList;
     private int Status;
     private OnRecyclerViewItemClickListener onRecyclerViewItemClickListener;
 
-    RecyclerViewAdapter(Context context, ArrayList<Person> personArrayList, int status) {
+    PersonListAdapter(Context context, ArrayList<Person> personArrayList, int status) {
         this.context = context;
         this.personArrayList = personArrayList;
         this.Status = status;
@@ -34,13 +32,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
-        View view = layoutInflater.inflate(R.layout.card_person, parent, false);
+        View view = layoutInflater.inflate(R.layout.item_person, parent, false);
 
         return new RecyclerViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final RecyclerViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final RecyclerViewHolder holder, final int position) {
         String fullAmount = personArrayList.get(position).getAmount() + " RUB";
 
         if (Status == 0) {
@@ -56,7 +54,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             @Override
             public void onClick(View v) {
                 //todo show message when list is empty
-                onRecyclerViewItemClickListener.onItemClick(personArrayList.get(holder.getAdapterPosition()).getID());
+                onRecyclerViewItemClickListener.onPersonItemClick(personArrayList.get(position).getID());
             }
         };
 
@@ -69,7 +67,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     static class RecyclerViewHolder extends RecyclerView.ViewHolder {
-        FrameLayout fl_card_person;
         TextView tv_name;
         TextView tv_amount;
         ImageView iv;
@@ -77,10 +74,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         RecyclerViewHolder(View view) {
             super(view);
 
-            fl_card_person = view.findViewById(R.id.fl_card_person);
-            tv_name = view.findViewById(R.id.tv_person_name);
-            tv_amount = view.findViewById(R.id.tv_person_amount);
-            iv = view.findViewById(R.id.iv_person_status);
+            tv_name = view.findViewById(R.id.item_person_tv_name);
+            tv_amount = view.findViewById(R.id.item_person_tv_amount);
+            iv = view.findViewById(R.id.item_person_iv_status);
         }
     }
 }

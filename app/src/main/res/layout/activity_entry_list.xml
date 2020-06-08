@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    tools:context=".ActivityEntryList">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:paddingTop="30dp">
+
+        <TextView
+            android:id="@+id/activity_entry_list_tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorWhite"
+            android:textSize="36sp"
+            tools:text="Person" />
+
+        <ImageView
+            android:id="@+id/activity_entry_list_iv_del"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="5dp"
+            android:layout_toEndOf="@id/activity_entry_list_tv_name"
+            android:contentDescription="@string/iv_desc_person_delete"
+            android:src="@drawable/ic_delete" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="40dp">
+
+        <TextView
+            android:id="@+id/activity_entry_list_tv_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/colorWhite"
+            android:textSize="56sp"
+            tools:text="Amount" />
+
+        <TextView
+            android:id="@+id/activity_entry_list_tv_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/colorWhite"
+            android:textSize="28sp"
+            tools:text="Status" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/activity_entry_list_iv_dec"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_gravity="start"
+            android:layout_marginStart="50dp"
+            android:contentDescription="@string/iv_desc_dec_debt"
+            android:src="@drawable/ic_remove" />
+
+        <ImageView
+            android:id="@+id/activity_entry_list_iv_inc"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="50dp"
+            android:contentDescription="@string/iv_desc_inc_debt"
+            android:src="@drawable/ic_add" />
+
+    </FrameLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/activity_entry_list_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorLightGray">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+</LinearLayout>

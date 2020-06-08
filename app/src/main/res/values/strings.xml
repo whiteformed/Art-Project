@@ -21,7 +21,10 @@
     <string name="btn_text_confirm">Confirm</string>
 
     <string name="iv_desc_app_name">App Name</string>
-    <string name="iv_desc_status">Status Image</string>
+    <string name="iv_desc_person_status">Status Image</string>
+    <string name="iv_desc_person_delete">Basket Image</string>
+    <string name="iv_desc_dec_debt">Decease Debt</string>
+    <string name="iv_desc_inc_debt">Increase Debt</string>
 
     <string name="hnt_persons_name">Name</string>
 </resources>

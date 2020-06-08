@@ -6,7 +6,7 @@ import android.util.Log;
 import java.util.ArrayList;
 
 public class AsynchronousTask extends AsyncTask<Void, Void, Void> {
-    private RecyclerViewAdapter recyclerViewAdapter;
+    private PersonListAdapter personListAdapter;
     private SqlDatabaseHelper sqlDatabaseHelper;
     private String table;
     private ArrayList<Person> personArrayList;
@@ -14,8 +14,8 @@ public class AsynchronousTask extends AsyncTask<Void, Void, Void> {
 
     private static final String TAG = "AsynchronousTask";
 
-    AsynchronousTask(RecyclerViewAdapter recyclerViewAdapter, SqlDatabaseHelper sqlDatabaseHelper, String table, ArrayList<Person> personArrayList, int status) {
-        this.recyclerViewAdapter = recyclerViewAdapter;
+    AsynchronousTask(PersonListAdapter personListAdapter, SqlDatabaseHelper sqlDatabaseHelper, ArrayList<Person> personArrayList, int status) {
+        this.personListAdapter = personListAdapter;
         this.personArrayList = personArrayList;
         this.sqlDatabaseHelper = sqlDatabaseHelper;
         this.table = table;
@@ -43,7 +43,7 @@ public class AsynchronousTask extends AsyncTask<Void, Void, Void> {
 
     @Override
     protected void onPostExecute(Void aVoid) {
-        recyclerViewAdapter.notifyDataSetChanged();
+        personListAdapter.notifyDataSetChanged();
 
         Log.i(TAG, "Person List Updated!");
     }

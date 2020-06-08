@@ -168,6 +168,33 @@ public class SqlDatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    public Person getPerson(int id) {
+        Person person;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        sqlCommand = "select * from " + table_persons + " where "
+                + table_persons_column_id + " = '" + id + "'";
+
+        Cursor cursor = db.rawQuery(sqlCommand, null);
+
+        if (cursor.moveToFirst()) {
+            person = new Person(
+                    cursor.getInt(cursor.getColumnIndex(table_persons_column_id)),
+                    cursor.getInt(cursor.getColumnIndex(table_persons_column_status)),
+                    cursor.getString(cursor.getColumnIndex(table_persons_column_name)),
+                    cursor.getInt(cursor.getColumnIndex(table_persons_column_amount)));
+        }
+        else {
+            person = null;
+        }
+
+        cursor.close();
+        db.close();
+
+        return person;
+    }
+
     public ArrayList<Person> getPersonArrayList(int status) {
         ArrayList<Person> personArrayList = new ArrayList<>();
 

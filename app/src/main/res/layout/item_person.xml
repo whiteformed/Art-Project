@@ -10,7 +10,6 @@
     app:cardUseCompatPadding="true">
 
     <FrameLayout
-        android:id="@+id/fl_card_person"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?android:attr/selectableItemBackground">
@@ -21,11 +20,11 @@
             android:padding="10dp">
 
             <ImageView
-                android:id="@+id/iv_person_status"
+                android:id="@+id/item_person_iv_status"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:background="@drawable/ic_black_border"
-                android:contentDescription="@string/iv_desc_status" />
+                android:contentDescription="@string/iv_desc_person_status" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -34,7 +33,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tv_person_name"
+                    android:id="@+id/item_person_tv_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.5"
@@ -42,7 +41,7 @@
                     tools:text="Person" />
 
                 <TextView
-                    android:id="@+id/tv_person_amount"
+                    android:id="@+id/item_person_tv_amount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.5"
@@ -55,4 +54,5 @@
         </LinearLayout>
 
     </FrameLayout>
+
 </androidx.cardview.widget.CardView>

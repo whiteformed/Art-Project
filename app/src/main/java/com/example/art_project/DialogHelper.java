@@ -18,38 +18,33 @@ import java.util.Objects;
 public class DialogHelper {
     Context context;
 
-    OnDataUpdateListener fragmentMyDebtListener;
-    OnDataUpdateListener fragmentTheirDebtListener;
+    OnDataUpdateListener onDataUpdateListener;
 
     DialogHelper(Context context) {
         this.context = context;
     }
 
     public void setListener(OnDataUpdateListener onDataUpdateListener) {
-        if (onDataUpdateListener instanceof FragmentMyDebt)
-            this.fragmentMyDebtListener = onDataUpdateListener;
-
-        if (onDataUpdateListener instanceof FragmentTheirDebt)
-            this.fragmentTheirDebtListener = onDataUpdateListener;
+        this.onDataUpdateListener = onDataUpdateListener;
     }
 
-    public void createAddDialog(boolean defaultSwitchState) {
+    public void createAddPersonDialog(boolean defaultSwitchState) {
         final Dialog dialog = new Dialog(context);
-        dialog.setContentView(R.layout.dialog_add_person);
+        dialog.setContentView(R.layout.dialog_person_add);
         dialog.setCancelable(true);
         Objects.requireNonNull(dialog.getWindow()).setLayout(context.getResources().getDisplayMetrics().widthPixels, ViewGroup.LayoutParams.WRAP_CONTENT);
 
-        final TextInputLayout til_name = dialog.findViewById(R.id.til_name);
+        final TextInputLayout til_name = dialog.findViewById(R.id.dialog_person_add_til_name);
         til_name.setHint(context.getString(R.string.hnt_persons_name));
         til_name.setHintAnimationEnabled(true);
 
-        final Switch sw = dialog.findViewById(R.id.sw);
+        final Switch sw = dialog.findViewById(R.id.dialog_person_add_sw);
         sw.setChecked(defaultSwitchState);
 
-        final TextView tv_i_owe = dialog.findViewById(R.id.tv_i_owe);
-        final TextView tv_owe_me = dialog.findViewById(R.id.tv_owe_me);
+        final TextView tv_i_owe = dialog.findViewById(R.id.dialog_person_add_tv_i_owe);
+        final TextView tv_owe_me = dialog.findViewById(R.id.dialog_person_add_tv_owe_me);
 
-        Button btn_add = dialog.findViewById(R.id.btn_add);
+        Button btn_add = dialog.findViewById(R.id.dialog_person_add_btn_add);
         btn_add.setText(R.string.btn_text_add);
 
 
@@ -58,8 +53,9 @@ public class DialogHelper {
             public void onClick(View v) {
                 int status = -1;
 
-                if (sw.isChecked())
+                if (sw.isChecked()) {
                     status = 1;
+                }
                 else if (!sw.isChecked()) {
                     status = 0;
                 }
@@ -69,12 +65,8 @@ public class DialogHelper {
                 } else {
                     Person newPerson = new Person(status, til_name.getEditText().getText().toString(), 0);
 
-                    if (status == 0) {
-                        fragmentMyDebtListener.onDataUpdate(newPerson);
-                    }
-                    else if (status == 1) {
-                        fragmentTheirDebtListener.onDataUpdate(newPerson);
-                    }
+                    onDataUpdateListener.onAppPerson(newPerson);
+
                     dialog.cancel();
                 }
             }

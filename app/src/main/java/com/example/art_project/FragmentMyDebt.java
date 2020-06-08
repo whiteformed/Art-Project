@@ -1,5 +1,6 @@
 package com.example.art_project;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,38 +14,20 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-public class FragmentMyDebt extends Fragment implements OnDataUpdateListener, OnRecyclerViewItemClickListener {
+public class FragmentMyDebt extends Fragment {
     View view;
-    RecyclerView recyclerView;
-    RecyclerViewAdapter recyclerViewAdapter;
 
-    SqlDatabaseHelper sqlDatabaseHelper;
+    RecyclerView recyclerView;
+    LinearLayoutManager linearLayoutManager;
+    PersonListAdapter personListAdapter;
     ArrayList<Person> personArrayList = new ArrayList<>();
+
     int status = 0;
 
-    private String tablePersons = SqlDatabaseHelper.getPersonsTableName();
+    public void updatePersonArrayList() {
+        SqlDatabaseHelper sqlDatabaseHelper = new SqlDatabaseHelper(getActivity());
 
-    @Override
-    public void onItemClick(int id) {
-        Toaster.makeToast(getNonNullActivity(), String.valueOf(id));
-    }
-
-    private FragmentActivity getNonNullActivity() {
-        if (super.getActivity() != null) {
-            return super.getActivity();
-        } else {
-            throw new RuntimeException("Null returned from getActivity() method");
-        }
-    }
-
-    @Override
-    public void onDataUpdate(Person person) {
-        boolean result = sqlDatabaseHelper.addPerson(person);
-        updateList();
-    }
-
-    private void updateList() {
-        AsynchronousTask task = new AsynchronousTask(recyclerViewAdapter, sqlDatabaseHelper, tablePersons, personArrayList, status);
+        AsynchronousTask task = new AsynchronousTask(personListAdapter, sqlDatabaseHelper, personArrayList, status);
         task.execute();
     }
 
@@ -52,20 +35,15 @@ public class FragmentMyDebt extends Fragment implements OnDataUpdateListener, On
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_person_list, container, false);
 
-        DialogHelper dialogHelper = ((ActivityMain) getNonNullActivity()).getDialogHelper();
-        dialogHelper.setListener(this);
+        recyclerView = view.findViewById(R.id.fragment_person_list_rv);
 
-        recyclerView = view.findViewById(R.id.recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        linearLayoutManager = new LinearLayoutManager(getActivity());
+        personListAdapter = new PersonListAdapter(getActivity(), personArrayList, status);
 
-        sqlDatabaseHelper = new SqlDatabaseHelper(getActivity());
-        personArrayList = new ArrayList<>();
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setAdapter(personListAdapter);
 
-        recyclerViewAdapter = new RecyclerViewAdapter(getActivity(), personArrayList, status);
-        recyclerViewAdapter.setListener(this);
-        recyclerView.setAdapter(recyclerViewAdapter);
-
-        updateList();
+        updatePersonArrayList();
 
         return view;
     }
