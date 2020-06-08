@@ -18,19 +18,19 @@ import java.util.Objects;
 public class DialogHelper {
     Context context;
 
-    OnDataUpdated fragmentMyDebtListener;
-    OnDataUpdated fragmentTheirDebtListener;
+    OnDataUpdateListener fragmentMyDebtListener;
+    OnDataUpdateListener fragmentTheirDebtListener;
 
     DialogHelper(Context context) {
         this.context = context;
     }
 
-    public void setListener(OnDataUpdated onDataUpdated) {
-        if (onDataUpdated instanceof FragmentMyDebt)
-            this.fragmentMyDebtListener = onDataUpdated;
+    public void setListener(OnDataUpdateListener onDataUpdateListener) {
+        if (onDataUpdateListener instanceof FragmentMyDebt)
+            this.fragmentMyDebtListener = onDataUpdateListener;
 
-        if (onDataUpdated instanceof FragmentTheirDebt)
-            this.fragmentTheirDebtListener = onDataUpdated;
+        if (onDataUpdateListener instanceof FragmentTheirDebt)
+            this.fragmentTheirDebtListener = onDataUpdateListener;
     }
 
     public Dialog createAddDialog() {
@@ -64,10 +64,10 @@ public class DialogHelper {
                     Person newPerson = new Person(status, til_name.getEditText().getText().toString(), 0);
 
                     if (status == 0) {
-                        fragmentMyDebtListener.onUpdate(newPerson);
+                        fragmentMyDebtListener.onDataUpdate(newPerson);
                     }
                     else if (status == 1) {
-                        fragmentTheirDebtListener.onUpdate(newPerson);
+                        fragmentTheirDebtListener.onDataUpdate(newPerson);
                     }
                     dialog.cancel();
                 }

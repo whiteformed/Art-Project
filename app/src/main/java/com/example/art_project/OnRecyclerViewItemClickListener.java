@@ -1,5 +1,5 @@
 package com.example.art_project;
 
 public interface OnRecyclerViewItemClickListener {
-    void onItemClick(int pos);
+    void onItemClick(int id);
 }

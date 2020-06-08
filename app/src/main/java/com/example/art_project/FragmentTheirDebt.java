@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-public class FragmentTheirDebt extends Fragment implements OnDataUpdated, OnRecyclerViewItemClickListener {
+public class FragmentTheirDebt extends Fragment implements OnDataUpdateListener, OnRecyclerViewItemClickListener {
     View view;
     RecyclerView recyclerView;
     RecyclerViewAdapter recyclerViewAdapter;
@@ -25,8 +25,8 @@ public class FragmentTheirDebt extends Fragment implements OnDataUpdated, OnRecy
     private String tablePersons = SqlDatabaseHelper.getPersonsTableName();
 
     @Override
-    public void onItemClick(int pos) {
-
+    public void onItemClick(int id) {
+        Toaster.makeToast(getNonNullActivity(), String.valueOf(id));
     }
 
     private FragmentActivity getNonNullActivity() {
@@ -38,7 +38,7 @@ public class FragmentTheirDebt extends Fragment implements OnDataUpdated, OnRecy
     }
 
     @Override
-    public void onUpdate(Person person) {
+    public void onDataUpdate(Person person) {
         boolean result = sqlDatabaseHelper.addPerson(person);
         updateList();
     }
@@ -62,6 +62,7 @@ public class FragmentTheirDebt extends Fragment implements OnDataUpdated, OnRecy
         personArrayList = new ArrayList<>();
 
         recyclerViewAdapter = new RecyclerViewAdapter(getActivity(), personArrayList, status);
+        recyclerViewAdapter.setListener(this);
         recyclerView.setAdapter(recyclerViewAdapter);
 
         updateList();

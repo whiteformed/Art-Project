@@ -18,11 +18,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private Context context;
     private ArrayList<Person> personArrayList;
     private int Status;
+    private OnRecyclerViewItemClickListener onRecyclerViewItemClickListener;
 
     RecyclerViewAdapter(Context context, ArrayList<Person> personArrayList, int status) {
         this.context = context;
         this.personArrayList = personArrayList;
         this.Status = status;
+    }
+
+    public void setListener(OnRecyclerViewItemClickListener onRecyclerViewItemClickListener) {
+        this.onRecyclerViewItemClickListener = onRecyclerViewItemClickListener;
     }
 
     @NonNull
@@ -51,9 +56,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             @Override
             public void onClick(View v) {
                 //todo show message when list is empty
-                //todo create person's debt list
-                //todo create transaction
-                Toaster.makeToast(context, String.valueOf(personArrayList.get(holder.getAdapterPosition()).getID()));
+                onRecyclerViewItemClickListener.onItemClick(personArrayList.get(holder.getAdapterPosition()).getID());
             }
         };
 
