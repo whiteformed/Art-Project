@@ -6,7 +6,6 @@ import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
-import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,7 +14,11 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class ActivityPersonList extends AppCompatActivity implements OnDataUpdateListener, OnRecyclerViewItemClickListener {
+public class ActivityPersonList extends AppCompatActivity implements OnPersonArrayListUpdateListener, OnPersonItemClickListener {
+    SqlDatabaseHelper sqlDatabaseHelper;
+
+    DialogHelper dialogHelper;
+
     FragmentMyDebt fragmentMyDebt;
     FragmentTheirDebt fragmentTheirDebt;
 
@@ -28,19 +31,14 @@ public class ActivityPersonList extends AppCompatActivity implements OnDataUpdat
 
     FloatingActionButton fab;
 
-    SqlDatabaseHelper sqlDatabaseHelper;
-
-    DialogHelper dialogHelper;
-
     @Override
-    public void onAppPerson(Person newPerson) {
+    public void onAddPerson(Person newPerson) {
         boolean result = sqlDatabaseHelper.addPerson(newPerson);
-        //todo add informant
         updateFragments();
     }
 
     @Override
-    public void onPersonItemClick(int personID) {
+    public void onItemClick(int personID) {
         Intent intent = new Intent(this, ActivityEntryList.class);
         intent.putExtra("id", personID);
 
@@ -55,7 +53,7 @@ public class ActivityPersonList extends AppCompatActivity implements OnDataUpdat
         sqlDatabaseHelper = new SqlDatabaseHelper(this);
 
         dialogHelper = new DialogHelper(this);
-        dialogHelper.setListener(this);
+        dialogHelper.setOnPersonArrayListUpdateListener(this);
 
         tabLayout = findViewById(R.id.activity_person_list_tl);
         viewPager = findViewById(R.id.activity_person_list_vp);
@@ -65,6 +63,12 @@ public class ActivityPersonList extends AppCompatActivity implements OnDataUpdat
         //Add fragments
         fragmentMyDebt = new FragmentMyDebt();
         fragmentTheirDebt = new FragmentTheirDebt();
+
+        fragmentMyDebt.status = 0;
+        fragmentMyDebt.onPersonItemClickListener = this;
+
+        fragmentTheirDebt.status = 1;
+        fragmentTheirDebt.onPersonItemClickListener = this;
 
         viewPagerAdapter.addFragment(fragmentMyDebt, getString(R.string.ttl_my_debt));
         viewPagerAdapter.addFragment(fragmentTheirDebt, getString(R.string.ttl_their_debt));

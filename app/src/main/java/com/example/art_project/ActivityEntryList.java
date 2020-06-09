@@ -1,6 +1,5 @@
 package com.example.art_project;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,18 +12,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class ActivityEntryList extends AppCompatActivity {
+public class ActivityEntryList extends AppCompatActivity implements OnEntryItemClickListener, OnEntryArrayListUpdateListener {
     TextView tv_name;
     TextView tv_amount;
     TextView tv_status;
+    TextView tv_msg_empty_list;
 
-    ImageView iv_del;
-    ImageView iv_dec;
-    ImageView iv_inc;
+    ImageView iv_person_del;
+    ImageView iv_debt_dec;
+    ImageView iv_debt_inc;
 
-    RecyclerView recyclerView;
+    RecyclerView rv;
     LinearLayoutManager linearLayoutManager;
-    EntryListAdapter entryListAdapter;
+    EntryListAdapter entryArrayListAdapter;
     ArrayList<Entry> entryArrayList;
 
     SqlDatabaseHelper sqlDatabaseHelper;
@@ -33,10 +33,24 @@ public class ActivityEntryList extends AppCompatActivity {
 
     Person person;
 
+    @Override
+    public void onItemClick() {
+
+    }
+
+    @Override
+    public void onAddEntry(Entry entry) {
+        boolean result = sqlDatabaseHelper.addEntry(entry);
+        updateEntryArrayList();
+    }
+
     void updateEntryArrayList() {
         entryArrayList.clear();
         entryArrayList.addAll(sqlDatabaseHelper.getEntryArrayList(person.getID()));
-        entryListAdapter.notifyDataSetChanged();
+        entryArrayListAdapter.notifyDataSetChanged();
+
+        int visibility = entryArrayList.isEmpty() ? View.VISIBLE : View.INVISIBLE;
+        tv_msg_empty_list.setVisibility(visibility);
     }
 
     @Override
@@ -45,59 +59,61 @@ public class ActivityEntryList extends AppCompatActivity {
         setContentView(R.layout.activity_entry_list);
 
         dialogHelper = new DialogHelper(this);
-        //dialogHelper.setListener(this);
+        dialogHelper.setOnEntryArrayListUpdateListener(this);
 
         sqlDatabaseHelper = new SqlDatabaseHelper(this);
         person = sqlDatabaseHelper.getPerson(getIntent().getIntExtra("id", 0));
 
+        tv_msg_empty_list = findViewById(R.id.activity_entry_list_tv_msg_empty_list);
+
         if (person.getID() != 0) {
-            recyclerView = findViewById(R.id.activity_entry_list_rv);
+            rv = findViewById(R.id.activity_entry_list_rv);
 
             tv_name = findViewById(R.id.activity_entry_list_tv_name);
             tv_amount = findViewById(R.id.activity_entry_list_tv_amount);
             tv_status = findViewById(R.id.activity_entry_list_tv_status);
 
-            iv_del = findViewById(R.id.activity_entry_list_iv_del);
-            iv_dec = findViewById(R.id.activity_entry_list_iv_dec);
-            iv_inc = findViewById(R.id.activity_entry_list_iv_inc);
+            iv_person_del = findViewById(R.id.activity_entry_list_iv_person_del);
+            iv_debt_dec = findViewById(R.id.activity_entry_list_iv_debt_dec);
+            iv_debt_inc = findViewById(R.id.activity_entry_list_iv_debt_inc);
 
-            View.OnClickListener onButtonDelClickListener = new View.OnClickListener() {
+            View.OnClickListener onButtonPersonDelClickListener = new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Toaster.makeToast(v.getContext(), "del");
                 }
             };
 
-            View.OnClickListener onButtonDecClickListener = new View.OnClickListener() {
+            View.OnClickListener onButtonDebtDecClickListener = new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toaster.makeToast(v.getContext(), "dec");
+                    dialogHelper.createAddEntryDialog(person.getID(), 0);
                 }
             };
 
-            View.OnClickListener onButtonIncClickListener = new View.OnClickListener() {
+            View.OnClickListener onButtonDebtIncClickListener = new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toaster.makeToast(v.getContext(), "inc");
+                    dialogHelper.createAddEntryDialog(person.getID(), 1);
                 }
             };
 
             tv_name.setText(person.getName());
-            String amount = String.valueOf(person.getAmount()) + " RUB";
+            String amount = (person.getAmount()) + " RUB";
             tv_amount.setText(amount);
-            tv_status.setText(person.getStatus() == 0 ? getString(R.string.tv_i_owe) : getString(R.string.tv_owe_me));
+            tv_status.setText(person.getStatus() == 0 ? getString(R.string.tv_i_owe) : getString(R.string.tv_owes_me));
 
-            iv_del.setOnClickListener(onButtonDelClickListener);
-            iv_dec.setOnClickListener(onButtonDecClickListener);
-            iv_inc.setOnClickListener(onButtonIncClickListener);
+            iv_person_del.setOnClickListener(onButtonPersonDelClickListener);
+            iv_debt_dec.setOnClickListener(onButtonDebtDecClickListener);
+            iv_debt_inc.setOnClickListener(onButtonDebtIncClickListener);
 
             linearLayoutManager = new LinearLayoutManager(this);
             entryArrayList = new ArrayList<>();
-            entryListAdapter = new EntryListAdapter(this, entryArrayList);
-            //entryListAdapter.setListener(this);
+            entryArrayListAdapter = new EntryListAdapter(this, entryArrayList);
+            entryArrayListAdapter.setOnEntryItemClickListener(this);
 
-            recyclerView.setLayoutManager(linearLayoutManager);
-            recyclerView.setAdapter(entryListAdapter);
+            rv.setLayoutManager(linearLayoutManager);
+            rv.setAdapter(entryArrayListAdapter);
 
             updateEntryArrayList();
         }

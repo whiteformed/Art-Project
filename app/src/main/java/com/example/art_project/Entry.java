@@ -2,8 +2,8 @@ package com.example.art_project;
 
 public class Entry {
     private int ID;             // Entry ID
-    private int Status;         // 0 - Inc, 1 - Dec
-    private int Person_ID;         // Person
+    private int Status;         // 0 - Dec, 1 - Inc
+    private int Person_ID;      // Person
     private int Amount;         // Amount of Money
     private String Comment;     // Any comment
     private String Date;        // Entry's adding date

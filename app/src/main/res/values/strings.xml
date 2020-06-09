@@ -8,11 +8,17 @@
     <string name="ttl_my_debt">My Debt</string>
     <string name="ttl_their_debt">Their Debt</string>
 
-    <string name="msg_add">Add new Person to a list.</string>
-
-    <string name="tv_message_update">Update selected item</string>
     <string name="tv_i_owe">I OWE</string>
-    <string name="tv_owe_me">OWE ME</string>
+    <string name="tv_owes_me">OWES ME</string>
+
+    <string name="tv_msg_person_add">Add new Person to the list.</string>
+    <string name="tv_msg_person_upd">Update this Person?</string>
+    <string name="tv_msg_person_del">Delete this Person from the list?</string>
+
+    <string name="tv_msg_empty_list">List is Empty.</string>
+    <string name="tv_msg_entry_add">Add new Entry to the list.</string>
+    <string name="tv_msg_entry_upd">Update this Entry?</string>
+    <string name="tv_msg_entry_del">Delete this Entry from the list?</string>
 
     <string name="btn_text_delete">Delete</string>
     <string name="btn_text_edit">Edit</string>
@@ -21,10 +27,14 @@
     <string name="btn_text_confirm">Confirm</string>
 
     <string name="iv_desc_app_name">App Name</string>
-    <string name="iv_desc_person_status">Status Image</string>
+    <string name="iv_desc_person_status">Person Status Image</string>
     <string name="iv_desc_person_delete">Basket Image</string>
     <string name="iv_desc_dec_debt">Decease Debt</string>
     <string name="iv_desc_inc_debt">Increase Debt</string>
+    <string name="iv_desc_entry">Entry Default Image</string>
+    <string name="iv_desc_entry_status">Entry Status Image</string>
 
-    <string name="hnt_persons_name">Name</string>
+    <string name="hnt_person_name">Name</string>
+    <string name="hnt_entry_amount">Amount</string>
+    <string name="hnt_entry_comment">Comment</string>
 </resources>

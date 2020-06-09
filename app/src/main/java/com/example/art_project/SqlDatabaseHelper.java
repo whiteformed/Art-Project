@@ -119,7 +119,7 @@ public class SqlDatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(table_entries_column_person_id, entry.getPersonID());
         contentValues.put(table_entries_column_amount, entry.getAmount());
         contentValues.put(table_entries_column_comment, entry.getComment().trim());
-        contentValues.put(table_entries_column_comment, entry.getDate().trim());
+        contentValues.put(table_entries_column_date, entry.getDate().trim());
 
         long entryID = db.insert(table_entries, null, contentValues);
 
@@ -168,13 +168,13 @@ public class SqlDatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public Person getPerson(int id) {
+    public Person getPerson(int personID) {
         Person person;
 
         SQLiteDatabase db = this.getReadableDatabase();
 
         sqlCommand = "select * from " + table_persons + " where "
-                + table_persons_column_id + " = '" + id + "'";
+                + table_persons_column_id + " = '" + personID + "'";
 
         Cursor cursor = db.rawQuery(sqlCommand, null);
 
@@ -228,7 +228,7 @@ public class SqlDatabaseHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getReadableDatabase();
 
-        sqlCommand = "select * from " + table_entries + " where " + table_persons_column_id + " = '" + personID + "'";
+        sqlCommand = "select * from " + table_entries + " where " + table_entries_column_person_id + " = '" + personID + "'";
         Cursor cursor = db.rawQuery(sqlCommand, null);
 
         if (cursor.moveToFirst()) {
@@ -249,13 +249,5 @@ public class SqlDatabaseHelper extends SQLiteOpenHelper {
         db.close();
 
         return entryArrayList;
-    }
-
-    public static String getPersonsTableName() {
-        return table_persons;
-    }
-
-    public static String getEntriesTableName() {
-        return table_entries;
     }
 }

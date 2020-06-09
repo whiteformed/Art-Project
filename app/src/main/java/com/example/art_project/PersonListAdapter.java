@@ -15,17 +15,14 @@ import java.util.ArrayList;
 public class PersonListAdapter extends RecyclerView.Adapter<PersonListAdapter.RecyclerViewHolder> {
     private Context context;
     private ArrayList<Person> personArrayList;
-    private int Status;
-    private OnRecyclerViewItemClickListener onRecyclerViewItemClickListener;
+    private int status;
+    private OnPersonItemClickListener onPersonItemClickListener;
 
-    PersonListAdapter(Context context, ArrayList<Person> personArrayList, int status) {
+    PersonListAdapter(Context context, ArrayList<Person> personArrayList, int status, OnPersonItemClickListener onPersonItemClickListener) {
         this.context = context;
         this.personArrayList = personArrayList;
-        this.Status = status;
-    }
-
-    public void setListener(OnRecyclerViewItemClickListener onRecyclerViewItemClickListener) {
-        this.onRecyclerViewItemClickListener = onRecyclerViewItemClickListener;
+        this.status = status;
+        this.onPersonItemClickListener = onPersonItemClickListener;
     }
 
     @NonNull
@@ -39,22 +36,21 @@ public class PersonListAdapter extends RecyclerView.Adapter<PersonListAdapter.Re
 
     @Override
     public void onBindViewHolder(@NonNull final RecyclerViewHolder holder, final int position) {
-        String fullAmount = personArrayList.get(position).getAmount() + " RUB";
+        String totalAmount = personArrayList.get(position).getAmount() + " RUB";
 
-        if (Status == 0) {
-            holder.iv.setImageResource(R.drawable.ic_trending_down);
-        } else if (Status == 1) {
-            holder.iv.setImageResource(R.drawable.ic_trending_up);
+        if (status == 0) {
+            holder.iv_status.setImageResource(R.drawable.ic_trending_down);
+        } else if (status == 1) {
+            holder.iv_status.setImageResource(R.drawable.ic_trending_up);
         }
 
         holder.tv_name.setText(personArrayList.get(position).getName());
-        holder.tv_amount.setText(fullAmount);
+        holder.tv_amount.setText(totalAmount);
 
         View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //todo show message when list is empty
-                onRecyclerViewItemClickListener.onPersonItemClick(personArrayList.get(position).getID());
+                onPersonItemClickListener.onItemClick(personArrayList.get(position).getID());
             }
         };
 
@@ -69,14 +65,14 @@ public class PersonListAdapter extends RecyclerView.Adapter<PersonListAdapter.Re
     static class RecyclerViewHolder extends RecyclerView.ViewHolder {
         TextView tv_name;
         TextView tv_amount;
-        ImageView iv;
+        ImageView iv_status;
 
         RecyclerViewHolder(View view) {
             super(view);
 
             tv_name = view.findViewById(R.id.item_person_tv_name);
             tv_amount = view.findViewById(R.id.item_person_tv_amount);
-            iv = view.findViewById(R.id.item_person_iv_status);
+            iv_status = view.findViewById(R.id.item_person_iv_status);
         }
     }
 }

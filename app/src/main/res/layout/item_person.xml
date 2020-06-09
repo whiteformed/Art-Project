@@ -9,7 +9,7 @@
     app:cardElevation="2dp"
     app:cardUseCompatPadding="true">
 
-    <FrameLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?android:attr/selectableItemBackground">
@@ -38,7 +38,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.5"
                     android:textSize="16sp"
-                    tools:text="Person" />
+                    tools:text="Name" />
 
                 <TextView
                     android:id="@+id/item_person_tv_amount"
@@ -53,6 +53,6 @@
 
         </LinearLayout>
 
-    </FrameLayout>
+    </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

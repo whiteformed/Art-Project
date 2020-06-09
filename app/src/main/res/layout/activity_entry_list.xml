@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,46 +9,47 @@
     android:orientation="vertical"
     tools:context=".ActivityEntryList">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:orientation="horizontal"
-        android:paddingTop="30dp">
+        android:paddingTop="20dp">
 
         <TextView
             android:id="@+id/activity_entry_list_tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorWhite"
-            android:textSize="36sp"
-            tools:text="Person" />
+            android:textSize="28sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Name" />
 
         <ImageView
-            android:id="@+id/activity_entry_list_iv_del"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:id="@+id/activity_entry_list_iv_person_del"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
             android:layout_marginStart="5dp"
             android:layout_toEndOf="@id/activity_entry_list_tv_name"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
             android:contentDescription="@string/iv_desc_person_delete"
-            android:src="@drawable/ic_delete" />
+            android:src="@drawable/ic_delete"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingTop="40dp">
-
-        <TextView
-            android:id="@+id/activity_entry_list_tv_amount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textColor="@color/colorWhite"
-            android:textSize="56sp"
-            tools:text="Amount" />
+        android:paddingTop="20dp">
 
         <TextView
             android:id="@+id/activity_entry_list_tv_status"
@@ -55,8 +57,17 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textColor="@color/colorWhite"
-            android:textSize="28sp"
+            android:textSize="20sp"
             tools:text="Status" />
+
+        <TextView
+            android:id="@+id/activity_entry_list_tv_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/colorWhite"
+            android:textSize="40sp"
+            tools:text="Amount" />
 
     </LinearLayout>
 
@@ -66,31 +77,50 @@
         android:padding="10dp">
 
         <ImageView
-            android:id="@+id/activity_entry_list_iv_dec"
+            android:id="@+id/activity_entry_list_iv_debt_dec"
             android:layout_width="72dp"
             android:layout_height="72dp"
             android:layout_gravity="start"
             android:layout_marginStart="50dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
             android:contentDescription="@string/iv_desc_dec_debt"
             android:src="@drawable/ic_remove" />
 
         <ImageView
-            android:id="@+id/activity_entry_list_iv_inc"
+            android:id="@+id/activity_entry_list_iv_debt_inc"
             android:layout_width="72dp"
             android:layout_height="72dp"
             android:layout_gravity="end"
             android:layout_marginEnd="50dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
             android:contentDescription="@string/iv_desc_inc_debt"
             android:src="@drawable/ic_add" />
 
     </FrameLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/activity_entry_list_rv"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorLightGray">
+        android:layout_height="match_parent">
 
-    </androidx.recyclerview.widget.RecyclerView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/activity_entry_list_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorLightGray">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <TextView
+            android:id="@+id/activity_entry_list_tv_msg_empty_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_msg_empty_list"
+            android:layout_gravity="center"
+            android:textSize="32sp"/>
+
+    </FrameLayout>
 
 </LinearLayout>
+

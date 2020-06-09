@@ -1,45 +1,59 @@
 package com.example.art_project;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
 public class FragmentMyDebt extends Fragment {
     View view;
 
-    RecyclerView recyclerView;
+    RecyclerView rv;
     LinearLayoutManager linearLayoutManager;
-    PersonListAdapter personListAdapter;
+    PersonListAdapter personArrayListAdapter;
     ArrayList<Person> personArrayList = new ArrayList<>();
+    OnPersonItemClickListener onPersonItemClickListener;
+    int status;
 
-    int status = 0;
+    TextView tv_msg_empty_list;
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
 
     public void updatePersonArrayList() {
-        AsynchronousTask task = new AsynchronousTask(new SqlDatabaseHelper(getActivity()), personListAdapter, personArrayList, status);
-        task.execute();
+//        AsynchronousTask task = new AsynchronousTask(new SqlDatabaseHelper(getActivity()), personArrayListAdapter, personArrayList, status);
+//        task.execute();
+
+        personArrayList.clear();
+        personArrayList.addAll(new SqlDatabaseHelper(getActivity()).getPersonArrayList(status));
+        personArrayListAdapter.notifyDataSetChanged();
+
+        int visibility = personArrayList.isEmpty() ? View.VISIBLE : View.INVISIBLE;
+        tv_msg_empty_list.setVisibility(visibility);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_person_list, container, false);
 
-        recyclerView = view.findViewById(R.id.fragment_person_list_rv);
+        tv_msg_empty_list = view.findViewById(R.id.fragment_person_list_tv_msg_empty_list);
+
+        rv = view.findViewById(R.id.fragment_person_list_rv);
 
         linearLayoutManager = new LinearLayoutManager(getActivity());
-        personListAdapter = new PersonListAdapter(getActivity(), personArrayList, status);
+        personArrayListAdapter = new PersonListAdapter(getActivity(), personArrayList, status, onPersonItemClickListener);
 
-        recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setAdapter(personListAdapter);
+        rv.setLayoutManager(linearLayoutManager);
+        rv.setAdapter(personArrayListAdapter);
 
         updatePersonArrayList();
 

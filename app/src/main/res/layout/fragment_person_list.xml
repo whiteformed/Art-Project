@@ -8,4 +8,13 @@
         android:id="@+id/fragment_person_list_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/fragment_person_list_tv_msg_empty_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/tv_msg_empty_list"
+        android:textSize="32sp" />
+
 </FrameLayout>

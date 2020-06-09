@@ -15,6 +15,7 @@ public class AsynchronousTask extends AsyncTask<Void, Void, Void> {
     private static final String TAG = "AsynchronousTask";
 
     AsynchronousTask(SqlDatabaseHelper sqlDatabaseHelper, PersonListAdapter personListAdapter, ArrayList<Person> personArrayList, int status) {
+        this.sqlDatabaseHelper = sqlDatabaseHelper;
         this.personListAdapter = personListAdapter;
         this.personArrayList = personArrayList;
         this.status = status;
