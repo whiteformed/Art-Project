@@ -25,9 +25,7 @@ public class FragmentTheirDebt extends Fragment {
     int status = 1;
 
     public void updatePersonArrayList() {
-        SqlDatabaseHelper sqlDatabaseHelper = new SqlDatabaseHelper(getActivity());
-
-        AsynchronousTask task = new AsynchronousTask(personListAdapter, sqlDatabaseHelper, personArrayList, status);
+        AsynchronousTask task = new AsynchronousTask(new SqlDatabaseHelper(getActivity()), personListAdapter, personArrayList, status);
         task.execute();
     }
 

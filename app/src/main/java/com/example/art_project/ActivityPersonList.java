@@ -35,7 +35,7 @@ public class ActivityPersonList extends AppCompatActivity implements OnDataUpdat
     @Override
     public void onAppPerson(Person newPerson) {
         boolean result = sqlDatabaseHelper.addPerson(newPerson);
-
+        //todo add informant
         updateFragments();
     }
 
@@ -127,7 +127,7 @@ public class ActivityPersonList extends AppCompatActivity implements OnDataUpdat
             total += person.getAmount();
         }
 
-        totalAmount = String.valueOf(total) + " RUB";
+        totalAmount = total + " RUB";
         tv_total_amount.setText(totalAmount);
     }
 }
