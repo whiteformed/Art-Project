@@ -9,50 +9,44 @@
     app:cardElevation="2dp"
     app:cardUseCompatPadding="true">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="?android:attr/selectableItemBackground">
+        android:background="?android:attr/selectableItemBackground"
+        android:padding="10dp">
 
-        <LinearLayout
+        <ImageView
+            android:id="@+id/item_person_iv_status"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/sp_border"
+            android:contentDescription="@string/iv_desc_person_status"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/item_person_tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="10dp">
+            android:layout_marginStart="10dp"
+            android:layout_weight="0.5"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/item_person_iv_status"
+            tools:text="Name" />
 
-            <ImageView
-                android:id="@+id/item_person_iv_status"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@drawable/ic_black_border"
-                android:contentDescription="@string/iv_desc_person_status" />
+        <TextView
+            android:id="@+id/item_person_tv_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_weight="0.5"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/item_person_iv_status"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Amount" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/item_person_tv_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:textSize="16sp"
-                    tools:text="Name" />
-
-                <TextView
-                    android:id="@+id/item_person_tv_amount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    tools:text="Amount" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

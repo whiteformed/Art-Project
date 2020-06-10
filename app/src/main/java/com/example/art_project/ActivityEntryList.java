@@ -8,10 +8,13 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class ActivityEntryList extends AppCompatActivity implements OnEntryItemClickListener, OnEntryArrayListUpdateListener {
     TextView tv_name;
@@ -132,6 +135,10 @@ public class ActivityEntryList extends AppCompatActivity implements OnEntryItemC
 
             rv.setLayoutManager(linearLayoutManager);
             rv.setAdapter(entryArrayListAdapter);
+
+            DividerItemDecoration line = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+            line.setDrawable(Objects.requireNonNull(ContextCompat.getDrawable(this, R.drawable.sp_line)));
+            rv.addItemDecoration(line);
 
             updateEntryArrayList();
         }
