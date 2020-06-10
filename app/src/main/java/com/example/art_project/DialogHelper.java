@@ -115,6 +115,37 @@ public class DialogHelper {
         dialog.show();
     }
 
+    public void createDelPersonDialog() {
+        final Dialog dialog = new Dialog(context);
+        dialog.setContentView(R.layout.dialog_person_del);
+        dialog.setCancelable(true);
+        Objects.requireNonNull(dialog.getWindow()).setLayout(context.getResources().getDisplayMetrics().widthPixels, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+        Button btn_yes = dialog.findViewById(R.id.dialog_person_del_btn_yes);
+        Button btn_no = dialog.findViewById(R.id.dialog_person_del_btn_no);
+
+        View.OnClickListener onButtonYesClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onEntryArrayListUpdateListener.onDelPerson();
+
+                dialog.cancel();
+            }
+        };
+
+        View.OnClickListener onButtonNoClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.cancel();
+            }
+        };
+
+        btn_yes.setOnClickListener(onButtonYesClickListener);
+        btn_no.setOnClickListener(onButtonNoClickListener);
+
+        dialog.show();
+    }
+
     public void createAddEntryDialog(final int personID, final int status) {
         final Dialog dialog = new Dialog(context);
         dialog.setContentView(R.layout.dialog_entry_add);

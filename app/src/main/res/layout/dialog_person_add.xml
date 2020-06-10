@@ -16,6 +16,7 @@
             android:layout_margin="10dp"
             android:text="@string/tv_msg_person_add"
             android:textAlignment="center"
+            android:textAllCaps="true"
             android:textColor="@color/colorPrimary"
             android:textSize="20sp"
             android:textStyle="bold" />

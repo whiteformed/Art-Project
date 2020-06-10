@@ -108,6 +108,16 @@ public class SqlDatabaseHelper extends SQLiteOpenHelper {
         return rowsAffected != 0;
     }
 
+    public void delPersonEntries(int personID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String whereClause = table_entries_column_person_id + " = '" + personID + "'";
+
+        db.delete(table_entries, whereClause, null);
+
+        db.close();
+    }
+
     public boolean addEntry(Entry entry) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -153,16 +163,6 @@ public class SqlDatabaseHelper extends SQLiteOpenHelper {
         db.close();
 
         return rowsAffected != 0;
-    }
-
-    public void delPersonEntries(int personID) {
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        String whereClause = table_entries_column_person_id + " = '" + personID + "'";
-
-        db.delete(table_entries, whereClause, null);
-
-        db.close();
     }
 
     public Person getPerson(int personID) {

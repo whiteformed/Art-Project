@@ -11,20 +11,19 @@
     <string name="tv_i_owe">I OWE</string>
     <string name="tv_owes_me">OWES ME</string>
 
-    <string name="tv_msg_person_add">Add new Person to the list.</string>
-    <string name="tv_msg_person_upd">Update this Person?</string>
-    <string name="tv_msg_person_del">Delete this Person from the list?</string>
-
     <string name="tv_msg_empty_list">List is Empty.</string>
-    <string name="tv_msg_entry_add">Add new Entry to the list.</string>
+    <string name="tv_msg_person_add">Add new Person.</string>
+    <string name="tv_msg_person_upd">Update this Person?</string>
+    <string name="tv_msg_person_del">Delete this Person?</string>
+    <string name="tv_msg_entry_add">Add new Entry.</string>
     <string name="tv_msg_entry_upd">Update this Entry?</string>
-    <string name="tv_msg_entry_del">Delete this Entry from the list?</string>
+    <string name="tv_msg_entry_del">Delete this Entry?</string>
 
-    <string name="btn_text_delete">Delete</string>
-    <string name="btn_text_edit">Edit</string>
-    <string name="btn_text_update">Update</string>
+    <string name="btn_text_no">No</string>
+    <string name="btn_text_yes">Yes</string>
+    <string name="btn_text_del">Delete</string>
+    <string name="btn_text_upd">Update</string>
     <string name="btn_text_add">Add</string>
-    <string name="btn_text_confirm">Confirm</string>
 
     <string name="iv_desc_app_name">App Name</string>
     <string name="iv_desc_person_status">Person Status Image</string>

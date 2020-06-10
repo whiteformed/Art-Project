@@ -45,6 +45,14 @@ public class ActivityEntryList extends AppCompatActivity implements OnEntryItemC
         updateEntryArrayList();
     }
 
+    @Override
+    public void onDelPerson() {
+        boolean result = sqlDatabaseHelper.delPerson(person.getID());
+
+        setResult(RESULT_OK);
+        finish();
+    }
+
     void updateEntryArrayList() {
         entryArrayList.clear();
         entryArrayList.addAll(sqlDatabaseHelper.getEntryArrayList(person.getID()));
@@ -91,7 +99,7 @@ public class ActivityEntryList extends AppCompatActivity implements OnEntryItemC
             View.OnClickListener onButtonPersonDelClickListener = new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toaster.makeToast(v.getContext(), "del");
+                    dialogHelper.createDelPersonDialog();
                 }
             };
 
