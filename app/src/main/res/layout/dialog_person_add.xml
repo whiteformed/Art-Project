@@ -56,7 +56,7 @@
             android:layout_weight="0.5"
             android:text="@string/tv_i_owe"
             android:textAlignment="textEnd"
-            android:textColor="@color/colorLightText"
+            android:textColor="@color/colorActiveText"
 
             android:textSize="24sp" />
 
@@ -76,7 +76,7 @@
             android:layout_weight="0.5"
             android:text="@string/tv_owes_me"
             android:textAlignment="textStart"
-            android:textColor="@color/colorDarkText"
+            android:textColor="@color/colorInactiveText"
             android:textSize="24sp" />
 
     </LinearLayout>

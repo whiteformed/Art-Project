@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -43,7 +44,7 @@ public class EntryListAdapter extends RecyclerView.Adapter<EntryListAdapter.Recy
             holder.iv_status.setImageResource(R.drawable.ic_debt_inc);
         }
 
-        String amount = (entryArrayList.get(position).getAmount()) + " RUB";
+        String amount = (entryArrayList.get(position).getAmount()) + context.getResources().getString(R.string.value);
         holder.tv_amount.setText(amount);
         holder.tv_comment.setText(entryArrayList.get(position).getComment());
         holder.tv_date.setText(entryArrayList.get(position).getDate());

@@ -125,7 +125,7 @@ public class ActivityPersonList extends AppCompatActivity implements OnPersonArr
         int status = tabLayout.getSelectedTabPosition();
         int total = sqlDatabaseHelper.getPersonArrayListTotalAmount(status);
 
-        return total + " RUB";
+        return total + getResources().getString(R.string.value);
     }
 
     public void setTotalAmount() {

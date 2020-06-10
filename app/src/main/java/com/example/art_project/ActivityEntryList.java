@@ -147,6 +147,6 @@ public class ActivityEntryList extends AppCompatActivity implements OnEntryItemC
     public String getTotalAmount() {
         int total = sqlDatabaseHelper.getPersonTotalAmount(person.getID());
 
-        return total + " RUB";
+        return total + getResources().getString(R.string.value);
     }
 }

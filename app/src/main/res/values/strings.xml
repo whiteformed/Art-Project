@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">Art Project</string>
+    <string name="app_name">Debt Manager</string>
 
-    <string name="tv_app_name">Art Project</string>
+    <string name="tv_app_name">Debt Manager</string>
     <string name="tv_application_version">v. 1.0.0</string>
     <string name="tv_author">Ovchinnikov Denis Olegovich</string>
 
@@ -26,14 +26,18 @@
     <string name="btn_text_add">Add</string>
 
     <string name="iv_desc_app_name">App Name</string>
+    <string name="iv_desc_total_amount">Total Amount Image</string>
+    <string name="iv_desc_info">Info Image</string>
     <string name="iv_desc_person_status">Person Status Image</string>
     <string name="iv_desc_person_delete">Basket Image</string>
-    <string name="iv_desc_dec_debt">Decease Debt</string>
-    <string name="iv_desc_inc_debt">Increase Debt</string>
+    <string name="iv_desc_dec_debt">Decease Debt Image</string>
+    <string name="iv_desc_inc_debt">Increase Debt Image</string>
     <string name="iv_desc_entry">Entry Default Image</string>
     <string name="iv_desc_entry_status">Entry Status Image</string>
 
     <string name="hnt_person_name">Name</string>
     <string name="hnt_entry_amount">Amount</string>
     <string name="hnt_entry_comment">Comment</string>
+
+    <string name="value">₽</string>
 </resources>

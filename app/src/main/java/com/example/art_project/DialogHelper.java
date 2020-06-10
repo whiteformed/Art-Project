@@ -82,11 +82,11 @@ public class DialogHelper {
                 buttonView.setChecked(isChecked);
 
                 if (isChecked) {
-                    tv_i_owe.setTextColor(ContextCompat.getColor(context, R.color.colorDarkText));
-                    tv_owe_me.setTextColor(ContextCompat.getColor(context, R.color.colorLightText));
+                    tv_i_owe.setTextColor(ContextCompat.getColor(context, R.color.colorInactiveText));
+                    tv_owe_me.setTextColor(ContextCompat.getColor(context, R.color.colorActiveText));
                 } else {
-                    tv_i_owe.setTextColor(ContextCompat.getColor(context, R.color.colorLightText));
-                    tv_owe_me.setTextColor(ContextCompat.getColor(context, R.color.colorDarkText));
+                    tv_i_owe.setTextColor(ContextCompat.getColor(context, R.color.colorActiveText));
+                    tv_owe_me.setTextColor(ContextCompat.getColor(context, R.color.colorInactiveText));
                 }
             }
         };
