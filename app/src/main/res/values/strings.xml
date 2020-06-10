@@ -7,7 +7,7 @@
     <string name="tv_created_by">by Ovchinnikov D.O.</string>
     <string name="tv_created_in">in Android Studio IDE</string>
     <string name="tv_vcs">Version Control System:</string>
-    <string name="tv_github_link">https://github.com/whiteformed/Debt-Manager</string>
+    <string name="tv_github"><u>GitHub</u></string>
 
     <string name="ttl_my_debt">My Debt</string>
     <string name="ttl_their_debt">Their Debt</string>
