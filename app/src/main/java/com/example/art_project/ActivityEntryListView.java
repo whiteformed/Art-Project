@@ -1,6 +1,5 @@
 package com.example.art_project;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -16,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class ActivityEntryList extends AppCompatActivity implements OnEntryItemClickListener, OnEntryArrayListUpdateListener {
+public class ActivityEntryListView extends AppCompatActivity implements OnEntryItemViewClickListener, OnEntryArrayListUpdateListener {
     TextView tv_name;
     TextView tv_total_amount;
     TextView tv_status;
@@ -38,13 +37,25 @@ public class ActivityEntryList extends AppCompatActivity implements OnEntryItemC
     Person person;
 
     @Override
-    public void onItemClick() {
-
+    public void onEntryItemViewClick(Entry entry) {
+        dialogHelper.createUpdEntryDialog(entry);
     }
 
     @Override
     public void onAddEntry(Entry entry) {
         boolean result = sqlDatabaseHelper.addEntry(entry);
+        updateEntryArrayList();
+    }
+
+    @Override
+    public void onUpdEntry(int oldEntryID, Entry newEntry) {
+        boolean result = sqlDatabaseHelper.updEntry(oldEntryID, newEntry);
+        updateEntryArrayList();
+    }
+
+    @Override
+    public void onDelEntry(int entryID) {
+        boolean result = sqlDatabaseHelper.delEntry(entryID);
         updateEntryArrayList();
     }
 
@@ -78,7 +89,7 @@ public class ActivityEntryList extends AppCompatActivity implements OnEntryItemC
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_entry_list);
+        setContentView(R.layout.activity_entry_list_view);
 
         dialogHelper = new DialogHelper(this);
         dialogHelper.setOnEntryArrayListUpdateListener(this);
@@ -131,7 +142,7 @@ public class ActivityEntryList extends AppCompatActivity implements OnEntryItemC
             linearLayoutManager = new LinearLayoutManager(this);
             entryArrayList = new ArrayList<>();
             entryArrayListAdapter = new EntryListAdapter(this, entryArrayList);
-            entryArrayListAdapter.setOnEntryItemClickListener(this);
+            entryArrayListAdapter.setOnEntryItemViewClickListener(this);
 
             rv.setLayoutManager(linearLayoutManager);
             rv.setAdapter(entryArrayListAdapter);

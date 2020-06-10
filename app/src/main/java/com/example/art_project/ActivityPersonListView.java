@@ -1,6 +1,7 @@
 package com.example.art_project;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -11,13 +12,11 @@ import androidx.annotation.Nullable;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
-public class ActivityPersonList extends AppCompatActivity implements OnPersonArrayListUpdateListener, OnPersonItemClickListener {
+public class ActivityPersonListView extends AppCompatActivity implements OnPersonArrayListUpdateListener, OnPersonItemViewClickListener {
     SqlDatabaseHelper sqlDatabaseHelper;
 
     DialogHelper dialogHelper;
@@ -30,6 +29,7 @@ public class ActivityPersonList extends AppCompatActivity implements OnPersonArr
     ViewPagerAdapter viewPagerAdapter;
 
     TextView tv_total_amount;
+    ImageView iv_info;
 
     FloatingActionButton fab;
 
@@ -46,8 +46,8 @@ public class ActivityPersonList extends AppCompatActivity implements OnPersonArr
     }
 
     @Override
-    public void onItemClick(int personID) {
-        Intent intent = new Intent(this, ActivityEntryList.class);
+    public void onPersonItemViewClick(int personID) {
+        Intent intent = new Intent(this, ActivityEntryListView.class);
         intent.putExtra("id", personID);
 
         startActivityForResult(intent, 1);
@@ -56,7 +56,7 @@ public class ActivityPersonList extends AppCompatActivity implements OnPersonArr
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_person_list);
+        setContentView(R.layout.activity_person_list_view);
 
         sqlDatabaseHelper = new SqlDatabaseHelper(this);
 
@@ -73,10 +73,10 @@ public class ActivityPersonList extends AppCompatActivity implements OnPersonArr
         fragmentTheirDebt = new FragmentTheirDebt();
 
         fragmentMyDebt.status = 0;
-        fragmentMyDebt.onPersonItemClickListener = this;
+        fragmentMyDebt.onPersonItemViewClickListener = this;
 
         fragmentTheirDebt.status = 1;
-        fragmentTheirDebt.onPersonItemClickListener = this;
+        fragmentTheirDebt.onPersonItemViewClickListener = this;
 
         viewPagerAdapter.addFragment(fragmentMyDebt, getString(R.string.ttl_my_debt));
         viewPagerAdapter.addFragment(fragmentTheirDebt, getString(R.string.ttl_their_debt));
@@ -84,7 +84,6 @@ public class ActivityPersonList extends AppCompatActivity implements OnPersonArr
         //Setup the adapter
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
-        tv_total_amount = findViewById(R.id.activity_person_list_tv_total_amount);
 
         TabLayout.OnTabSelectedListener onTabSelectedListener = new TabLayout.ViewPagerOnTabSelectedListener(viewPager) {
             @Override
@@ -111,6 +110,20 @@ public class ActivityPersonList extends AppCompatActivity implements OnPersonArr
 
         fab.setOnClickListener(onClickListener);
 
+        iv_info = findViewById(R.id.activity_person_list_iv_info);
+
+        View.OnClickListener onButtonInfoClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), ActivityInfo.class);
+
+                startActivity(intent);
+            }
+        };
+
+        iv_info.setOnClickListener(onButtonInfoClickListener);
+
+        tv_total_amount = findViewById(R.id.activity_person_list_tv_total_amount);
         setTotalAmount();
     }
 

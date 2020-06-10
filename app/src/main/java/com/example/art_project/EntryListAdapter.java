@@ -8,7 +8,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -16,22 +15,22 @@ import java.util.ArrayList;
 public class EntryListAdapter extends RecyclerView.Adapter<EntryListAdapter.RecyclerViewHolder> {
     private Context context;
     private ArrayList<Entry> entryArrayList;
-    private OnEntryItemClickListener onEntryItemClickListener;
+    private OnEntryItemViewClickListener onEntryItemViewClickListener;
 
     EntryListAdapter(Context context, ArrayList<Entry> entryArrayList) {
         this.context = context;
         this.entryArrayList = entryArrayList;
     }
 
-    public void setOnEntryItemClickListener(OnEntryItemClickListener onEntryItemClickListener) {
-        this.onEntryItemClickListener = onEntryItemClickListener;
+    public void setOnEntryItemViewClickListener(OnEntryItemViewClickListener onEntryItemViewClickListener) {
+        this.onEntryItemViewClickListener = onEntryItemViewClickListener;
     }
 
     @NonNull
     @Override
     public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
-        View view = layoutInflater.inflate(R.layout.item_entry, parent, false);
+        View view = layoutInflater.inflate(R.layout.item_view_entry, parent, false);
 
         return new RecyclerViewHolder(view);
     }
@@ -52,7 +51,7 @@ public class EntryListAdapter extends RecyclerView.Adapter<EntryListAdapter.Recy
         View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onEntryItemClickListener.onItemClick();
+                onEntryItemViewClickListener.onEntryItemViewClick(entryArrayList.get(position));
             }
         };
 
@@ -73,9 +72,9 @@ public class EntryListAdapter extends RecyclerView.Adapter<EntryListAdapter.Recy
         RecyclerViewHolder(View view) {
             super(view);
 
-            tv_amount = view.findViewById(R.id.item_entry_tv_amount);
-            tv_comment = view.findViewById(R.id.item_entry_tv_comment);
-            tv_date = view.findViewById(R.id.item_entry_tv_date);
+            tv_amount = view.findViewById(R.id.item_view_entry_tv_amount);
+            tv_comment = view.findViewById(R.id.item_view_entry_tv_comment);
+            tv_date = view.findViewById(R.id.item_view_entry_tv_date);
             iv_status = view.findViewById(R.id.item_entry_iv_status);
         }
     }

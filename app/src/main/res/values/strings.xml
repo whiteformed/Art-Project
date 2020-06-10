@@ -2,8 +2,12 @@
     <string name="app_name">Debt Manager</string>
 
     <string name="tv_app_name">Debt Manager</string>
-    <string name="tv_application_version">v. 1.0.0</string>
-    <string name="tv_author">Ovchinnikov Denis Olegovich</string>
+    <string name="tv_app_version">version 1.0.0</string>
+    <string name="tv_created">Created</string>
+    <string name="tv_created_by">by Ovchinnikov D.O.</string>
+    <string name="tv_created_in">in Android Studio IDE</string>
+    <string name="tv_vcs">Version Control System:</string>
+    <string name="tv_github_link">https://github.com/whiteformed/Debt-Manager</string>
 
     <string name="ttl_my_debt">My Debt</string>
     <string name="ttl_their_debt">Their Debt</string>
@@ -12,12 +16,12 @@
     <string name="tv_owes_me">OWES ME</string>
 
     <string name="tv_msg_empty_list">List is Empty.</string>
-    <string name="tv_msg_person_add">Add new Person.</string>
-    <string name="tv_msg_person_upd">Update this Person?</string>
-    <string name="tv_msg_person_del">Delete this Person?</string>
-    <string name="tv_msg_entry_add">Add new Entry.</string>
-    <string name="tv_msg_entry_upd">Update this Entry?</string>
-    <string name="tv_msg_entry_del">Delete this Entry?</string>
+    <string name="tv_msg_person_add">Add Person.</string>
+    <string name="tv_msg_person_upd">Update Person?</string>
+    <string name="tv_msg_person_del">Delete Person?</string>
+    <string name="tv_msg_entry_add">Add Entry.</string>
+    <string name="tv_msg_entry_upd">Update Entry.</string>
+    <string name="tv_msg_entry_del">Delete Entry?</string>
 
     <string name="btn_text_no">No</string>
     <string name="btn_text_yes">Yes</string>

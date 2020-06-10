@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#018A9A</color>
-    <color name="colorStatusBar">#388DFB</color>
     <color name="colorAccent">#FFFFFF</color>
-    <color name="colorHeader">#70C0FF</color>
 
     <color name="colorActiveButtonBackground">@color/colorPrimary</color>
     <color name="colorActiveButtonText">@color/colorAccent</color>

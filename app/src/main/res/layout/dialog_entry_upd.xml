@@ -7,10 +7,10 @@
     android:padding="10dp">
 
     <TextView
-        android:id="@+id/dialog_entry_add_tv_msg_entry_add"
+        android:id="@+id/dialog_entry_add_tv_msg_entry_upd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/tv_msg_entry_add"
+        android:text="@string/tv_msg_entry_upd"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="@color/colorPrimary"
@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/dialog_entry_add_et_amount"
+        android:id="@+id/dialog_entry_upd_et_amount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -33,10 +33,10 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dialog_entry_add_tv_msg_entry_add" />
+        app:layout_constraintTop_toBottomOf="@+id/dialog_entry_add_tv_msg_entry_upd" />
 
     <EditText
-        android:id="@+id/dialog_entry_add_et_comment"
+        android:id="@+id/dialog_entry_upd_et_comment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorPrimary"
@@ -47,20 +47,34 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dialog_entry_add_et_amount" />
+        app:layout_constraintTop_toBottomOf="@+id/dialog_entry_upd_et_amount" />
 
     <Button
-        android:id="@+id/dialog_entry_add_btn_add"
+        android:id="@+id/dialog_entry_upd_btn_del"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@color/colorActiveButtonBackground"
         android:foreground="@drawable/ripple"
-        android:text="@string/btn_text_add"
+        android:text="@string/btn_text_del"
         android:textColor="@color/colorActiveButtonText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/dialog_entry_add_et_comment" />
+        app:layout_constraintTop_toBottomOf="@id/dialog_entry_upd_et_comment" />
+
+    <Button
+        android:id="@+id/dialog_entry_upd_btn_upd"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorActiveButtonBackground"
+        android:foreground="@drawable/ripple"
+        android:text="@string/btn_text_upd"
+        android:textColor="@color/colorActiveButtonText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dialog_entry_upd_btn_del" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

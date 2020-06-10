@@ -59,8 +59,7 @@ public class DialogHelper {
 
                 if (sw.isChecked()) {
                     status = 1;
-                }
-                else if (!sw.isChecked()) {
+                } else if (!sw.isChecked()) {
                     status = 0;
                 }
 
@@ -181,10 +180,89 @@ public class DialogHelper {
         dialog.show();
     }
 
+    public void createUpdEntryDialog(final Entry entry) {
+        final Dialog dialog = new Dialog(context);
+        dialog.setContentView(R.layout.dialog_entry_upd);
+        dialog.setCancelable(true);
+        Objects.requireNonNull(dialog.getWindow()).setLayout(context.getResources().getDisplayMetrics().widthPixels, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+        final EditText et_amount = dialog.findViewById(R.id.dialog_entry_upd_et_amount);
+        final EditText et_comment = dialog.findViewById(R.id.dialog_entry_upd_et_comment);
+
+        et_amount.setText(String.valueOf(entry.getAmount()));
+        et_comment.setText(entry.getComment());
+
+        Button btn_del = dialog.findViewById(R.id.dialog_entry_upd_btn_del);
+        Button btn_upd = dialog.findViewById(R.id.dialog_entry_upd_btn_upd);
+
+        View.OnClickListener onButtonDelClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                createDelEntryDialog(entry.getID());
+
+                dialog.cancel();
+            }
+        };
+
+        View.OnClickListener onButtonUpdClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Objects.requireNonNull(et_amount.getText().toString().trim().equals("")) || Objects.requireNonNull(et_comment.getText().toString().trim().equals(""))) {
+                    Toaster.makeToast(context, "No empty fields allowed!");
+                } else {
+                    int amount = Integer.parseInt(et_amount.getText().toString());
+                    String comment = et_comment.getText().toString();
+
+                    Entry newEntry = new Entry(amount, comment);
+
+                    onEntryArrayListUpdateListener.onUpdEntry(entry.getID(), newEntry);
+
+                    dialog.cancel();
+                }
+            }
+        };
+
+        btn_del.setOnClickListener(onButtonDelClickListener);
+        btn_upd.setOnClickListener(onButtonUpdClickListener);
+
+        dialog.show();
+    }
+
+    public void createDelEntryDialog(final int entryID) {
+        final Dialog dialog = new Dialog(context);
+        dialog.setContentView(R.layout.dialog_entry_del);
+        dialog.setCancelable(true);
+        Objects.requireNonNull(dialog.getWindow()).setLayout(context.getResources().getDisplayMetrics().widthPixels, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+        Button btn_yes = dialog.findViewById(R.id.dialog_entry_del_btn_yes);
+        Button btn_no = dialog.findViewById(R.id.dialog_entry_del_btn_no);
+
+        View.OnClickListener onButtonYesClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onEntryArrayListUpdateListener.onDelEntry(entryID);
+
+                dialog.cancel();
+            }
+        };
+
+        View.OnClickListener onButtonNoClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.cancel();
+            }
+        };
+
+        btn_yes.setOnClickListener(onButtonYesClickListener);
+        btn_no.setOnClickListener(onButtonNoClickListener);
+
+        dialog.show();
+    }
+
     String getCurrentDate() {
         Date date = Calendar.getInstance().getTime();
 
-        @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDate =  new SimpleDateFormat("dd/MM/yyyy");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDate = new SimpleDateFormat("dd/MM/yyyy");
 
         return simpleDate.format(date);
     }

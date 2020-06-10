@@ -8,6 +8,11 @@ public class Entry {
     private String Comment;     // Any comment
     private String Date;        // Entry's adding date
 
+    Entry(int amount, String comment) {
+        this.Amount = amount;
+        this.Comment = comment;
+    }
+
     Entry(int status, int personID, int amount, String comment, String date) {
         this.Status = status;
         this.Person_ID = personID;

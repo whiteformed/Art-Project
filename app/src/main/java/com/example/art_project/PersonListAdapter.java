@@ -16,20 +16,20 @@ public class PersonListAdapter extends RecyclerView.Adapter<PersonListAdapter.Re
     private Context context;
     private ArrayList<Person> personArrayList;
     private int status;
-    private OnPersonItemClickListener onPersonItemClickListener;
+    private OnPersonItemViewClickListener onPersonItemViewClickListener;
 
-    PersonListAdapter(Context context, ArrayList<Person> personArrayList, int status, OnPersonItemClickListener onPersonItemClickListener) {
+    PersonListAdapter(Context context, ArrayList<Person> personArrayList, int status, OnPersonItemViewClickListener onPersonItemViewClickListener) {
         this.context = context;
         this.personArrayList = personArrayList;
         this.status = status;
-        this.onPersonItemClickListener = onPersonItemClickListener;
+        this.onPersonItemViewClickListener = onPersonItemViewClickListener;
     }
 
     @NonNull
     @Override
     public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
-        View view = layoutInflater.inflate(R.layout.item_person, parent, false);
+        View view = layoutInflater.inflate(R.layout.item_view_person, parent, false);
 
         return new RecyclerViewHolder(view);
     }
@@ -51,7 +51,7 @@ public class PersonListAdapter extends RecyclerView.Adapter<PersonListAdapter.Re
         View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onPersonItemClickListener.onItemClick(personArrayList.get(position).getID());
+                onPersonItemViewClickListener.onPersonItemViewClick(personArrayList.get(position).getID());
             }
         };
 
@@ -71,9 +71,9 @@ public class PersonListAdapter extends RecyclerView.Adapter<PersonListAdapter.Re
         RecyclerViewHolder(View view) {
             super(view);
 
-            tv_name = view.findViewById(R.id.item_person_tv_name);
-            tv_amount = view.findViewById(R.id.item_person_tv_amount);
-            iv_status = view.findViewById(R.id.item_person_iv_status);
+            tv_name = view.findViewById(R.id.item_view_person_tv_name);
+            tv_amount = view.findViewById(R.id.item_view_person_tv_amount);
+            iv_status = view.findViewById(R.id.item_view_person_iv_status);
         }
     }
 }

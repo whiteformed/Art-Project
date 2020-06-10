@@ -16,7 +16,7 @@
         android:padding="10dp">
 
         <ImageView
-            android:id="@+id/item_person_iv_status"
+            android:id="@+id/item_view_person_iv_status"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/sp_border"
@@ -25,18 +25,18 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/item_person_tv_name"
+            android:id="@+id/item_view_person_tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_weight="0.5"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/item_person_iv_status"
+            app:layout_constraintStart_toEndOf="@id/item_view_person_iv_status"
             tools:text="Name" />
 
         <TextView
-            android:id="@+id/item_person_tv_amount"
+            android:id="@+id/item_view_person_tv_amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -44,7 +44,7 @@
             android:textColor="@color/colorItemAmountText"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@id/item_person_iv_status"
+            app:layout_constraintStart_toEndOf="@id/item_view_person_iv_status"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Amount" />
 

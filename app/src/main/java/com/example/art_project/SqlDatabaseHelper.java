@@ -137,16 +137,14 @@ public class SqlDatabaseHelper extends SQLiteOpenHelper {
         return entryID != -1;
     }
 
-    public boolean updEntry(int id, Entry newEntry) {
+    public boolean updEntry(int entryID, Entry newEntry) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
-        contentValues.put(table_entries_column_status, newEntry.getStatus());
-        contentValues.put(table_entries_column_person_id, newEntry.getPersonID());
         contentValues.put(table_entries_column_amount, newEntry.getAmount());
         contentValues.put(table_entries_column_comment, newEntry.getComment().trim());
 
-        String whereClause = table_entries_column_id + " = '" + id + "'";
+        String whereClause = table_entries_column_id + " = '" + entryID + "'";
 
         int rowsAffected = db.update(table_entries, contentValues, whereClause, null);
 

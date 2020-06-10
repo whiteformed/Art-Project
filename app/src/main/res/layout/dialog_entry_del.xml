@@ -7,11 +7,11 @@
     android:padding="10dp">
 
     <TextView
-        android:id="@+id/dialog_person_del_tv_msg"
+        android:id="@+id/dialog_entry_del_tv_msg_entry_del"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="@string/tv_msg_person_del"
+        android:text="@string/tv_msg_entry_del"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="@color/colorPrimary"
@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/dialog_person_del_btn_yes"
+        android:id="@+id/dialog_entry_del_btn_yes"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -34,10 +34,10 @@
         android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/dialog_person_del_tv_msg" />
+        app:layout_constraintTop_toBottomOf="@id/dialog_entry_del_tv_msg_entry_del" />
 
     <Button
-        android:id="@+id/dialog_person_del_btn_no"
+        android:id="@+id/dialog_entry_del_btn_no"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -49,6 +49,6 @@
         android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/dialog_person_del_tv_msg" />
+        app:layout_constraintTop_toBottomOf="@id/dialog_entry_del_tv_msg_entry_del" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

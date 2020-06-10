@@ -12,9 +12,9 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".ActivityPersonList"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|keyboardHidden|screenSize">
+            android:name=".ActivityPersonListView"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,9 +25,14 @@
         </activity>
 
         <activity
-            android:name=".ActivityEntryList"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|keyboardHidden|screenSize" />
+            android:name=".ActivityEntryListView"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ActivityInfo"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
 
     </application>
 

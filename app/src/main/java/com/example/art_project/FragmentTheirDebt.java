@@ -20,7 +20,7 @@ public class FragmentTheirDebt extends Fragment {
     LinearLayoutManager linearLayoutManager;
     PersonListAdapter personArrayListAdapter;
     ArrayList<Person> personArrayList = new ArrayList<>();
-    OnPersonItemClickListener onPersonItemClickListener;
+    OnPersonItemViewClickListener onPersonItemViewClickListener;
     int status;
 
     TextView tv_msg_empty_list;
@@ -50,7 +50,7 @@ public class FragmentTheirDebt extends Fragment {
         rv = view.findViewById(R.id.fragment_person_list_rv);
 
         linearLayoutManager = new LinearLayoutManager(getActivity());
-        personArrayListAdapter = new PersonListAdapter(getActivity(), personArrayList, status, onPersonItemClickListener);
+        personArrayListAdapter = new PersonListAdapter(getActivity(), personArrayList, status, onPersonItemViewClickListener);
 
         rv.setLayoutManager(linearLayoutManager);
         rv.setAdapter(personArrayListAdapter);
