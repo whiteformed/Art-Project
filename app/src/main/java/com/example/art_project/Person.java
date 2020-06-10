@@ -4,19 +4,16 @@ public class Person {
     private int ID;          // Person ID
     private int Status;      // 0 - My Entry, 1 - Their Entry
     private String Name;     // Person's name
-    private int Amount;      // Amount of Money
 
-    Person(int status, String name, int amount) {
+    Person(int status, String name) {
         this.Status = status;
         this.Name = name;
-        this.Amount = amount;
     }
 
-    Person(int id, int status, String name, int amount) {
+    Person(int id, int status, String name) {
         this.ID = id;
         this.Status = status;
         this.Name = name;
-        this.Amount = amount;
     }
 
     public int getID() {
@@ -41,13 +38,5 @@ public class Person {
 
     public void setName(String name) {
         Name = name;
-    }
-
-    public int getAmount() {
-        return Amount;
-    }
-
-    public void setAmount(int amount) {
-        Amount = amount;
     }
 }

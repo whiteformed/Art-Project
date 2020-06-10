@@ -1,5 +1,6 @@
 package com.example.art_project;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -14,7 +15,7 @@ import java.util.ArrayList;
 
 public class ActivityEntryList extends AppCompatActivity implements OnEntryItemClickListener, OnEntryArrayListUpdateListener {
     TextView tv_name;
-    TextView tv_amount;
+    TextView tv_total_amount;
     TextView tv_status;
     TextView tv_msg_empty_list;
 
@@ -49,8 +50,18 @@ public class ActivityEntryList extends AppCompatActivity implements OnEntryItemC
         entryArrayList.addAll(sqlDatabaseHelper.getEntryArrayList(person.getID()));
         entryArrayListAdapter.notifyDataSetChanged();
 
+        String totalAmount = getTotalAmount();
+        tv_total_amount.setText(totalAmount);
+
         int visibility = entryArrayList.isEmpty() ? View.VISIBLE : View.INVISIBLE;
         tv_msg_empty_list.setVisibility(visibility);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        setResult(RESULT_OK);
+        finish();
     }
 
     @Override
@@ -70,7 +81,7 @@ public class ActivityEntryList extends AppCompatActivity implements OnEntryItemC
             rv = findViewById(R.id.activity_entry_list_rv);
 
             tv_name = findViewById(R.id.activity_entry_list_tv_name);
-            tv_amount = findViewById(R.id.activity_entry_list_tv_amount);
+            tv_total_amount = findViewById(R.id.activity_entry_list_tv_total_amount);
             tv_status = findViewById(R.id.activity_entry_list_tv_status);
 
             iv_person_del = findViewById(R.id.activity_entry_list_iv_person_del);
@@ -99,8 +110,7 @@ public class ActivityEntryList extends AppCompatActivity implements OnEntryItemC
             };
 
             tv_name.setText(person.getName());
-            String amount = (person.getAmount()) + " RUB";
-            tv_amount.setText(amount);
+            getTotalAmount();
             tv_status.setText(person.getStatus() == 0 ? getString(R.string.tv_i_owe) : getString(R.string.tv_owes_me));
 
             iv_person_del.setOnClickListener(onButtonPersonDelClickListener);
@@ -117,5 +127,11 @@ public class ActivityEntryList extends AppCompatActivity implements OnEntryItemC
 
             updateEntryArrayList();
         }
+    }
+
+    public String getTotalAmount() {
+        int total = sqlDatabaseHelper.getPersonTotalAmount(person.getID());
+
+        return total + " RUB";
     }
 }

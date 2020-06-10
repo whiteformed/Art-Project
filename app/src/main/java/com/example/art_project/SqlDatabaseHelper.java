@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -17,7 +18,6 @@ public class SqlDatabaseHelper extends SQLiteOpenHelper {
     private static final String table_persons_column_id = "id";
     private static final String table_persons_column_status = "status";
     private static final String table_persons_column_name = "name";
-    private static final String table_persons_column_amount = "amount";
 
     private static final String table_entries = "entries";
     private static final String table_entries_column_id = "id";
@@ -48,8 +48,7 @@ public class SqlDatabaseHelper extends SQLiteOpenHelper {
                 + table_persons + " ("
                 + table_persons_column_id + " integer primary key autoincrement, "
                 + table_persons_column_status + " integer, "
-                + table_persons_column_name + " text, "
-                + table_persons_column_amount + " integer)";
+                + table_persons_column_name + " text)";
 
         db.execSQL(sqlCommand);
 
@@ -71,11 +70,10 @@ public class SqlDatabaseHelper extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put(table_persons_column_status, person.getStatus());
         contentValues.put(table_persons_column_name, person.getName().trim());
-        contentValues.put(table_persons_column_amount, person.getAmount());
 
         long personID = db.insert(table_persons, null, contentValues);
 
-        person.setID((int)personID);
+        person.setID((int) personID);
 
         db.close();
 
@@ -88,7 +86,6 @@ public class SqlDatabaseHelper extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put(table_persons_column_status, newPerson.getStatus());
         contentValues.put(table_persons_column_name, newPerson.getName().trim());
-        contentValues.put(table_persons_column_amount, newPerson.getAmount());
 
         String whereClause = table_persons_column_id + " = '" + personID + "'";
 
@@ -182,10 +179,8 @@ public class SqlDatabaseHelper extends SQLiteOpenHelper {
             person = new Person(
                     cursor.getInt(cursor.getColumnIndex(table_persons_column_id)),
                     cursor.getInt(cursor.getColumnIndex(table_persons_column_status)),
-                    cursor.getString(cursor.getColumnIndex(table_persons_column_name)),
-                    cursor.getInt(cursor.getColumnIndex(table_persons_column_amount)));
-        }
-        else {
+                    cursor.getString(cursor.getColumnIndex(table_persons_column_name)));
+        } else {
             person = null;
         }
 
@@ -210,8 +205,7 @@ public class SqlDatabaseHelper extends SQLiteOpenHelper {
                 Person person = new Person(
                         cursor.getInt(cursor.getColumnIndex(table_persons_column_id)),
                         cursor.getInt(cursor.getColumnIndex(table_persons_column_status)),
-                        cursor.getString(cursor.getColumnIndex(table_persons_column_name)),
-                        cursor.getInt(cursor.getColumnIndex(table_persons_column_amount)));
+                        cursor.getString(cursor.getColumnIndex(table_persons_column_name)));
 
                 personArrayList.add(person);
             } while (cursor.moveToNext());
@@ -221,6 +215,55 @@ public class SqlDatabaseHelper extends SQLiteOpenHelper {
         db.close();
 
         return personArrayList;
+    }
+
+    public int getPersonTotalAmount(int personID) {
+        int personTotalAmount = 0;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        sqlCommand = "select * from " + table_entries + " where "
+                + table_entries_column_person_id + " = '" + personID + "'";
+
+        Cursor cursor = db.rawQuery(sqlCommand, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                if (cursor.getInt(cursor.getColumnIndex(table_entries_column_status)) == 0) {
+                    personTotalAmount -= cursor.getInt(cursor.getColumnIndex(table_entries_column_amount));
+                }
+                else if (cursor.getInt(cursor.getColumnIndex(table_entries_column_status)) == 1) {
+                    personTotalAmount += cursor.getInt(cursor.getColumnIndex(table_entries_column_amount));
+                }
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return personTotalAmount;
+    }
+
+    public int getPersonArrayListTotalAmount(int status) {
+        int personArrayListTotalAmount = 0;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        sqlCommand = "select * from " + table_persons + " where "
+                + table_persons_column_status + " = '" + status + "'";
+
+        Cursor cursor = db.rawQuery(sqlCommand, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                personArrayListTotalAmount += getPersonTotalAmount(cursor.getInt(cursor.getColumnIndex(table_persons_column_id)));
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return personArrayListTotalAmount;
     }
 
     public ArrayList<Entry> getEntryArrayList(int personID) {

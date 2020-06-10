@@ -67,7 +67,7 @@ public class DialogHelper {
                 if (Objects.requireNonNull(et_name.getText().toString().trim().equals(""))) {
                     Toaster.makeToast(context, "No empty fields allowed!");
                 } else {
-                    Person newPerson = new Person(status, et_name.getText().toString(), 0);
+                    Person newPerson = new Person(status, et_name.getText().toString());
 
                     onPersonArrayListUpdateListener.onAddPerson(newPerson);
 

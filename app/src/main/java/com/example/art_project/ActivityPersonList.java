@@ -6,9 +6,12 @@ import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -26,7 +29,6 @@ public class ActivityPersonList extends AppCompatActivity implements OnPersonArr
     ViewPager viewPager;
     ViewPagerAdapter viewPagerAdapter;
 
-    String totalAmount;
     TextView tv_total_amount;
 
     FloatingActionButton fab;
@@ -38,11 +40,17 @@ public class ActivityPersonList extends AppCompatActivity implements OnPersonArr
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        updateFragments();
+    }
+
+    @Override
     public void onItemClick(int personID) {
         Intent intent = new Intent(this, ActivityEntryList.class);
         intent.putExtra("id", personID);
 
-        startActivity(intent);
+        startActivityForResult(intent, 1);
     }
 
     @Override
@@ -76,23 +84,14 @@ public class ActivityPersonList extends AppCompatActivity implements OnPersonArr
         //Setup the adapter
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
-
         tv_total_amount = findViewById(R.id.activity_person_list_tv_total_amount);
 
-        TabLayout.OnTabSelectedListener onTabSelectedListener = new TabLayout.OnTabSelectedListener() {
+        TabLayout.OnTabSelectedListener onTabSelectedListener = new TabLayout.ViewPagerOnTabSelectedListener(viewPager) {
             @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                getTotalAmount(tab.getPosition());
-            }
+            public void onTabSelected(@NonNull TabLayout.Tab tab) {
+                super.onTabSelected(tab);
 
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
+                setTotalAmount();
             }
         };
 
@@ -112,26 +111,25 @@ public class ActivityPersonList extends AppCompatActivity implements OnPersonArr
 
         fab.setOnClickListener(onClickListener);
 
-        getTotalAmount(0);
+        setTotalAmount();
     }
 
     public void updateFragments() {
         fragmentMyDebt.updatePersonArrayList();
         fragmentTheirDebt.updatePersonArrayList();
 
-        getTotalAmount(0);
+        setTotalAmount();
     }
 
-    public void getTotalAmount(int tabId) {
-        int total = 0;
+    public String getTotalAmount() {
+        int status = tabLayout.getSelectedTabPosition();
+        int total = sqlDatabaseHelper.getPersonArrayListTotalAmount(status);
 
-        ArrayList<Person> personArrayList = tabId == 0 ? fragmentMyDebt.personArrayList : fragmentTheirDebt.personArrayList;
+        return total + " RUB";
+    }
 
-        for (Person person : personArrayList) {
-            total += person.getAmount();
-        }
-
-        totalAmount = total + " RUB";
+    public void setTotalAmount() {
+        String totalAmount = getTotalAmount();
         tv_total_amount.setText(totalAmount);
     }
 }

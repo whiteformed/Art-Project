@@ -36,7 +36,8 @@ public class PersonListAdapter extends RecyclerView.Adapter<PersonListAdapter.Re
 
     @Override
     public void onBindViewHolder(@NonNull final RecyclerViewHolder holder, final int position) {
-        String totalAmount = personArrayList.get(position).getAmount() + " RUB";
+        SqlDatabaseHelper sqlDatabaseHelper = new SqlDatabaseHelper(context);
+        String totalAmount = sqlDatabaseHelper.getPersonTotalAmount(personArrayList.get(position).getID()) + " RUB";
 
         if (status == 0) {
             holder.iv_status.setImageResource(R.drawable.ic_trending_down);
