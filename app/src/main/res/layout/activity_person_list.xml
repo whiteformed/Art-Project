@@ -49,8 +49,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
-            app:tabTextColor="@color/colorAccent"
-            app:tabIndicatorHeight="5dp"/>
+            app:tabIndicatorHeight="5dp"
+            app:tabTextColor="@color/colorAccent" />
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/activity_person_list_vp"
@@ -73,4 +73,5 @@
         android:src="@drawable/ic_fab"
         app:backgroundTint="@color/colorPrimary"
         app:maxImageSize="32dp" />
+
 </FrameLayout>

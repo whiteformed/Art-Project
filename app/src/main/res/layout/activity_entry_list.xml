@@ -14,15 +14,15 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:orientation="horizontal"
-        android:paddingTop="20dp">
+        android:padding="10dp">
 
         <TextView
             android:id="@+id/activity_entry_list_tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:textColor="@color/colorAccent"
             android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -30,34 +30,29 @@
 
         <ImageView
             android:id="@+id/activity_entry_list_iv_person_del"
-            android:layout_width="38dp"
-            android:layout_height="38dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
+            android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/activity_entry_list_tv_name"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
             android:contentDescription="@string/iv_desc_person_delete"
             android:src="@drawable/ic_delete"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingTop="20dp">
 
         <TextView
             android:id="@+id/activity_entry_list_tv_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginTop="20dp"
             android:textColor="@color/colorAccent"
             android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/activity_entry_list_tv_name"
             tools:text="Status" />
 
         <TextView
@@ -68,39 +63,38 @@
             android:textColor="@color/colorAccent"
             android:textSize="32sp"
             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/activity_entry_list_tv_status"
             tools:text="Amount" />
-
-    </LinearLayout>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/activity_entry_list_iv_debt_dec"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:layout_gravity="start"
             android:layout_marginStart="70dp"
-            android:layout_marginBottom="10dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
             android:contentDescription="@string/iv_desc_dec_debt"
-            android:src="@drawable/ic_remove" />
+            android:src="@drawable/ic_remove"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/activity_entry_list_tv_total_amount" />
 
         <ImageView
             android:id="@+id/activity_entry_list_iv_debt_inc"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:layout_gravity="end"
             android:layout_marginEnd="70dp"
-            android:layout_marginBottom="10dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
             android:contentDescription="@string/iv_desc_inc_debt"
-            android:src="@drawable/ic_add" />
+            android:src="@drawable/ic_add"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/activity_entry_list_tv_total_amount" />
 
-    </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
