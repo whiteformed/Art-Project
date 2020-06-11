@@ -80,14 +80,14 @@ public class SqlDatabaseHelper extends SQLiteOpenHelper {
         return personID != -1;
     }
 
-    public boolean updPerson(int personID, Person newPerson) {
+    public boolean updPerson(Person updPerson) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
-        contentValues.put(table_persons_column_status, newPerson.getStatus());
-        contentValues.put(table_persons_column_name, newPerson.getName().trim());
+        contentValues.put(table_persons_column_status, updPerson.getStatus());
+        contentValues.put(table_persons_column_name, updPerson.getName().trim());
 
-        String whereClause = table_persons_column_id + " = '" + personID + "'";
+        String whereClause = table_persons_column_id + " = '" + updPerson.getID() + "'";
 
         int rowsAffected = db.update(table_entries, contentValues, whereClause, null);
 
@@ -121,6 +121,16 @@ public class SqlDatabaseHelper extends SQLiteOpenHelper {
     public boolean addEntry(Entry entry) {
         SQLiteDatabase db = this.getWritableDatabase();
 
+//        int newTotalAmount = entry.getStatus() == 0 ?
+//                getPersonTotalAmount(entry.getPersonID()) - entry.getAmount() :
+//                getPersonTotalAmount(entry.getPersonID()) + entry.getAmount();
+//
+//        if (newTotalAmount < 0) {
+//            db.close();
+//
+//            return false;
+//        }
+
         ContentValues contentValues = new ContentValues();
         contentValues.put(table_entries_column_status, entry.getStatus());
         contentValues.put(table_entries_column_person_id, entry.getPersonID());
@@ -137,14 +147,24 @@ public class SqlDatabaseHelper extends SQLiteOpenHelper {
         return entryID != -1;
     }
 
-    public boolean updEntry(int entryID, Entry newEntry) {
+    public boolean updEntry(Entry updEntry) {
         SQLiteDatabase db = this.getWritableDatabase();
 
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(table_entries_column_amount, newEntry.getAmount());
-        contentValues.put(table_entries_column_comment, newEntry.getComment().trim());
+//        int newTotalAmount = updEntry.getStatus() == 0 ?
+//                getPersonTotalAmount(updEntry.getPersonID()) - updEntry.getAmount() :
+//                getPersonTotalAmount(updEntry.getPersonID()) + updEntry.getAmount();
+//
+//        if (newTotalAmount < 0) {
+//            db.close();
+//
+//            return false;
+//        }
 
-        String whereClause = table_entries_column_id + " = '" + entryID + "'";
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(table_entries_column_amount, updEntry.getAmount());
+        contentValues.put(table_entries_column_comment, updEntry.getComment().trim());
+
+        String whereClause = table_entries_column_id + " = '" + updEntry.getID() + "'";
 
         int rowsAffected = db.update(table_entries, contentValues, whereClause, null);
 

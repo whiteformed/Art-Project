@@ -36,7 +36,7 @@ public class DialogHelper {
         this.onEntryArrayListUpdateListener = onEntryArrayListUpdateListener;
     }
 
-    public void createAddPersonDialog(boolean defaultSwitchState) {
+    public void createAddPersonDialog(boolean personStatus) {
         final Dialog dialog = new Dialog(context);
         dialog.setContentView(R.layout.dialog_person_add);
         dialog.setCancelable(true);
@@ -45,7 +45,7 @@ public class DialogHelper {
         final EditText et_name = dialog.findViewById(R.id.dialog_person_add_et_name);
 
         final Switch sw = dialog.findViewById(R.id.dialog_person_add_sw);
-        sw.setChecked(defaultSwitchState);
+        sw.setChecked(personStatus);
 
         final TextView tv_i_owe = dialog.findViewById(R.id.dialog_person_add_tv_i_owe);
         final TextView tv_owe_me = dialog.findViewById(R.id.dialog_person_add_tv_owe_me);
@@ -64,7 +64,7 @@ public class DialogHelper {
                 }
 
                 if (Objects.requireNonNull(et_name.getText().toString().trim().equals(""))) {
-                    Toaster.makeToast(context, "No empty fields allowed!");
+                    Informant.makeToast(context, "No empty fields allowed!");
                 } else {
                     Person newPerson = new Person(status, et_name.getText().toString());
 
@@ -114,7 +114,7 @@ public class DialogHelper {
         dialog.show();
     }
 
-    public void createDelPersonDialog() {
+    public void createDelPersonDialog(final int personID) {
         final Dialog dialog = new Dialog(context);
         dialog.setContentView(R.layout.dialog_person_del);
         dialog.setCancelable(true);
@@ -126,7 +126,7 @@ public class DialogHelper {
         View.OnClickListener onButtonYesClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onEntryArrayListUpdateListener.onDelPerson();
+                onEntryArrayListUpdateListener.onDelPerson(personID);
 
                 dialog.cancel();
             }
@@ -160,7 +160,7 @@ public class DialogHelper {
             @Override
             public void onClick(View v) {
                 if (Objects.requireNonNull(et_amount.getText().toString().trim().equals("")) || Objects.requireNonNull(et_comment.getText().toString().trim().equals(""))) {
-                    Toaster.makeToast(context, "No empty fields allowed!");
+                    Informant.makeToast(context, "No empty fields allowed!");
                 } else {
                     int amount = Integer.parseInt(et_amount.getText().toString());
                     String comment = et_comment.getText().toString();
@@ -198,7 +198,7 @@ public class DialogHelper {
         View.OnClickListener onButtonDelClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                createDelEntryDialog(entry.getID());
+                createDelEntryDialog(entry);
 
                 dialog.cancel();
             }
@@ -208,14 +208,15 @@ public class DialogHelper {
             @Override
             public void onClick(View v) {
                 if (Objects.requireNonNull(et_amount.getText().toString().trim().equals("")) || Objects.requireNonNull(et_comment.getText().toString().trim().equals(""))) {
-                    Toaster.makeToast(context, "No empty fields allowed!");
+                    Informant.makeToast(context, "No empty fields allowed!");
                 } else {
                     int amount = Integer.parseInt(et_amount.getText().toString());
                     String comment = et_comment.getText().toString();
 
-                    Entry newEntry = new Entry(amount, comment);
+                    entry.setAmount(amount);
+                    entry.setComment(comment);
 
-                    onEntryArrayListUpdateListener.onUpdEntry(entry.getID(), newEntry);
+                    onEntryArrayListUpdateListener.onUpdEntry(entry);
 
                     dialog.cancel();
                 }
@@ -228,7 +229,7 @@ public class DialogHelper {
         dialog.show();
     }
 
-    public void createDelEntryDialog(final int entryID) {
+    public void createDelEntryDialog(final Entry entry) {
         final Dialog dialog = new Dialog(context);
         dialog.setContentView(R.layout.dialog_entry_del);
         dialog.setCancelable(true);
@@ -240,7 +241,7 @@ public class DialogHelper {
         View.OnClickListener onButtonYesClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onEntryArrayListUpdateListener.onDelEntry(entryID);
+                onEntryArrayListUpdateListener.onDelEntry(entry.getID());
 
                 dialog.cancel();
             }

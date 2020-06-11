@@ -34,23 +34,26 @@ public class ActivityPersonListView extends AppCompatActivity implements OnPerso
     FloatingActionButton fab;
 
     @Override
+    public void onPersonItemViewClick(int personID) {
+        Intent intent = new Intent(this, ActivityEntryListView.class);
+        intent.putExtra("id", personID);
+
+        startActivityForResult(intent, 1);
+    }
+
+    @Override
     public void onAddPerson(Person newPerson) {
         boolean result = sqlDatabaseHelper.addPerson(newPerson);
+        Informant.makeLogEntry(0, result);
+
         updateFragments();
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
         updateFragments();
-    }
-
-    @Override
-    public void onPersonItemViewClick(int personID) {
-        Intent intent = new Intent(this, ActivityEntryListView.class);
-        intent.putExtra("id", personID);
-
-        startActivityForResult(intent, 1);
     }
 
     @Override

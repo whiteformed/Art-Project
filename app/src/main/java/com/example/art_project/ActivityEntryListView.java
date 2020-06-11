@@ -42,26 +42,33 @@ public class ActivityEntryListView extends AppCompatActivity implements OnEntryI
     }
 
     @Override
-    public void onAddEntry(Entry entry) {
-        boolean result = sqlDatabaseHelper.addEntry(entry);
+    public void onAddEntry(Entry newEntry) {
+        boolean result = sqlDatabaseHelper.addEntry(newEntry);
+        Informant.makeLogEntry(0, result);
+
         updateEntryArrayList();
     }
 
     @Override
-    public void onUpdEntry(int oldEntryID, Entry newEntry) {
-        boolean result = sqlDatabaseHelper.updEntry(oldEntryID, newEntry);
+    public void onUpdEntry(Entry updEntry) {
+        boolean result = sqlDatabaseHelper.updEntry(updEntry);
+        Informant.makeLogEntry(1, result);
+
         updateEntryArrayList();
     }
 
     @Override
     public void onDelEntry(int entryID) {
         boolean result = sqlDatabaseHelper.delEntry(entryID);
+        Informant.makeLogEntry(2, result);
+
         updateEntryArrayList();
     }
 
     @Override
-    public void onDelPerson() {
-        boolean result = sqlDatabaseHelper.delPerson(person.getID());
+    public void onDelPerson(int personID) {
+        boolean result = sqlDatabaseHelper.delPerson(personID);
+        Informant.makeLogEntry(2, result);
 
         setResult(RESULT_OK);
         finish();
@@ -113,7 +120,7 @@ public class ActivityEntryListView extends AppCompatActivity implements OnEntryI
             View.OnClickListener onButtonPersonDelClickListener = new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    dialogHelper.createDelPersonDialog();
+                    dialogHelper.createDelPersonDialog(person.getID());
                 }
             };
 
