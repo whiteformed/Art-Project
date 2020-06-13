@@ -30,9 +30,6 @@ public class FragmentMyDebt extends Fragment {
     }
 
     public void updatePersonArrayList() {
-//        AsynchronousTask task = new AsynchronousTask(new SqlDatabaseHelper(getActivity()), personArrayListAdapter, personArrayList, status);
-//        task.execute();
-
         personArrayList.clear();
         personArrayList.addAll(new SqlDatabaseHelper(getActivity()).getPersonArrayList(status));
         personArrayListAdapter.notifyDataSetChanged();

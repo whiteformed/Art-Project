@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Менеджер долгов</string>
+    <string name="tv_app_name">Менеджер долгов</string>
+    <string name="tv_app_version">версия 1.0.0</string>
+    <string name="tv_created">Создано</string>
+    <string name="tv_created_in">в Android Studio IDE</string>
+    <string name="tv_created_by">Овчинниковым Д.О.</string>
+    <string name="tv_vcs">Система контроля версий:</string>
+    <string name="tv_github"><u>GitHub</u></string>
+    <string name="ttl_my_debt">Я Должен</string>
+    <string name="ttl_their_debt">Мне Должны</string>
+    <string name="tv_i_owe">Я Беру</string>
+    <string name="tv_owes_me">Я Даю</string>
+    <string name="tv_msg_empty_list">Список пуст.</string>
+    <string name="tv_msg_person_add">Добавить персону.</string>
+    <string name="tv_msg_person_upd">Обновить персону?</string>
+    <string name="tv_msg_person_del">Удалить персону?</string>
+    <string name="tv_msg_entry_add">Добавить элемент.</string>
+    <string name="tv_msg_entry_upd">Обновить элемент.</string>
+    <string name="tv_msg_entry_del">Удалить элемент?</string>
+    <string name="btn_text_no">Нет</string>
+    <string name="btn_text_yes">Да</string>
+    <string name="btn_text_del">Удалить</string>
+    <string name="btn_text_upd">Обновить</string>
+    <string name="btn_text_add">Добавить</string>
+    <string name="value">₽</string>
+    <string name="hnt_entry_comment">Комментарий</string>
+    <string name="hnt_entry_amount">Сумма</string>
+    <string name="hnt_person_name">Имя</string>
+</resources>

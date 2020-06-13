@@ -9,11 +9,11 @@
     <string name="tv_vcs">Version Control System:</string>
     <string name="tv_github"><u>GitHub</u></string>
 
-    <string name="ttl_my_debt">My Debt</string>
-    <string name="ttl_their_debt">Their Debt</string>
+    <string name="ttl_my_debt">I Owe</string>
+    <string name="ttl_their_debt">Owes Me</string>
 
-    <string name="tv_i_owe">I OWE</string>
-    <string name="tv_owes_me">OWES ME</string>
+    <string name="tv_i_owe">I Take</string>
+    <string name="tv_owes_me">I Give</string>
 
     <string name="tv_msg_empty_list">List is Empty.</string>
     <string name="tv_msg_person_add">Add Person.</string>
@@ -29,15 +29,15 @@
     <string name="btn_text_upd">Update</string>
     <string name="btn_text_add">Add</string>
 
-    <string name="iv_desc_app_name">App Name</string>
-    <string name="iv_desc_total_amount">Total Amount Image</string>
-    <string name="iv_desc_info">Info Image</string>
-    <string name="iv_desc_person_status">Person Status Image</string>
-    <string name="iv_desc_person_delete">Basket Image</string>
-    <string name="iv_desc_dec_debt">Decease Debt Image</string>
-    <string name="iv_desc_inc_debt">Increase Debt Image</string>
-    <string name="iv_desc_entry">Entry Default Image</string>
-    <string name="iv_desc_entry_status">Entry Status Image</string>
+    <string name="iv_desc_app_name" translatable="false">App Name</string>
+    <string name="iv_desc_total_amount" translatable="false">Total Amount Image</string>
+    <string name="iv_desc_info" translatable="false">Info Image</string>
+    <string name="iv_desc_person_status" translatable="false">Person Status Image</string>
+    <string name="iv_desc_person_delete" translatable="false">Basket Image</string>
+    <string name="iv_desc_dec_debt" translatable="false">Decease Debt Image</string>
+    <string name="iv_desc_inc_debt" translatable="false">Increase Debt Image</string>
+    <string name="iv_desc_entry" translatable="false">Entry Default Image</string>
+    <string name="iv_desc_entry_status" translatable="false">Entry Status Image</string>
 
     <string name="hnt_person_name">Name</string>
     <string name="hnt_entry_amount">Amount</string>

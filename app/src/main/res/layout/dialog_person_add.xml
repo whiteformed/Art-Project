@@ -36,46 +36,44 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dialog_person_add_tv_msg_person_add" />
 
-    <LinearLayout
-        android:id="@+id/dialog_person_add_ll"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/dialog_person_add_tv_i_owe"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="5dp"
+        android:text="@string/tv_i_owe"
+        android:textAlignment="textEnd"
+        android:textAllCaps="true"
+        android:textColor="@color/colorActiveText"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@id/dialog_person_add_sw"
+        app:layout_constraintTop_toBottomOf="@id/dialog_person_add_et_name" />
+
+    <Switch
+        android:id="@+id/dialog_person_add_sw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="6dp"
         android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/dialog_person_add_et_name">
+        android:theme="@style/CustomSwitch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dialog_person_add_et_name" />
 
-        <TextView
-            android:id="@+id/dialog_person_add_tv_i_owe"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:text="@string/tv_i_owe"
-            android:textAlignment="textEnd"
-            android:textColor="@color/colorActiveText"
-
-            android:textSize="24sp" />
-
-        <Switch
-            android:id="@+id/dialog_person_add_sw"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="6dp"
-            android:theme="@style/CustomSwitch">
-
-        </Switch>
-
-        <TextView
-            android:id="@+id/dialog_person_add_tv_owe_me"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:text="@string/tv_owes_me"
-            android:textAlignment="textStart"
-            android:textColor="@color/colorInactiveText"
-            android:textSize="24sp" />
-
-    </LinearLayout>
+    <TextView
+        android:id="@+id/dialog_person_add_tv_owe_me"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="6dp"
+        android:text="@string/tv_owes_me"
+        android:textAlignment="textStart"
+        android:textAllCaps="true"
+        android:textColor="@color/colorInactiveText"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@id/dialog_person_add_sw"
+        app:layout_constraintTop_toBottomOf="@id/dialog_person_add_et_name" />
 
     <Button
         android:id="@+id/dialog_person_add_btn_add"
@@ -90,6 +88,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dialog_person_add_ll" />
+        app:layout_constraintTop_toBottomOf="@+id/dialog_person_add_sw" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
