@@ -1,7 +1,6 @@
 package com.example.art_project;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -81,8 +80,8 @@ public class ActivityPersonListView extends AppCompatActivity implements OnPerso
         fragmentTheirDebt.status = 1;
         fragmentTheirDebt.onPersonItemViewClickListener = this;
 
-        viewPagerAdapter.addFragment(fragmentMyDebt, getString(R.string.ttl_my_debt));
-        viewPagerAdapter.addFragment(fragmentTheirDebt, getString(R.string.ttl_their_debt));
+        viewPagerAdapter.addFragment(fragmentMyDebt, getString(R.string.tv_i_owe));
+        viewPagerAdapter.addFragment(fragmentTheirDebt, getString(R.string.tv_owe_me));
 
         //Setup the adapter
         viewPager.setAdapter(viewPagerAdapter);
