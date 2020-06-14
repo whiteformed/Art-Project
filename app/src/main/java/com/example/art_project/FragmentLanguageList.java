@@ -1,10 +1,6 @@
 package com.example.art_project;
 
-import android.app.Activity;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +8,6 @@ import android.widget.RelativeLayout;
 
 import androidx.fragment.app.Fragment;
 
-import java.util.Locale;
 import java.util.Objects;
 
 public class FragmentLanguageList extends Fragment {
@@ -31,14 +26,14 @@ public class FragmentLanguageList extends Fragment {
         View.OnClickListener itemEnClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LocaleHelper.setLocalePrefs(Objects.requireNonNull(getActivity()),"EN");
+                LocaleHelper.setLocalePrefs(Objects.requireNonNull(getActivity()), getString(R.string.pref_locale_en));
             }
         };
 
         View.OnClickListener itemRuClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LocaleHelper.setLocalePrefs(Objects.requireNonNull(getActivity()),"RU");
+                LocaleHelper.setLocalePrefs(Objects.requireNonNull(getActivity()), getString(R.string.pref_locale_ru));
             }
         };
 

@@ -67,4 +67,7 @@
     <string name="lang_eng" translatable="false">English</string>
 
     <string name="value" translatable="false">₽</string>
+
+    <string name="pref_locale_en" translatable="false">EN</string>
+    <string name="pref_locale_ru" translatable="false">RU</string>
 </resources>

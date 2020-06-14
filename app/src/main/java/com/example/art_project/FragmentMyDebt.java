@@ -25,10 +25,6 @@ public class FragmentMyDebt extends Fragment {
 
     TextView tv_msg_empty_list;
 
-    public void setStatus(int status) {
-        this.status = status;
-    }
-
     public void updatePersonArrayList() {
         personArrayList.clear();
         personArrayList.addAll(new SqlDatabaseHelper(getActivity()).getPersonArrayList(status));

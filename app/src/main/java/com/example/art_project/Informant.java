@@ -1,13 +1,7 @@
 package com.example.art_project;
 
 import android.content.Context;
-import android.text.Layout;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.style.AlignmentSpan;
 import android.util.Log;
-import android.view.Gravity;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class Informant {

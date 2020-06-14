@@ -18,7 +18,7 @@ public class LocaleHelper {
         SharedPreferences sharedPreferences = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE);
         String langCode = sharedPreferences.getString(PREF_KEY, "");
         if (langCode.equals("")) {
-            langCode = "EN";
+            langCode = context.getString(R.string.pref_locale_en);
         }
 
         Locale locale = new Locale(langCode.toLowerCase());
