@@ -13,7 +13,7 @@
 
         <activity
             android:name=".ActivityPersonListView"
-            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:configChanges="orientation|keyboardHidden|screenSize|locale"
             android:screenOrientation="portrait">
 
             <intent-filter>
@@ -26,12 +26,12 @@
 
         <activity
             android:name=".ActivityEntryListView"
-            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:configChanges="orientation|keyboardHidden|screenSize|locale"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".ActivityInfo"
-            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:name=".ActivitySettings"
+            android:configChanges="orientation|keyboardHidden|screenSize|locale"
             android:screenOrientation="portrait" />
 
     </application>

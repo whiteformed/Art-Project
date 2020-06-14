@@ -3,21 +3,26 @@ package com.example.art_project;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
-public class ActivityInfo extends AppCompatActivity {
+public class FragmentInformation extends Fragment {
+    View view;
     TextView tv_github;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_info);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.fragment_info, container, false);
 
-        tv_github = findViewById(R.id.activity_info_tv_github);
+        tv_github = view.findViewById(R.id.fragment_info_tv_github);
 
         View.OnClickListener onLinkClickListener = new View.OnClickListener() {
             @Override
@@ -28,5 +33,7 @@ public class ActivityInfo extends AppCompatActivity {
         };
 
         tv_github.setOnClickListener(onLinkClickListener);
+
+        return view;
     }
 }

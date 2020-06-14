@@ -21,8 +21,22 @@
     <string name="tv_msg_person_upd">Update Person?</string>
     <string name="tv_msg_person_del">Delete Person?</string>
     <string name="tv_msg_entry_add">Add Entry.</string>
-    <string name="tv_msg_entry_upd">Update Entry.</string>
+    <string name="tv_msg_entry_upd">Edit Entry.</string>
     <string name="tv_msg_entry_del">Delete Entry?</string>
+
+    <string name="tv_language_en" translatable="false">English</string>
+    <string name="tv_language_ru" translatable="false">Русский</string>
+    <string name="tv_desc_language_en" translatable="false">English (US)</string>
+    <string name="tv_desc_language_ru" translatable="false">Russian (RU)</string>
+
+    <string name="tv_frag_title_settings">Settings</string>
+    <string name="tv_frag_title_language">Language</string>
+    <string name="tv_frag_title_information">Information</string>
+
+    <string name="tv_set_lang">Language</string>
+    <string name="tv_desc_set_lang">set interface language</string>
+    <string name="tv_set_info">Information</string>
+    <string name="tv_set_info_desc">about this app</string>
 
     <string name="btn_text_no">No</string>
     <string name="btn_text_yes">Yes</string>
@@ -39,10 +53,18 @@
     <string name="iv_desc_inc_debt" translatable="false">Increase Debt Image</string>
     <string name="iv_desc_entry" translatable="false">Entry Default Image</string>
     <string name="iv_desc_entry_status" translatable="false">Entry Status Image</string>
+    <string name="iv_desc_settings" translatable="false">Setting Image</string>
+    <string name="iv_desc_setting_lang" translatable="false">Setting Language Image</string>
+    <string name="iv_desc_setting_info" translatable="false">Setting Info Image</string>
+    <string name="iv_desc_language_en" translatable="false">Setting Info Image</string>
+    <string name="iv_desc_language_ru" translatable="false">Setting Info Image</string>
 
     <string name="hnt_person_name">Name</string>
     <string name="hnt_entry_amount">Amount</string>
     <string name="hnt_entry_comment">Comment</string>
 
-    <string name="value">₽</string>
+    <string name="lang_rus" translatable="false">Русский</string>
+    <string name="lang_eng" translatable="false">English</string>
+
+    <string name="value" translatable="false">₽</string>
 </resources>

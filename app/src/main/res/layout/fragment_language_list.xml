@@ -1,0 +1,78 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/fragment_language_list_rl_en"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/fragment_language_list_iv_language_en"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:contentDescription="@string/iv_desc_language_en"
+            android:src="@drawable/ic_us_flag" />
+
+        <TextView
+            android:id="@+id/fragment_language_list_tv_language_en"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/fragment_language_list_iv_language_en"
+            android:text="@string/tv_language_en"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/fragment_language_list_tv_desc_language_en"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/fragment_language_list_iv_language_en"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/fragment_language_list_iv_language_en"
+            android:text="@string/tv_desc_language_en"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/fragment_language_list_rl_ru"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/fragment_language_list_iv_language_ru"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:contentDescription="@string/iv_desc_language_ru"
+            android:src="@drawable/ic_ru_flag" />
+
+        <TextView
+            android:id="@+id/fragment_language_list_tv_language_ru"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/fragment_language_list_iv_language_ru"
+            android:text="@string/tv_language_ru"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/fragment_language_list_tv_desc_language_ru"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/fragment_language_list_iv_language_ru"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/fragment_language_list_iv_language_ru"
+            android:text="@string/tv_desc_language_ru"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+</LinearLayout>

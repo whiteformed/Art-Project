@@ -89,6 +89,7 @@ public class ActivityEntryListView extends AppCompatActivity implements OnEntryI
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+
         setResult(RESULT_OK);
         finish();
     }
@@ -97,6 +98,8 @@ public class ActivityEntryListView extends AppCompatActivity implements OnEntryI
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_entry_list_view);
+
+        LocaleHelper.setLocale(this);
 
         dialogHelper = new DialogHelper(this);
         dialogHelper.setOnEntryArrayListUpdateListener(this);

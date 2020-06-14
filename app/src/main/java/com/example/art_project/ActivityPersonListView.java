@@ -1,5 +1,6 @@
 package com.example.art_project;
 
+import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -28,7 +29,7 @@ public class ActivityPersonListView extends AppCompatActivity implements OnPerso
     ViewPagerAdapter viewPagerAdapter;
 
     TextView tv_total_amount;
-    ImageView iv_info;
+    ImageView iv_setting;
 
     FloatingActionButton fab;
 
@@ -59,6 +60,8 @@ public class ActivityPersonListView extends AppCompatActivity implements OnPerso
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_person_list_view);
+
+        LocaleHelper.setLocale(this);
 
         sqlDatabaseHelper = new SqlDatabaseHelper(this);
 
@@ -106,24 +109,24 @@ public class ActivityPersonListView extends AppCompatActivity implements OnPerso
             @Override
             public void onClick(View v) {
                 boolean defaultSwitchState = tabLayout.getSelectedTabPosition() != 0;
-                dialogHelper.createAddPersonDialog((defaultSwitchState));
+                dialogHelper.createAddPersonDialog(defaultSwitchState);
             }
         };
 
         fab.setOnClickListener(onClickListener);
 
-        iv_info = findViewById(R.id.activity_person_list_iv_info);
+        iv_setting = findViewById(R.id.activity_person_list_iv_settings);
 
-        View.OnClickListener onButtonInfoClickListener = new View.OnClickListener() {
+        View.OnClickListener onButtonSettingsClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), ActivityInfo.class);
+                Intent intent = new Intent(v.getContext(), ActivitySettings.class);
 
-                startActivity(intent);
+                startActivityForResult(intent, 1);
             }
         };
 
-        iv_info.setOnClickListener(onButtonInfoClickListener);
+        iv_setting.setOnClickListener(onButtonSettingsClickListener);
 
         tv_total_amount = findViewById(R.id.activity_person_list_tv_total_amount);
         setTotalAmount();
