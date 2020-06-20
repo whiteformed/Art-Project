@@ -45,10 +45,18 @@ public class DialogHelper {
         final EditText et_name = dialog.findViewById(R.id.dialog_person_add_et_name);
 
         final Switch sw = dialog.findViewById(R.id.dialog_person_add_sw);
-        sw.setChecked(personStatus);
 
         final TextView tv_i_owe = dialog.findViewById(R.id.dialog_person_add_tv_i_owe);
         final TextView tv_owe_me = dialog.findViewById(R.id.dialog_person_add_tv_owe_me);
+
+        sw.setChecked(personStatus);
+        if (sw.isChecked()) {
+            tv_i_owe.setTextColor(ContextCompat.getColor(context, R.color.colorInactiveText));
+            tv_owe_me.setTextColor(ContextCompat.getColor(context, R.color.colorActiveText));
+        } else {
+            tv_i_owe.setTextColor(ContextCompat.getColor(context, R.color.colorActiveText));
+            tv_owe_me.setTextColor(ContextCompat.getColor(context, R.color.colorInactiveText));
+        }
 
         Button btn_add = dialog.findViewById(R.id.dialog_person_add_btn_add);
 

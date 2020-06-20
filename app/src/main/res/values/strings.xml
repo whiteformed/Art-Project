@@ -56,8 +56,9 @@
     <string name="iv_desc_settings" translatable="false">Setting Image</string>
     <string name="iv_desc_setting_lang" translatable="false">Setting Language Image</string>
     <string name="iv_desc_setting_info" translatable="false">Setting Info Image</string>
-    <string name="iv_desc_language_en" translatable="false">Setting Info Image</string>
-    <string name="iv_desc_language_ru" translatable="false">Setting Info Image</string>
+    <string name="iv_desc_language_en" translatable="false">Language EN Image</string>
+    <string name="iv_desc_language_ru" translatable="false">Language RU Image</string>
+    <string name="iv_desc_language_selected" translatable="false">Language Selected Image</string>
 
     <string name="hnt_person_name">Name</string>
     <string name="hnt_entry_amount">Amount</string>

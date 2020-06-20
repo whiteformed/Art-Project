@@ -1,4 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -25,7 +26,8 @@
             android:layout_toEndOf="@id/fragment_language_list_iv_language_en"
             android:text="@string/tv_language_en"
             android:textColor="@color/colorPrimary"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            tools:ignore="RelativeOverlap" />
 
         <TextView
             android:id="@+id/fragment_language_list_tv_desc_language_en"
@@ -35,7 +37,17 @@
             android:layout_marginStart="10dp"
             android:layout_toEndOf="@id/fragment_language_list_iv_language_en"
             android:text="@string/tv_desc_language_en"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            tools:ignore="RelativeOverlap" />
+
+        <ImageView
+            android:id="@+id/fragment_language_list_iv_language_en_selected"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:contentDescription="@string/iv_desc_language_selected"
+            android:src="@drawable/ic_selected" />
 
     </RelativeLayout>
 
@@ -61,7 +73,8 @@
             android:layout_toEndOf="@id/fragment_language_list_iv_language_ru"
             android:text="@string/tv_language_ru"
             android:textColor="@color/colorPrimary"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            tools:ignore="RelativeOverlap" />
 
         <TextView
             android:id="@+id/fragment_language_list_tv_desc_language_ru"
@@ -71,7 +84,17 @@
             android:layout_marginStart="10dp"
             android:layout_toEndOf="@id/fragment_language_list_iv_language_ru"
             android:text="@string/tv_desc_language_ru"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            tools:ignore="RelativeOverlap" />
+
+        <ImageView
+            android:id="@+id/fragment_language_list_iv_language_ru_selected"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:contentDescription="@string/iv_desc_language_selected"
+            android:src="@drawable/ic_selected" />
 
     </RelativeLayout>
 

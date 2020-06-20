@@ -16,10 +16,7 @@ public class LocaleHelper {
 
     public static void setLocale(Activity context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE);
-        String langCode = sharedPreferences.getString(PREF_KEY, "");
-        if (langCode.equals("")) {
-            langCode = context.getString(R.string.pref_locale_en);
-        }
+        String langCode = sharedPreferences.getString(PREF_KEY, context.getString(R.string.pref_locale_en));
 
         Locale locale = new Locale(langCode.toLowerCase());
         Locale.setDefault(locale);
@@ -30,12 +27,19 @@ public class LocaleHelper {
         Configuration configuration = resources.getConfiguration();
         configuration.setLocale(locale);
 
+        //noinspection deprecation
         resources.updateConfiguration(configuration, displayMetrics);
     }
 
     public static void setLocalePrefs(Activity context, String langCode) {
         @SuppressLint("CommitPrefEdits") SharedPreferences.Editor editor = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit();
-        editor.putString(PREF_KEY, langCode.toLowerCase());
+        editor.putString(PREF_KEY, langCode);
         editor.apply();
+    }
+
+    public static String getLocalePrefs(Activity context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE);
+
+        return sharedPreferences.getString(PREF_KEY, context.getString(R.string.pref_locale_en));
     }
 }
