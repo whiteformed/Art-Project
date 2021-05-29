@@ -16,7 +16,7 @@ public class PersonListAdapter extends RecyclerView.Adapter<PersonListAdapter.Re
     private Context context;
     private ArrayList<Person> personArrayList;
     private int status;
-    private OnPersonItemViewClickListener onPersonItemViewClickListener;
+
 
     PersonListAdapter(Context context, ArrayList<Person> personArrayList, int status, OnPersonItemViewClickListener onPersonItemViewClickListener) {
         this.context = context;
@@ -76,4 +76,6 @@ public class PersonListAdapter extends RecyclerView.Adapter<PersonListAdapter.Re
             iv_status = view.findViewById(R.id.item_view_person_iv_status);
         }
     }
+
+    private OnPersonItemViewClickListener onPersonItemViewClickListener;
 }

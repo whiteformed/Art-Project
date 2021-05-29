@@ -162,6 +162,8 @@ public class ActivityEntryListView extends AppCompatActivity implements OnEntryI
             rv.addItemDecoration(line);
 
             updateEntryArrayList();
+
+            rv.scrollToPosition(entryArrayList.size() - 1);
         }
     }
 
