@@ -1,19 +1,26 @@
 package com.example.art_project;
 
+import android.graphics.Canvas;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.ArrayList;
 import java.util.Objects;
+
+import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
 public class ActivityEntryListView extends AppCompatActivity implements OnEntryItemViewClickListener, OnEntryArrayListUpdateListener {
     TextView tv_name;
@@ -25,7 +32,7 @@ public class ActivityEntryListView extends AppCompatActivity implements OnEntryI
     ImageView iv_debt_dec;
     ImageView iv_debt_inc;
 
-    RecyclerView rv;
+    RecyclerView recyclerView;
     LinearLayoutManager linearLayoutManager;
     EntryListAdapter entryArrayListAdapter;
     ArrayList<Entry> entryArrayList;
@@ -35,6 +42,48 @@ public class ActivityEntryListView extends AppCompatActivity implements OnEntryI
     DialogHelper dialogHelper;
 
     Person person;
+
+    ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            return false;
+        }
+
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+            final int position = viewHolder.getAdapterPosition();
+
+            final Entry deletedEntry = new Entry(entryArrayList.get(position));
+
+            sqlDatabaseHelper.delEntry(entryArrayList.get(position).getID());
+            entryArrayList.remove(position);
+            entryArrayListAdapter.notifyItemRemoved(position);
+
+            Snackbar.make(recyclerView, "Item Removed.", Snackbar.LENGTH_LONG).setAction("Undo", new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    sqlDatabaseHelper.addEntry(deletedEntry);
+                    entryArrayList.add(position, deletedEntry);
+                    entryArrayListAdapter.notifyItemInserted(position);
+                }
+
+            }).show();
+        }
+
+        @Override
+        public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+            super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+
+            new RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
+                    .addSwipeLeftActionIcon(R.drawable.ic_delete)
+                    .addSwipeLeftBackgroundColor(R.color.colorRed)
+                    .addSwipeLeftLabel("Delete")
+                    .create()
+                    .decorate();
+
+            super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+        }
+    };
 
     @Override
     public void onEntryItemViewClick(Entry entry) {
@@ -47,6 +96,8 @@ public class ActivityEntryListView extends AppCompatActivity implements OnEntryI
         Informant.makeLogEntry(0, result);
 
         updateEntryArrayList();
+
+        recyclerView.scrollToPosition(entryArrayList.size() - 1);
     }
 
     @Override
@@ -110,7 +161,7 @@ public class ActivityEntryListView extends AppCompatActivity implements OnEntryI
         tv_msg_empty_list = findViewById(R.id.activity_entry_list_tv_msg_empty_list);
 
         if (person.getID() != 0) {
-            rv = findViewById(R.id.activity_entry_list_rv);
+            recyclerView = findViewById(R.id.activity_entry_list_rv);
 
             tv_name = findViewById(R.id.activity_entry_list_tv_name);
             tv_total_amount = findViewById(R.id.activity_entry_list_tv_total_amount);
@@ -154,16 +205,19 @@ public class ActivityEntryListView extends AppCompatActivity implements OnEntryI
             entryArrayListAdapter = new EntryListAdapter(this, entryArrayList);
             entryArrayListAdapter.setOnEntryItemViewClickListener(this);
 
-            rv.setLayoutManager(linearLayoutManager);
-            rv.setAdapter(entryArrayListAdapter);
+            recyclerView.setLayoutManager(linearLayoutManager);
+            recyclerView.setAdapter(entryArrayListAdapter);
 
             DividerItemDecoration line = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
             line.setDrawable(Objects.requireNonNull(ContextCompat.getDrawable(this, R.drawable.sp_line)));
-            rv.addItemDecoration(line);
+            recyclerView.addItemDecoration(line);
 
             updateEntryArrayList();
 
-            rv.scrollToPosition(entryArrayList.size() - 1);
+            recyclerView.scrollToPosition(entryArrayList.size() - 1);
+
+            ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
+            itemTouchHelper.attachToRecyclerView(recyclerView);
         }
     }
 

@@ -1,7 +1,7 @@
 package com.example.art_project;
 
 public class Entry {
-    private int ID;             // Entry ID
+    private int ID = -1;        // Entry ID
     private int Status;         // 0 - Dec, 1 - Inc
     private int Person_ID;      // Person
     private int Amount;         // Amount of Money

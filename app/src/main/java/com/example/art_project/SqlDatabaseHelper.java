@@ -117,29 +117,59 @@ public class SqlDatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    public Entry getEntry(int personID, int entryID) {
+        Entry entry = null;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        sqlCommand = "select * from " + table_entries +
+                " where " + table_entries_column_person_id + " = '" + personID + "'" +
+                " and " + table_entries_column_id + " = " + entryID;
+        Cursor cursor = db.rawQuery(sqlCommand, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                entry = new Entry(
+                        cursor.getInt(cursor.getColumnIndex(table_entries_column_id)),
+                        cursor.getInt(cursor.getColumnIndex(table_entries_column_status)),
+                        cursor.getInt(cursor.getColumnIndex(table_entries_column_person_id)),
+                        cursor.getInt(cursor.getColumnIndex(table_entries_column_amount)),
+                        cursor.getString(cursor.getColumnIndex(table_entries_column_comment)),
+                        cursor.getString(cursor.getColumnIndex(table_entries_column_date)));
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return entry;
+    }
+
     public boolean addEntry(Entry entry) {
         SQLiteDatabase db = this.getWritableDatabase();
 
-//        int newTotalAmount = entry.getStatus() == 0 ?
-//                getPersonTotalAmount(entry.getPersonID()) - entry.getAmount() :
-//                getPersonTotalAmount(entry.getPersonID()) + entry.getAmount();
-//
-//        if (newTotalAmount < 0) {
-//            db.close();
-//
-//            return false;
-//        }
-
         ContentValues contentValues = new ContentValues();
+
+        long entryID = -1;
+
+        if (entry.getID() != -1) {
+            contentValues.put(table_entries_column_id, entry.getID());
+        }
+
         contentValues.put(table_entries_column_status, entry.getStatus());
         contentValues.put(table_entries_column_person_id, entry.getPersonID());
         contentValues.put(table_entries_column_amount, entry.getAmount());
         contentValues.put(table_entries_column_comment, entry.getComment().trim());
         contentValues.put(table_entries_column_date, entry.getDate().trim());
 
-        long entryID = db.insert(table_entries, null, contentValues);
+        if (entry.getID() != -1) {
+            entryID = db.insert(table_entries, null, contentValues);
+        }
+        else {
+            entryID = db.insert(table_entries, null, contentValues);
+            entry.setID((int) entryID);
+        }
 
-        entry.setID((int) entryID);
 
         db.close();
 
@@ -148,16 +178,6 @@ public class SqlDatabaseHelper extends SQLiteOpenHelper {
 
     public boolean updEntry(Entry updEntry) {
         SQLiteDatabase db = this.getWritableDatabase();
-
-//        int newTotalAmount = updEntry.getStatus() == 0 ?
-//                getPersonTotalAmount(updEntry.getPersonID()) - updEntry.getAmount() :
-//                getPersonTotalAmount(updEntry.getPersonID()) + updEntry.getAmount();
-//
-//        if (newTotalAmount < 0) {
-//            db.close();
-//
-//            return false;
-//        }
 
         ContentValues contentValues = new ContentValues();
         contentValues.put(table_entries_column_amount, updEntry.getAmount());
