@@ -104,25 +104,19 @@ public class ActivityPersonListView extends AppCompatActivity implements OnPerso
         fab = findViewById(R.id.activity_person_list_fab);
 
         //onClick event handler for FAB
-        View.OnClickListener onClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                boolean defaultSwitchState = tabLayout.getSelectedTabPosition() != 0;
-                dialogHelper.createAddPersonDialog(defaultSwitchState);
-            }
+        View.OnClickListener onClickListener = v -> {
+            boolean defaultSwitchState = tabLayout.getSelectedTabPosition() != 0;
+            dialogHelper.createAddPersonDialog(defaultSwitchState);
         };
 
         fab.setOnClickListener(onClickListener);
 
         iv_setting = findViewById(R.id.activity_person_list_iv_settings);
 
-        View.OnClickListener onButtonSettingsClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), ActivitySettings.class);
+        View.OnClickListener onButtonSettingsClickListener = v -> {
+            Intent intent = new Intent(v.getContext(), ActivitySettings.class);
 
-                startActivityForResult(intent, 1);
-            }
+            startActivityForResult(intent, 1);
         };
 
         iv_setting.setOnClickListener(onButtonSettingsClickListener);

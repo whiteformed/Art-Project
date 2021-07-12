@@ -8,9 +8,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.Switch;
 import android.widget.TextView;
 
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.content.ContextCompat;
 
 import java.text.SimpleDateFormat;
@@ -44,13 +44,13 @@ public class DialogHelper {
 
         final EditText et_name = dialog.findViewById(R.id.dialog_person_add_et_name);
 
-        final Switch sw = dialog.findViewById(R.id.dialog_person_add_sw);
+        final SwitchCompat swc = dialog.findViewById(R.id.dialog_person_add_sw);
 
         final TextView tv_i_owe = dialog.findViewById(R.id.dialog_person_add_tv_i_owe);
         final TextView tv_owe_me = dialog.findViewById(R.id.dialog_person_add_tv_owe_me);
 
-        sw.setChecked(personStatus);
-        if (sw.isChecked()) {
+        swc.setChecked(personStatus);
+        if (swc.isChecked()) {
             tv_i_owe.setTextColor(ContextCompat.getColor(context, R.color.colorInactiveText));
             tv_owe_me.setTextColor(ContextCompat.getColor(context, R.color.colorActiveText));
         } else {
@@ -60,59 +60,43 @@ public class DialogHelper {
 
         Button btn_add = dialog.findViewById(R.id.dialog_person_add_btn_add);
 
-        View.OnClickListener onButtonAddClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int status = -1;
+        View.OnClickListener onButtonAddClickListener = v -> {
+            int status = -1;
 
-                if (sw.isChecked()) {
-                    status = 1;
-                } else if (!sw.isChecked()) {
-                    status = 0;
-                }
+            if (swc.isChecked()) {
+                status = 1;
+            } else if (!swc.isChecked()) {
+                status = 0;
+            }
 
-                if (Objects.requireNonNull(et_name.getText().toString().trim().equals(""))) {
-                    Informant.makeToast(context, "No empty fields allowed!");
-                } else {
-                    Person newPerson = new Person(status, et_name.getText().toString());
+            if (Objects.requireNonNull(et_name.getText().toString().trim().equals(""))) {
+                Informant.makeToast(context, "No empty fields allowed!");
+            } else {
+                Person newPerson = new Person(status, et_name.getText().toString());
 
-                    onPersonArrayListUpdateListener.onAddPerson(newPerson);
+                onPersonArrayListUpdateListener.onAddPerson(newPerson);
 
-                    dialog.cancel();
-                }
+                dialog.cancel();
             }
         };
 
-        final CompoundButton.OnCheckedChangeListener onCheckedChangeListener = new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                buttonView.setChecked(isChecked);
+        final CompoundButton.OnCheckedChangeListener onCheckedChangeListener = (buttonView, isChecked) -> {
+            buttonView.setChecked(isChecked);
 
-                if (isChecked) {
-                    tv_i_owe.setTextColor(ContextCompat.getColor(context, R.color.colorInactiveText));
-                    tv_owe_me.setTextColor(ContextCompat.getColor(context, R.color.colorActiveText));
-                } else {
-                    tv_i_owe.setTextColor(ContextCompat.getColor(context, R.color.colorActiveText));
-                    tv_owe_me.setTextColor(ContextCompat.getColor(context, R.color.colorInactiveText));
-                }
+            if (isChecked) {
+                tv_i_owe.setTextColor(ContextCompat.getColor(context, R.color.colorInactiveText));
+                tv_owe_me.setTextColor(ContextCompat.getColor(context, R.color.colorActiveText));
+            } else {
+                tv_i_owe.setTextColor(ContextCompat.getColor(context, R.color.colorActiveText));
+                tv_owe_me.setTextColor(ContextCompat.getColor(context, R.color.colorInactiveText));
             }
         };
 
-        View.OnClickListener onIOweClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onCheckedChangeListener.onCheckedChanged(sw, false);
-            }
-        };
+        View.OnClickListener onIOweClickListener = v -> onCheckedChangeListener.onCheckedChanged(swc, false);
 
-        View.OnClickListener onOweMeClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onCheckedChangeListener.onCheckedChanged(sw, true);
-            }
-        };
+        View.OnClickListener onOweMeClickListener = v -> onCheckedChangeListener.onCheckedChanged(swc, true);
 
-        sw.setOnCheckedChangeListener(onCheckedChangeListener);
+        swc.setOnCheckedChangeListener(onCheckedChangeListener);
 
         tv_i_owe.setOnClickListener(onIOweClickListener);
         tv_owe_me.setOnClickListener(onOweMeClickListener);
@@ -131,21 +115,13 @@ public class DialogHelper {
         Button btn_yes = dialog.findViewById(R.id.dialog_person_del_btn_yes);
         Button btn_no = dialog.findViewById(R.id.dialog_person_del_btn_no);
 
-        View.OnClickListener onButtonYesClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onEntryArrayListUpdateListener.onDelPerson(personID);
+        View.OnClickListener onButtonYesClickListener = v -> {
+            onEntryArrayListUpdateListener.onDelPerson(personID);
 
-                dialog.cancel();
-            }
+            dialog.cancel();
         };
 
-        View.OnClickListener onButtonNoClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.cancel();
-            }
-        };
+        View.OnClickListener onButtonNoClickListener = v -> dialog.cancel();
 
         btn_yes.setOnClickListener(onButtonYesClickListener);
         btn_no.setOnClickListener(onButtonNoClickListener);
@@ -164,22 +140,19 @@ public class DialogHelper {
 
         Button btn_add = dialog.findViewById(R.id.dialog_entry_add_btn_add);
 
-        View.OnClickListener onButtonAddClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (Objects.requireNonNull(et_amount.getText().toString().trim().equals("")) || Objects.requireNonNull(et_comment.getText().toString().trim().equals(""))) {
-                    Informant.makeToast(context, "No empty fields allowed!");
-                } else {
-                    int amount = Integer.parseInt(et_amount.getText().toString());
-                    String comment = et_comment.getText().toString();
-                    String currentDate = getCurrentDate();
+        View.OnClickListener onButtonAddClickListener = v -> {
+            if (Objects.requireNonNull(et_amount.getText().toString().trim().equals("")) || Objects.requireNonNull(et_comment.getText().toString().trim().equals(""))) {
+                Informant.makeToast(context, "No empty fields allowed!");
+            } else {
+                int amount = Integer.parseInt(et_amount.getText().toString());
+                String comment = et_comment.getText().toString();
+                String currentDate = getCurrentDate();
 
-                    Entry newEntry = new Entry(status, personID, amount, comment, currentDate);
+                Entry newEntry = new Entry(status, personID, amount, comment, currentDate);
 
-                    onEntryArrayListUpdateListener.onAddEntry(newEntry);
+                onEntryArrayListUpdateListener.onAddEntry(newEntry);
 
-                    dialog.cancel();
-                }
+                dialog.cancel();
             }
         };
 
@@ -203,31 +176,25 @@ public class DialogHelper {
         Button btn_del = dialog.findViewById(R.id.dialog_entry_upd_btn_del);
         Button btn_upd = dialog.findViewById(R.id.dialog_entry_upd_btn_upd);
 
-        View.OnClickListener onButtonDelClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                createDelEntryDialog(entry);
+        View.OnClickListener onButtonDelClickListener = v -> {
+            createDelEntryDialog(entry);
 
-                dialog.cancel();
-            }
+            dialog.cancel();
         };
 
-        View.OnClickListener onButtonUpdClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (Objects.requireNonNull(et_amount.getText().toString().trim().equals("")) || Objects.requireNonNull(et_comment.getText().toString().trim().equals(""))) {
-                    Informant.makeToast(context, "No empty fields allowed!");
-                } else {
-                    int amount = Integer.parseInt(et_amount.getText().toString());
-                    String comment = et_comment.getText().toString();
+        View.OnClickListener onButtonUpdClickListener = v -> {
+            if (Objects.requireNonNull(et_amount.getText().toString().trim().equals("")) || Objects.requireNonNull(et_comment.getText().toString().trim().equals(""))) {
+                Informant.makeToast(context, "No empty fields allowed!");
+            } else {
+                int amount = Integer.parseInt(et_amount.getText().toString());
+                String comment = et_comment.getText().toString();
 
-                    entry.setAmount(amount);
-                    entry.setComment(comment);
+                entry.setAmount(amount);
+                entry.setComment(comment);
 
-                    onEntryArrayListUpdateListener.onUpdEntry(entry);
+                onEntryArrayListUpdateListener.onUpdEntry(entry);
 
-                    dialog.cancel();
-                }
+                dialog.cancel();
             }
         };
 
@@ -246,21 +213,13 @@ public class DialogHelper {
         Button btn_yes = dialog.findViewById(R.id.dialog_entry_del_btn_yes);
         Button btn_no = dialog.findViewById(R.id.dialog_entry_del_btn_no);
 
-        View.OnClickListener onButtonYesClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onEntryArrayListUpdateListener.onDelEntry(entry.getID());
+        View.OnClickListener onButtonYesClickListener = v -> {
+            onEntryArrayListUpdateListener.onDelEntry(entry.getID());
 
-                dialog.cancel();
-            }
+            dialog.cancel();
         };
 
-        View.OnClickListener onButtonNoClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.cancel();
-            }
-        };
+        View.OnClickListener onButtonNoClickListener = v -> dialog.cancel();
 
         btn_yes.setOnClickListener(onButtonYesClickListener);
         btn_no.setOnClickListener(onButtonNoClickListener);

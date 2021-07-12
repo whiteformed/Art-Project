@@ -150,7 +150,7 @@ public class SqlDatabaseHelper extends SQLiteOpenHelper {
 
         ContentValues contentValues = new ContentValues();
 
-        long entryID = -1;
+        long entryID;
 
         if (entry.getID() != -1) {
             contentValues.put(table_entries_column_id, entry.getID());

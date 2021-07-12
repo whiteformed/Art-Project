@@ -11,8 +11,8 @@ import android.util.DisplayMetrics;
 import java.util.Locale;
 
 public class LocaleHelper {
-    private static String PREFS = "my_prefs";
-    private static String PREF_KEY = "lang_code";
+    private static final String PREFS = "my_prefs";
+    private static final String PREF_KEY = "lang_code";
 
     public static void setLocale(Activity context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE);

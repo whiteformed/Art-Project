@@ -13,9 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class PersonListAdapter extends RecyclerView.Adapter<PersonListAdapter.RecyclerViewHolder> {
-    private Context context;
-    private ArrayList<Person> personArrayList;
-    private int status;
+    private final Context context;
+    private final ArrayList<Person> personArrayList;
+    private final int status;
 
 
     PersonListAdapter(Context context, ArrayList<Person> personArrayList, int status, OnPersonItemViewClickListener onPersonItemViewClickListener) {

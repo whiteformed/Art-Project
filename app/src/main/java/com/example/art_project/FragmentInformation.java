@@ -20,12 +20,9 @@ public class FragmentInformation extends Fragment {
 
         tv_github = view.findViewById(R.id.fragment_info_tv_github);
 
-        View.OnClickListener onLinkClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/whiteformed/Debt-Manager"));
-                startActivity(intent);
-            }
+        View.OnClickListener onLinkClickListener = v -> {
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/whiteformed/Debt-Manager"));
+            startActivity(intent);
         };
 
         tv_github.setOnClickListener(onLinkClickListener);

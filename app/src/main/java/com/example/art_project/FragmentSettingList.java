@@ -8,8 +8,6 @@ import android.widget.RelativeLayout;
 
 import androidx.fragment.app.Fragment;
 
-import java.util.Objects;
-
 public class FragmentSettingList extends Fragment {
     View view;
 
@@ -23,19 +21,9 @@ public class FragmentSettingList extends Fragment {
         rl_lang = view.findViewById(R.id.fragment_setting_list_rl_lang);
         rl_info = view.findViewById(R.id.fragment_setting_list_rl_info);
 
-        View.OnClickListener itemLanguageClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((ActivitySettings) Objects.requireNonNull(getActivity())).setFragment(1);
-            }
-        };
+        View.OnClickListener itemLanguageClickListener = v -> ((ActivitySettings) requireActivity()).setFragment(1);
 
-        View.OnClickListener itemInfoClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((ActivitySettings) Objects.requireNonNull(getActivity())).setFragment(2);
-            }
-        };
+        View.OnClickListener itemInfoClickListener = v -> ((ActivitySettings) requireActivity()).setFragment(2);
 
         rl_lang.setOnClickListener(itemLanguageClickListener);
         rl_info.setOnClickListener(itemInfoClickListener);

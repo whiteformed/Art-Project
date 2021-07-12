@@ -13,8 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class EntryListAdapter extends RecyclerView.Adapter<EntryListAdapter.RecyclerViewHolder> {
-    private Context context;
-    private ArrayList<Entry> entryArrayList;
+    private final Context context;
+    private final ArrayList<Entry> entryArrayList;
     private OnEntryItemViewClickListener onEntryItemViewClickListener;
 
     EntryListAdapter(Context context, ArrayList<Entry> entryArrayList) {
@@ -48,12 +48,7 @@ public class EntryListAdapter extends RecyclerView.Adapter<EntryListAdapter.Recy
         holder.tv_comment.setText(entryArrayList.get(position).getComment());
         holder.tv_date.setText(entryArrayList.get(position).getDate());
 
-        View.OnClickListener onClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onEntryItemViewClickListener.onEntryItemViewClick(entryArrayList.get(position));
-            }
-        };
+        View.OnClickListener onClickListener = v -> onEntryItemViewClickListener.onEntryItemViewClick(entryArrayList.get(position));
 
         holder.itemView.setOnClickListener(onClickListener);
     }
