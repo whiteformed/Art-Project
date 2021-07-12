@@ -25,8 +25,15 @@
     <string name="tv_desc_set_lang">установить язык интерфейса</string>
     <string name="tv_set_info">Информация</string>
     <string name="tv_set_info_desc">о приложении</string>
-    <string name="tv_set">Настройки</string>
     <string name="tv_frag_title_settings">Настройки</string>
     <string name="tv_frag_title_language">Язык</string>
     <string name="tv_frag_title_information">Информация</string>
+    <string name="sb_item_removed" translatable="false">Запись Удалена.</string>
+    <string name="sb_undo">ОТМЕНА</string>
+    <string name="tv_app_name">Менеджер долгов</string>
+    <string name="tv_created">Создано</string>
+    <string name="tv_created_by">Овчинниковым Д. О.</string>
+    <string name="tv_created_in">в Android Studio IDE</string>
+    <string name="tv_vcs">Система Контроля Версий:</string>
+    <string name="tv_version">"версия: "</string>
 </resources>

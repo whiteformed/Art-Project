@@ -1,13 +1,14 @@
 <resources>
     <string name="app_name">Debt Manager</string>
 
-    <string name="tv_app_name" translatable="false">Debt Manager</string>
-    <string name="tv_app_version" translatable="false">version 1.0.0</string>
-    <string name="tv_created" translatable="false">Created</string>
-    <string name="tv_created_by" translatable="false">by Ovchinnikov D.O.</string>
-    <string name="tv_created_in" translatable="false">in Android Studio IDE</string>
-    <string name="tv_vcs" translatable="false">Version Control System:</string>
+    <string name="tv_app_name">Debt Manager</string>
+    <string name="tv_app_version" translatable="false">1.0.1</string>
+    <string name="tv_created">Created</string>
+    <string name="tv_created_by">by Ovchinnikov D.O.</string>
+    <string name="tv_created_in">in Android Studio IDE</string>
+    <string name="tv_vcs">Version Control System:</string>
     <string name="tv_github" translatable="false"><u>GitHub</u></string>
+    <string name="tv_version">version: </string>
 
     <string name="tv_i_owe">I Owe</string>
     <string name="tv_owe_me">Owe Me</string>
@@ -44,7 +45,7 @@
     <string name="btn_text_upd">Update</string>
     <string name="btn_text_add">Add</string>
 
-    <string name="iv_desc_app_name" translatable="false">App Name</string>
+    <string name="iv_desc_app_name" translatable="false">App Name Image</string>
     <string name="iv_desc_total_amount" translatable="false">Total Amount Image</string>
     <string name="iv_desc_info" translatable="false">Info Image</string>
     <string name="iv_desc_person_status" translatable="false">Person Status Image</string>
@@ -68,6 +69,9 @@
     <string name="lang_eng" translatable="false">English</string>
 
     <string name="value" translatable="false">₽</string>
+
+    <string name="sb_item_removed">Entry Removed.</string>
+    <string name="sb_undo">UNDO</string>
 
     <string name="pref_locale_en" translatable="false">EN</string>
     <string name="pref_locale_ru" translatable="false">RU</string>

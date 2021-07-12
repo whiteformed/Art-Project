@@ -12,9 +12,9 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".ActivityPersonListView"
+            android:name=".ActivityLaunch"
             android:configChanges="orientation|keyboardHidden|screenSize|locale"
-            android:screenOrientation="portrait">
+            android:screenOrientation="fullSensor">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,14 +25,19 @@
         </activity>
 
         <activity
+            android:name=".ActivityPersonListView"
+            android:configChanges="orientation|keyboardHidden|screenSize|locale"
+            android:screenOrientation="fullSensor"/>
+
+        <activity
             android:name=".ActivityEntryListView"
             android:configChanges="orientation|keyboardHidden|screenSize|locale"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="fullSensor" />
 
         <activity
             android:name=".ActivitySettings"
             android:configChanges="orientation|keyboardHidden|screenSize|locale"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="fullSensor" />
 
     </application>
 

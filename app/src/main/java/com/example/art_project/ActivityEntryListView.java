@@ -55,19 +55,15 @@ public class ActivityEntryListView extends AppCompatActivity implements OnEntryI
 
             final Entry deletedEntry = new Entry(entryArrayList.get(position));
 
-            sqlDatabaseHelper.delEntry(entryArrayList.get(position).getID());
-            entryArrayList.remove(position);
-            entryArrayListAdapter.notifyItemRemoved(position);
+            sqlDatabaseHelper.delEntry(deletedEntry.getID());
+            updateEntryArrayList();
 
-            Snackbar.make(recyclerView, "Item Removed.", Snackbar.LENGTH_LONG).setAction("Undo", new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    sqlDatabaseHelper.addEntry(deletedEntry);
-                    entryArrayList.add(position, deletedEntry);
-                    entryArrayListAdapter.notifyItemInserted(position);
-                }
-
-            }).show();
+            Snackbar.make(recyclerView, R.string.sb_item_removed, Snackbar.LENGTH_LONG)
+                    .setActionTextColor(getResources().getColor(R.color.colorBlue))
+                    .setAction(R.string.sb_undo, v -> {
+                        sqlDatabaseHelper.addEntry(deletedEntry);
+                        updateEntryArrayList();
+                    }).show();
         }
 
         @Override
@@ -76,8 +72,9 @@ public class ActivityEntryListView extends AppCompatActivity implements OnEntryI
 
             new RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
                     .addSwipeLeftActionIcon(R.drawable.ic_delete)
-                    .addSwipeLeftBackgroundColor(R.color.colorRed)
-                    .addSwipeLeftLabel("Delete")
+                    .addSwipeLeftBackgroundColor(R.color.colorBlack)
+                    .addSwipeLeftLabel("REMOVE")
+                    .setSwipeLeftLabelColor(R.color.colorWhite)
                     .create()
                     .decorate();
 
