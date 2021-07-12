@@ -48,6 +48,16 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Amount" />
 
+        <ImageView
+            android:id="@+id/item_view_person_iv_drag_handler"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/iv_desc_drag_handler"
+            android:src="@drawable/ic_drag_handle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

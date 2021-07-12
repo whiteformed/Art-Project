@@ -49,7 +49,8 @@
     <string name="iv_desc_total_amount" translatable="false">Total Amount Image</string>
     <string name="iv_desc_info" translatable="false">Info Image</string>
     <string name="iv_desc_person_status" translatable="false">Person Status Image</string>
-    <string name="iv_desc_person_delete" translatable="false">Basket Image</string>
+    <string name="iv_desc_person_delete" translatable="false">Delete Image</string>
+    <string name="iv_desc_person_edit" translatable="false">Edit Image</string>
     <string name="iv_desc_dec_debt" translatable="false">Decease Debt Image</string>
     <string name="iv_desc_inc_debt" translatable="false">Increase Debt Image</string>
     <string name="iv_desc_entry" translatable="false">Entry Default Image</string>
@@ -60,6 +61,7 @@
     <string name="iv_desc_language_en" translatable="false">Language EN Image</string>
     <string name="iv_desc_language_ru" translatable="false">Language RU Image</string>
     <string name="iv_desc_language_selected" translatable="false">Language Selected Image</string>
+    <string name="iv_desc_drag_handler" translatable="false">Drag Handler Image</string>
 
     <string name="fab_desc_add_person" translatable="false">desc_fab</string>
 

@@ -47,7 +47,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerInParent="true"
             android:contentDescription="@string/iv_desc_language_selected"
-            android:src="@drawable/ic_selected" />
+            android:src="@drawable/ic_check" />
 
     </RelativeLayout>
 
@@ -94,7 +94,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerInParent="true"
             android:contentDescription="@string/iv_desc_language_selected"
-            android:src="@drawable/ic_selected" />
+            android:src="@drawable/ic_check" />
 
     </RelativeLayout>
 

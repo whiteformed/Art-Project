@@ -28,72 +28,101 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Name" />
 
-        <ImageView
-            android:id="@+id/activity_entry_list_iv_person_del"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="10dp"
-            android:layout_toEndOf="@id/activity_entry_list_tv_name"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:clickable="true"
-            android:contentDescription="@string/iv_desc_person_delete"
-            android:src="@drawable/ic_delete"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            android:id="@+id/activity_entry_list_ll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toEndOf="@id/activity_entry_list_tv_name"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/activity_entry_list_iv_person_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:contentDescription="@string/iv_desc_person_delete"
+                android:src="@drawable/ic_edit" />
+
+            <ImageView
+                android:id="@+id/activity_entry_list_iv_person_del"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:contentDescription="@string/iv_desc_person_edit"
+                android:src="@drawable/ic_delete" />
+
+        </LinearLayout>
+
 
         <TextView
             android:id="@+id/activity_entry_list_tv_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textAllCaps="true"
             android:layout_marginTop="20dp"
+            android:textAllCaps="true"
             android:textColor="@color/colorAccent"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/activity_entry_list_tv_name"
+            app:layout_constraintTop_toBottomOf="@id/activity_entry_list_ll"
             tools:text="Status" />
 
-        <TextView
-            android:id="@+id/activity_entry_list_tv_total_amount"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textColor="@color/colorAccent"
-            android:textSize="32sp"
-            android:textStyle="bold"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/activity_entry_list_tv_status"
-            tools:text="Amount" />
+            app:layout_constraintTop_toBottomOf="@id/activity_entry_list_tv_status">
 
-        <ImageView
-            android:id="@+id/activity_entry_list_iv_debt_dec"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:layout_marginStart="70dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:clickable="true"
-            android:contentDescription="@string/iv_desc_dec_debt"
-            android:src="@drawable/ic_remove"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/activity_entry_list_tv_total_amount" />
+            <ImageView
+                android:id="@+id/activity_entry_list_iv_debt_dec"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="8dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:contentDescription="@string/iv_desc_dec_debt"
+                android:src="@drawable/ic_entry_remove"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activity_entry_list_tv_total_amount" />
 
-        <ImageView
-            android:id="@+id/activity_entry_list_iv_debt_inc"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:layout_marginEnd="70dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:clickable="true"
-            android:contentDescription="@string/iv_desc_inc_debt"
-            android:src="@drawable/ic_add"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/activity_entry_list_tv_total_amount" />
+            <TextView
+                android:id="@+id/activity_entry_list_tv_total_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/colorAccent"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/activity_entry_list_iv_debt_inc"
+                app:layout_constraintStart_toEndOf="@id/activity_entry_list_iv_debt_dec"
+                tools:text="Amount" />
+
+            <ImageView
+                android:id="@+id/activity_entry_list_iv_debt_inc"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="8dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:contentDescription="@string/iv_desc_inc_debt"
+                android:src="@drawable/ic_entry_add"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activity_entry_list_tv_total_amount" />
+
+        </LinearLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
