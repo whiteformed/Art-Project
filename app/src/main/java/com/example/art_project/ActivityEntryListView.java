@@ -59,7 +59,7 @@ public class ActivityEntryListView extends AppCompatActivity implements OnEntryI
             updateEntryArrayList();
 
             Snackbar.make(recyclerView, R.string.sb_item_removed, Snackbar.LENGTH_LONG)
-                    .setActionTextColor(getResources().getColor(R.color.colorBlue))
+                    .setActionTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorBlue))
                     .setAction(R.string.sb_undo, v -> {
                         sqlDatabaseHelper.addEntry(deletedEntry);
                         updateEntryArrayList();
@@ -168,26 +168,11 @@ public class ActivityEntryListView extends AppCompatActivity implements OnEntryI
             iv_debt_dec = findViewById(R.id.activity_entry_list_iv_debt_dec);
             iv_debt_inc = findViewById(R.id.activity_entry_list_iv_debt_inc);
 
-            View.OnClickListener onButtonPersonDelClickListener = new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    dialogHelper.createDelPersonDialog(person.getID());
-                }
-            };
+            View.OnClickListener onButtonPersonDelClickListener = v -> dialogHelper.createDelPersonDialog(person.getID());
 
-            View.OnClickListener onButtonDebtDecClickListener = new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    dialogHelper.createAddEntryDialog(person.getID(), 0);
-                }
-            };
+            View.OnClickListener onButtonDebtDecClickListener = v -> dialogHelper.createAddEntryDialog(person.getID(), 0);
 
-            View.OnClickListener onButtonDebtIncClickListener = new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    dialogHelper.createAddEntryDialog(person.getID(), 1);
-                }
-            };
+            View.OnClickListener onButtonDebtIncClickListener = v -> dialogHelper.createAddEntryDialog(person.getID(), 1);
 
             tv_name.setText(person.getName());
             getTotalAmount();
