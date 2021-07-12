@@ -1,5 +1,6 @@
 package com.example.art_project;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,11 +34,15 @@ public class FragmentLanguageList extends Fragment {
         View.OnClickListener itemEnClickListener = v -> {
             LocaleHelper.setLocalePrefs(requireActivity(), getString(R.string.pref_locale_en));
             selectLanguage();
+            Intent intent = new Intent(getContext(), ActivityPersonListView.class);
+            startActivity(intent);
         };
 
         View.OnClickListener itemRuClickListener = v -> {
             LocaleHelper.setLocalePrefs(requireActivity(), getString(R.string.pref_locale_ru));
             selectLanguage();
+            Intent intent = new Intent(getContext(), ActivityPersonListView.class);
+            startActivity(intent);
         };
 
         rl_en.setOnClickListener(itemEnClickListener);
