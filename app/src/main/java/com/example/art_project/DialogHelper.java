@@ -8,9 +8,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 
-import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.content.ContextCompat;
 
 import java.text.SimpleDateFormat;
@@ -44,13 +44,14 @@ public class DialogHelper {
 
         final EditText et_name = dialog.findViewById(R.id.dialog_person_add_et_name);
 
-        final SwitchCompat swc = dialog.findViewById(R.id.dialog_person_add_sw);
+        @SuppressLint("UseSwitchCompatOrMaterialCode")
+        final Switch sw = dialog.findViewById(R.id.dialog_person_add_sw);
 
         final TextView tv_i_owe = dialog.findViewById(R.id.dialog_person_add_tv_i_owe);
         final TextView tv_owe_me = dialog.findViewById(R.id.dialog_person_add_tv_owe_me);
 
-        swc.setChecked(personStatus);
-        if (swc.isChecked()) {
+        sw.setChecked(personStatus);
+        if (sw.isChecked()) {
             tv_i_owe.setTextColor(ContextCompat.getColor(context, R.color.colorInactiveText));
             tv_owe_me.setTextColor(ContextCompat.getColor(context, R.color.colorActiveText));
         } else {
@@ -63,9 +64,9 @@ public class DialogHelper {
         View.OnClickListener onButtonAddClickListener = v -> {
             int status = -1;
 
-            if (swc.isChecked()) {
+            if (sw.isChecked()) {
                 status = 1;
-            } else if (!swc.isChecked()) {
+            } else if (!sw.isChecked()) {
                 status = 0;
             }
 
@@ -92,11 +93,11 @@ public class DialogHelper {
             }
         };
 
-        View.OnClickListener onIOweClickListener = v -> onCheckedChangeListener.onCheckedChanged(swc, false);
+        View.OnClickListener onIOweClickListener = v -> onCheckedChangeListener.onCheckedChanged(sw, false);
 
-        View.OnClickListener onOweMeClickListener = v -> onCheckedChangeListener.onCheckedChanged(swc, true);
+        View.OnClickListener onOweMeClickListener = v -> onCheckedChangeListener.onCheckedChanged(sw, true);
 
-        swc.setOnCheckedChangeListener(onCheckedChangeListener);
+        sw.setOnCheckedChangeListener(onCheckedChangeListener);
 
         tv_i_owe.setOnClickListener(onIOweClickListener);
         tv_owe_me.setOnClickListener(onOweMeClickListener);
