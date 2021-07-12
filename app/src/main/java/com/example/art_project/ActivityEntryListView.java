@@ -71,8 +71,8 @@ public class ActivityEntryListView extends AppCompatActivity implements OnEntryI
             super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
 
             new RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
+                    .addSwipeLeftBackgroundColor(R.color.colorRed)
                     .addSwipeLeftActionIcon(R.drawable.ic_delete)
-                    .addSwipeLeftBackgroundColor(R.color.colorBlack)
                     .addSwipeLeftLabel("REMOVE")
                     .setSwipeLeftLabelColor(R.color.colorWhite)
                     .create()

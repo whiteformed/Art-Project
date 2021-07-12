@@ -17,6 +17,16 @@
             android:background="@color/colorPrimary"
             android:padding="10dp">
 
+            <ImageView
+                android:id="@+id/iv_total_amount"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:contentDescription="@string/iv_desc_total_amount"
+                android:src="@drawable/ic_total_amount"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/activity_person_list_tv_total_amount"
                 android:layout_width="wrap_content"
@@ -26,7 +36,7 @@
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@id/iv_total_amount"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Total Amount" />
 
@@ -68,6 +78,7 @@
         android:layout_marginBottom="40dp"
         android:background="@color/colorPrimary"
         android:backgroundTint="@color/colorPrimary"
+        android:contentDescription="@string/fab_desc_add_person"
         android:elevation="8dp"
         android:scaleType="fitXY"
         android:src="@drawable/ic_fab"

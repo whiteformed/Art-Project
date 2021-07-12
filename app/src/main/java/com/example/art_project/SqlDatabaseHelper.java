@@ -164,8 +164,7 @@ public class SqlDatabaseHelper extends SQLiteOpenHelper {
 
         if (entry.getID() != -1) {
             entryID = db.insert(table_entries, null, contentValues);
-        }
-        else {
+        } else {
             entryID = db.insert(table_entries, null, contentValues);
             entry.setID((int) entryID);
         }
@@ -268,8 +267,7 @@ public class SqlDatabaseHelper extends SQLiteOpenHelper {
             do {
                 if (cursor.getInt(cursor.getColumnIndex(table_entries_column_status)) == 0) {
                     personTotalAmount -= cursor.getInt(cursor.getColumnIndex(table_entries_column_amount));
-                }
-                else if (cursor.getInt(cursor.getColumnIndex(table_entries_column_status)) == 1) {
+                } else if (cursor.getInt(cursor.getColumnIndex(table_entries_column_status)) == 1) {
                     personTotalAmount += cursor.getInt(cursor.getColumnIndex(table_entries_column_amount));
                 }
             } while (cursor.moveToNext());

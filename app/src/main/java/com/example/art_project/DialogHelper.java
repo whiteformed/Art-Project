@@ -44,8 +44,7 @@ public class DialogHelper {
 
         final EditText et_name = dialog.findViewById(R.id.dialog_person_add_et_name);
 
-        @SuppressLint("UseSwitchCompatOrMaterialCode")
-        final Switch sw = dialog.findViewById(R.id.dialog_person_add_sw);
+        @SuppressLint("UseSwitchCompatOrMaterialCode") final Switch sw = dialog.findViewById(R.id.dialog_person_add_sw);
 
         final TextView tv_i_owe = dialog.findViewById(R.id.dialog_person_add_tv_i_owe);
         final TextView tv_owe_me = dialog.findViewById(R.id.dialog_person_add_tv_owe_me);

@@ -55,8 +55,7 @@ public class FragmentLanguageList extends Fragment {
         if (LocaleHelper.getLocalePrefs(requireActivity()).equals(getString(R.string.pref_locale_en))) {
             iv_language_en_selected.setVisibility(View.VISIBLE);
             iv_language_ru_selected.setVisibility(View.INVISIBLE);
-        }
-        else if (LocaleHelper.getLocalePrefs(requireActivity()).equals(getString(R.string.pref_locale_ru))) {
+        } else if (LocaleHelper.getLocalePrefs(requireActivity()).equals(getString(R.string.pref_locale_ru))) {
             iv_language_en_selected.setVisibility(View.INVISIBLE);
             iv_language_ru_selected.setVisibility(View.VISIBLE);
         }

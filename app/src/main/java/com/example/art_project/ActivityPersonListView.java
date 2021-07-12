@@ -8,6 +8,8 @@ import com.google.android.material.tabs.TabLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -37,6 +39,7 @@ public class ActivityPersonListView extends AppCompatActivity implements OnPerso
         Intent intent = new Intent(this, ActivityEntryListView.class);
         intent.putExtra("id", personID);
 
+        //noinspection deprecation
         startActivityForResult(intent, 1);
     }
 
@@ -116,6 +119,7 @@ public class ActivityPersonListView extends AppCompatActivity implements OnPerso
         View.OnClickListener onButtonSettingsClickListener = v -> {
             Intent intent = new Intent(v.getContext(), ActivitySettings.class);
 
+            //noinspection deprecation
             startActivityForResult(intent, 1);
         };
 

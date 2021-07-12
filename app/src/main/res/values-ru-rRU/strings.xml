@@ -28,7 +28,6 @@
     <string name="tv_frag_title_settings">Настройки</string>
     <string name="tv_frag_title_language">Язык</string>
     <string name="tv_frag_title_information">Информация</string>
-    <string name="sb_item_removed" translatable="false">Запись Удалена.</string>
     <string name="sb_undo">ОТМЕНА</string>
     <string name="tv_app_name">Менеджер долгов</string>
     <string name="tv_created">Создано</string>
@@ -36,4 +35,5 @@
     <string name="tv_created_in">в Android Studio IDE</string>
     <string name="tv_vcs">Система Контроля Версий:</string>
     <string name="tv_version">"версия: "</string>
+    <string name="sb_item_removed">Запись Удалена.</string>
 </resources>

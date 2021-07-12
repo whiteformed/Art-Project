@@ -61,6 +61,8 @@
     <string name="iv_desc_language_ru" translatable="false">Language RU Image</string>
     <string name="iv_desc_language_selected" translatable="false">Language Selected Image</string>
 
+    <string name="fab_desc_add_person" translatable="false">desc_fab</string>
+
     <string name="hnt_person_name">Name</string>
     <string name="hnt_entry_amount">Amount</string>
     <string name="hnt_entry_comment">Comment</string>
