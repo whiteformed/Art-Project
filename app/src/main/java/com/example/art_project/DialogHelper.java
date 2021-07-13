@@ -21,30 +21,32 @@ import java.util.Objects;
 public class DialogHelper {
     Context context;
 
-    OnPersonArrayListUpdateListener onPersonArrayListUpdateListener;
-    OnEntryArrayListUpdateListener onEntryArrayListUpdateListener;
+    OnActivityPersonsUpdateListener onActivityPersonsUpdateListener;
+    OnActivityEntriesUpdateListener onActivityEntriesUpdateListener;
 
     DialogHelper(Context context) {
         this.context = context;
     }
 
-    public void setOnPersonArrayListUpdateListener(OnPersonArrayListUpdateListener onPersonArrayListUpdateListener) {
-        this.onPersonArrayListUpdateListener = onPersonArrayListUpdateListener;
+    public void setOnActivityPersonsUpdateListener(OnActivityPersonsUpdateListener onActivityPersonsUpdateListener) {
+        this.onActivityPersonsUpdateListener = onActivityPersonsUpdateListener;
     }
 
-    public void setOnEntryArrayListUpdateListener(OnEntryArrayListUpdateListener onEntryArrayListUpdateListener) {
-        this.onEntryArrayListUpdateListener = onEntryArrayListUpdateListener;
+    public void setOnActivityEntriesUpdateListener(OnActivityEntriesUpdateListener onActivityEntriesUpdateListener) {
+        this.onActivityEntriesUpdateListener = onActivityEntriesUpdateListener;
     }
 
     public void createAddPersonDialog(boolean personStatus) {
         final Dialog dialog = new Dialog(context);
         dialog.setContentView(R.layout.dialog_person_add);
         dialog.setCancelable(true);
-        Objects.requireNonNull(dialog.getWindow()).setLayout(context.getResources().getDisplayMetrics().widthPixels, ViewGroup.LayoutParams.WRAP_CONTENT);
+        Objects.requireNonNull(dialog.getWindow())
+                .setLayout(context.getResources().getDisplayMetrics().widthPixels, ViewGroup.LayoutParams.WRAP_CONTENT);
 
         final EditText et_name = dialog.findViewById(R.id.dialog_person_add_et_name);
 
-        @SuppressLint("UseSwitchCompatOrMaterialCode") final Switch sw = dialog.findViewById(R.id.dialog_person_add_sw);
+        @SuppressLint("UseSwitchCompatOrMaterialCode")
+        final Switch sw = dialog.findViewById(R.id.dialog_person_add_sw);
 
         final TextView tv_i_owe = dialog.findViewById(R.id.dialog_person_add_tv_i_owe);
         final TextView tv_owe_me = dialog.findViewById(R.id.dialog_person_add_tv_owe_me);
@@ -70,11 +72,11 @@ public class DialogHelper {
             }
 
             if (Objects.requireNonNull(et_name.getText().toString().trim().equals(""))) {
-                Informant.makeToast(context, "No empty fields allowed!");
+                Informant.makeToast(context, context.getResources().getString(R.string.toast_no_empty_fields_allowed));
             } else {
                 Person newPerson = new Person(status, et_name.getText().toString());
 
-                onPersonArrayListUpdateListener.onAddPerson(newPerson);
+                onActivityPersonsUpdateListener.onAddPerson(newPerson);
 
                 dialog.cancel();
             }
@@ -106,17 +108,50 @@ public class DialogHelper {
         dialog.show();
     }
 
+    public void createUpdPersonDialog(final Person person) {
+        final Dialog dialog = new Dialog(context);
+        dialog.setContentView(R.layout.dialog_person_upd);
+        dialog.setCancelable(true);
+        Objects.requireNonNull(dialog.getWindow())
+                .setLayout(context.getResources().getDisplayMetrics().widthPixels, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+        final EditText et_name = dialog.findViewById(R.id.dialog_person_upd_et_name);
+
+        et_name.setText(String.valueOf(person.getName()));
+
+        Button btn_upd = dialog.findViewById(R.id.dialog_person_upd_btn_upd);
+
+        View.OnClickListener onButtonUpdClickListener = v -> {
+            if (Objects.requireNonNull(et_name.getText().toString().trim().equals(""))) {
+                Informant.makeToast(context, context.getResources().getString(R.string.toast_no_empty_fields_allowed));
+            } else {
+                String name = et_name.getText().toString();
+
+                person.setName(name);
+
+                onActivityEntriesUpdateListener.onUpdPerson(person);
+
+                dialog.cancel();
+            }
+        };
+
+        btn_upd.setOnClickListener(onButtonUpdClickListener);
+
+        dialog.show();
+    }
+
     public void createDelPersonDialog(final int personID) {
         final Dialog dialog = new Dialog(context);
         dialog.setContentView(R.layout.dialog_person_del);
         dialog.setCancelable(true);
-        Objects.requireNonNull(dialog.getWindow()).setLayout(context.getResources().getDisplayMetrics().widthPixels, ViewGroup.LayoutParams.WRAP_CONTENT);
+        Objects.requireNonNull(dialog.getWindow())
+                .setLayout(context.getResources().getDisplayMetrics().widthPixels, ViewGroup.LayoutParams.WRAP_CONTENT);
 
         Button btn_yes = dialog.findViewById(R.id.dialog_person_del_btn_yes);
         Button btn_no = dialog.findViewById(R.id.dialog_person_del_btn_no);
 
         View.OnClickListener onButtonYesClickListener = v -> {
-            onEntryArrayListUpdateListener.onDelPerson(personID);
+            onActivityEntriesUpdateListener.onDelPerson(personID);
 
             dialog.cancel();
         };
@@ -133,7 +168,8 @@ public class DialogHelper {
         final Dialog dialog = new Dialog(context);
         dialog.setContentView(R.layout.dialog_entry_add);
         dialog.setCancelable(true);
-        Objects.requireNonNull(dialog.getWindow()).setLayout(context.getResources().getDisplayMetrics().widthPixels, ViewGroup.LayoutParams.WRAP_CONTENT);
+        Objects.requireNonNull(dialog.getWindow())
+                .setLayout(context.getResources().getDisplayMetrics().widthPixels, ViewGroup.LayoutParams.WRAP_CONTENT);
 
         final EditText et_amount = dialog.findViewById(R.id.dialog_entry_add_et_amount);
         final EditText et_comment = dialog.findViewById(R.id.dialog_entry_add_et_comment);
@@ -142,7 +178,7 @@ public class DialogHelper {
 
         View.OnClickListener onButtonAddClickListener = v -> {
             if (Objects.requireNonNull(et_amount.getText().toString().trim().equals("")) || Objects.requireNonNull(et_comment.getText().toString().trim().equals(""))) {
-                Informant.makeToast(context, "No empty fields allowed!");
+                Informant.makeToast(context, context.getResources().getString(R.string.toast_no_empty_fields_allowed));
             } else {
                 int amount = Integer.parseInt(et_amount.getText().toString());
                 String comment = et_comment.getText().toString();
@@ -150,7 +186,7 @@ public class DialogHelper {
 
                 Entry newEntry = new Entry(status, personID, amount, comment, currentDate);
 
-                onEntryArrayListUpdateListener.onAddEntry(newEntry);
+                onActivityEntriesUpdateListener.onAddEntry(newEntry);
 
                 dialog.cancel();
             }
@@ -165,7 +201,8 @@ public class DialogHelper {
         final Dialog dialog = new Dialog(context);
         dialog.setContentView(R.layout.dialog_entry_upd);
         dialog.setCancelable(true);
-        Objects.requireNonNull(dialog.getWindow()).setLayout(context.getResources().getDisplayMetrics().widthPixels, ViewGroup.LayoutParams.WRAP_CONTENT);
+        Objects.requireNonNull(dialog.getWindow())
+                .setLayout(context.getResources().getDisplayMetrics().widthPixels, ViewGroup.LayoutParams.WRAP_CONTENT);
 
         final EditText et_amount = dialog.findViewById(R.id.dialog_entry_upd_et_amount);
         final EditText et_comment = dialog.findViewById(R.id.dialog_entry_upd_et_comment);
@@ -184,7 +221,7 @@ public class DialogHelper {
 
         View.OnClickListener onButtonUpdClickListener = v -> {
             if (Objects.requireNonNull(et_amount.getText().toString().trim().equals("")) || Objects.requireNonNull(et_comment.getText().toString().trim().equals(""))) {
-                Informant.makeToast(context, "No empty fields allowed!");
+                Informant.makeToast(context, context.getResources().getString(R.string.toast_no_empty_fields_allowed));
             } else {
                 int amount = Integer.parseInt(et_amount.getText().toString());
                 String comment = et_comment.getText().toString();
@@ -192,7 +229,7 @@ public class DialogHelper {
                 entry.setAmount(amount);
                 entry.setComment(comment);
 
-                onEntryArrayListUpdateListener.onUpdEntry(entry);
+                onActivityEntriesUpdateListener.onUpdEntry(entry);
 
                 dialog.cancel();
             }
@@ -208,13 +245,14 @@ public class DialogHelper {
         final Dialog dialog = new Dialog(context);
         dialog.setContentView(R.layout.dialog_entry_del);
         dialog.setCancelable(true);
-        Objects.requireNonNull(dialog.getWindow()).setLayout(context.getResources().getDisplayMetrics().widthPixels, ViewGroup.LayoutParams.WRAP_CONTENT);
+        Objects.requireNonNull(dialog.getWindow())
+                .setLayout(context.getResources().getDisplayMetrics().widthPixels, ViewGroup.LayoutParams.WRAP_CONTENT);
 
         Button btn_yes = dialog.findViewById(R.id.dialog_entry_del_btn_yes);
         Button btn_no = dialog.findViewById(R.id.dialog_entry_del_btn_no);
 
         View.OnClickListener onButtonYesClickListener = v -> {
-            onEntryArrayListUpdateListener.onDelEntry(entry.getID());
+            onActivityEntriesUpdateListener.onDelEntry(entry.getID());
 
             dialog.cancel();
         };
@@ -230,7 +268,8 @@ public class DialogHelper {
     String getCurrentDate() {
         Date date = Calendar.getInstance().getTime();
 
-        @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDate = new SimpleDateFormat("dd/MM/yyyy");
+        @SuppressLint("SimpleDateFormat")
+        SimpleDateFormat simpleDate = new SimpleDateFormat("dd/MM/yyyy");
 
         return simpleDate.format(date);
     }

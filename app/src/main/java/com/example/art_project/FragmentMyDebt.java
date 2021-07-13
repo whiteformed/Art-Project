@@ -69,10 +69,10 @@ public class FragmentMyDebt extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(personArrayListAdapter);
 
-        updatePersonArrayList();
-
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
         itemTouchHelper.attachToRecyclerView(recyclerView);
+
+        updatePersonArrayList();
 
         return view;
     }

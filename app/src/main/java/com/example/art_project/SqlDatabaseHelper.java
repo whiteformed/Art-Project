@@ -88,7 +88,9 @@ public class SqlDatabaseHelper extends SQLiteOpenHelper {
 
         String whereClause = table_persons_column_id + " = '" + updPerson.getID() + "'";
 
-        int rowsAffected = db.update(table_entries, contentValues, whereClause, null);
+        int rowsAffected = db.update(table_persons, contentValues, whereClause, null);
+
+        db.close();
 
         return rowsAffected != 0;
     }
@@ -185,6 +187,8 @@ public class SqlDatabaseHelper extends SQLiteOpenHelper {
         String whereClause = table_entries_column_id + " = '" + updEntry.getID() + "'";
 
         int rowsAffected = db.update(table_entries, contentValues, whereClause, null);
+
+        db.close();
 
         return rowsAffected != 0;
     }

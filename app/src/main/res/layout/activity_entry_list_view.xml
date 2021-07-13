@@ -7,7 +7,7 @@
     android:layout_gravity="center"
     android:background="@color/colorPrimary"
     android:orientation="vertical"
-    tools:context=".ActivityEntryListView">
+    tools:context=".ActivityEntries">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/colorText"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -38,7 +38,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/activity_entry_list_iv_person_edit"
+                android:id="@+id/activity_entry_list_iv_person_upd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -67,7 +67,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:textAllCaps="true"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/colorText"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -99,8 +99,8 @@
                 android:id="@+id/activity_entry_list_tv_total_amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:textColor="@color/colorAccent"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/colorText"
                 android:textSize="32sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -134,7 +134,7 @@
             android:id="@+id/activity_entry_list_rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/colorLightGray">
+            android:background="@color/colorBackground">
 
         </androidx.recyclerview.widget.RecyclerView>
 

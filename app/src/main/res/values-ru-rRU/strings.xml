@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Менеджер долгов</string>
-    <string name="tv_i_owe">Я Должен</string>
-    <string name="tv_owes_me">Должен Мне</string>
-    <string name="tv_i_take">Я Беру</string>
-    <string name="tv_i_give">Я Даю</string>
+    <string name="tv_i_owe">Я должен</string>
+    <string name="tv_owes_me">Должен/должна мне</string>
+    <string name="tv_i_take">Я беру</string>
+    <string name="tv_i_give">Я даю</string>
     <string name="tv_msg_empty_list">Список пуст.</string>
     <string name="tv_msg_person_add">Добавить личность.</string>
     <string name="tv_msg_person_upd">Обновить личность?</string>
@@ -20,7 +20,7 @@
     <string name="hnt_entry_comment">Комментарий</string>
     <string name="hnt_entry_amount">Сумма</string>
     <string name="hnt_person_name">Имя</string>
-    <string name="tv_owe_me">Должны Мне</string>
+    <string name="tv_owe_me">Должны мне</string>
     <string name="tv_set_lang">Язык</string>
     <string name="tv_desc_set_lang">установить язык интерфейса</string>
     <string name="tv_set_info">Информация</string>
@@ -30,10 +30,12 @@
     <string name="tv_frag_title_information">Информация</string>
     <string name="sb_undo">ОТМЕНА</string>
     <string name="tv_app_name">Менеджер долгов</string>
-    <string name="tv_created">Создано</string>
+    <string name="tv_created">Создан</string>
     <string name="tv_created_by">Овчинниковым Д. О.</string>
     <string name="tv_created_in">в Android Studio IDE</string>
     <string name="tv_vcs">Система Контроля Версий:</string>
     <string name="tv_version">"версия: "</string>
     <string name="sb_item_removed">Запись Удалена.</string>
+    <string name="tv_msg_person_edit">Изменить личность.</string>
+    <string name="toast_no_empty_fields_allowed">Все поля должны быть заполнены!</string>
 </resources>

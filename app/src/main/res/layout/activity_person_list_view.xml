@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActivityPersonListView">
+    tools:context=".ActivityPersons">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -63,6 +63,7 @@
             app:tabTextColor="@color/colorAccent" />
 
         <androidx.viewpager.widget.ViewPager
+            android:background="@color/colorBackground"
             android:id="@+id/activity_person_list_vp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

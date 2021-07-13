@@ -17,7 +17,7 @@ public class ActivityLaunch extends AppCompatActivity {
         setContentView(R.layout.activity_launch);
 
         Runnable runnable = () -> {
-            Intent activityLogin = new Intent(context, ActivityPersonListView.class);
+            Intent activityLogin = new Intent(context, ActivityPersons.class);
             startActivity(activityLogin);
             finish();
         };

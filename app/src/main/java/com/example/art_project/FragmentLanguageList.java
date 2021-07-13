@@ -34,14 +34,18 @@ public class FragmentLanguageList extends Fragment {
         View.OnClickListener itemEnClickListener = v -> {
             LocaleHelper.setLocalePrefs(requireActivity(), getString(R.string.pref_locale_en));
             selectLanguage();
-            Intent intent = new Intent(getContext(), ActivityPersonListView.class);
+
+            Intent intent = new Intent(getContext(), ActivityPersons.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         };
 
         View.OnClickListener itemRuClickListener = v -> {
             LocaleHelper.setLocalePrefs(requireActivity(), getString(R.string.pref_locale_ru));
             selectLanguage();
-            Intent intent = new Intent(getContext(), ActivityPersonListView.class);
+
+            Intent intent = new Intent(getContext(), ActivityPersons.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         };
 

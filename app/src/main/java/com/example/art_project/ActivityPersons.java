@@ -8,8 +8,6 @@ import com.google.android.material.tabs.TabLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.ItemTouchHelper;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,7 +15,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class ActivityPersonListView extends AppCompatActivity implements OnPersonArrayListUpdateListener, OnPersonItemViewClickListener {
+public class ActivityPersons extends AppCompatActivity implements OnActivityPersonsUpdateListener, OnPersonItemViewClickListener {
     SqlDatabaseHelper sqlDatabaseHelper;
 
     DialogHelper dialogHelper;
@@ -36,7 +34,7 @@ public class ActivityPersonListView extends AppCompatActivity implements OnPerso
 
     @Override
     public void onPersonItemViewClick(int personID) {
-        Intent intent = new Intent(this, ActivityEntryListView.class);
+        Intent intent = new Intent(this, ActivityEntries.class);
         intent.putExtra("id", personID);
 
         //noinspection deprecation
@@ -49,6 +47,24 @@ public class ActivityPersonListView extends AppCompatActivity implements OnPerso
         Informant.makeLogEntry(0, result);
 
         updateFragments();
+    }
+
+    @Override
+    public void onUpdPerson(Person updPerson) {
+        boolean result = sqlDatabaseHelper.updPerson(updPerson);
+        Informant.makeLogEntry(1, result);
+
+        setResult(RESULT_OK);
+        finish();
+    }
+
+    @Override
+    public void onDelPerson(int personID) {
+        boolean result = sqlDatabaseHelper.delPerson(personID);
+        Informant.makeLogEntry(2, result);
+
+        setResult(RESULT_OK);
+        finish();
     }
 
     @Override
@@ -68,7 +84,7 @@ public class ActivityPersonListView extends AppCompatActivity implements OnPerso
         sqlDatabaseHelper = new SqlDatabaseHelper(this);
 
         dialogHelper = new DialogHelper(this);
-        dialogHelper.setOnPersonArrayListUpdateListener(this);
+        dialogHelper.setOnActivityPersonsUpdateListener(this);
 
         tabLayout = findViewById(R.id.activity_person_list_tl);
         viewPager = findViewById(R.id.activity_person_list_vp);

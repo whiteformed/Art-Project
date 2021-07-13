@@ -9,7 +9,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/LightAppTheme">
 
         <activity
             android:name=".ActivityLaunch"
@@ -25,12 +25,12 @@
         </activity>
 
         <activity
-            android:name=".ActivityPersonListView"
+            android:name=".ActivityPersons"
             android:configChanges="orientation|keyboardHidden|screenSize|locale"
             android:screenOrientation="fullSensor"/>
 
         <activity
-            android:name=".ActivityEntryListView"
+            android:name=".ActivityEntries"
             android:configChanges="orientation|keyboardHidden|screenSize|locale"
             android:screenOrientation="fullSensor" />
 

@@ -10,20 +10,21 @@
     <string name="tv_github" translatable="false"><u>GitHub</u></string>
     <string name="tv_version">version: </string>
 
-    <string name="tv_i_owe">I Owe</string>
-    <string name="tv_owe_me">Owe Me</string>
-    <string name="tv_owes_me">Owes Me</string>
+    <string name="tv_i_owe">I owe</string>
+    <string name="tv_owe_me">Owe me</string>
+    <string name="tv_owes_me">Owes me</string>
 
-    <string name="tv_i_take">I Take</string>
-    <string name="tv_i_give">I Give</string>
+    <string name="tv_i_take">I take</string>
+    <string name="tv_i_give">I give</string>
 
-    <string name="tv_msg_empty_list">List is Empty.</string>
-    <string name="tv_msg_person_add">Add Person.</string>
-    <string name="tv_msg_person_upd">Update Person?</string>
-    <string name="tv_msg_person_del">Delete Person?</string>
-    <string name="tv_msg_entry_add">Add Entry.</string>
-    <string name="tv_msg_entry_upd">Edit Entry.</string>
-    <string name="tv_msg_entry_del">Delete Entry?</string>
+    <string name="tv_msg_empty_list">List is empty.</string>
+    <string name="tv_msg_person_add">Add person.</string>
+    <string name="tv_msg_person_edit">Edit person.</string>
+    <string name="tv_msg_person_upd">Update person?</string>
+    <string name="tv_msg_person_del">Delete person?</string>
+    <string name="tv_msg_entry_add">Add entry.</string>
+    <string name="tv_msg_entry_upd">Edit entry.</string>
+    <string name="tv_msg_entry_del">Delete entry?</string>
 
     <string name="tv_language_en" translatable="false">English</string>
     <string name="tv_language_ru" translatable="false">Русский</string>
@@ -63,7 +64,7 @@
     <string name="iv_desc_language_selected" translatable="false">Language Selected Image</string>
     <string name="iv_desc_drag_handler" translatable="false">Drag Handler Image</string>
 
-    <string name="fab_desc_add_person" translatable="false">desc_fab</string>
+    <string name="fab_desc_add_person" translatable="false">FAB Image</string>
 
     <string name="hnt_person_name">Name</string>
     <string name="hnt_entry_amount">Amount</string>
@@ -79,4 +80,6 @@
 
     <string name="pref_locale_en" translatable="false">EN</string>
     <string name="pref_locale_ru" translatable="false">RU</string>
+
+    <string name="toast_no_empty_fields_allowed">No empty fields allowed!</string>
 </resources>

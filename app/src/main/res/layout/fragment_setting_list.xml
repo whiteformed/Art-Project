@@ -33,6 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@id/fragment_setting_list_iv_setting_language"
             android:layout_marginStart="10dp"
+            android:layout_marginBottom="4dp"
             android:layout_toEndOf="@id/fragment_setting_list_iv_setting_language"
             android:text="@string/tv_desc_set_lang"
             android:textSize="16sp" />
@@ -69,6 +70,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@id/fragment_setting_list_iv_setting_info"
             android:layout_marginStart="10dp"
+            android:layout_marginBottom="4dp"
             android:layout_toEndOf="@id/fragment_setting_list_iv_setting_info"
             android:text="@string/tv_set_info_desc"
             android:textSize="16sp" />

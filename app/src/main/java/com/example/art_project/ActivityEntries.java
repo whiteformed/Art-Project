@@ -22,12 +22,13 @@ import java.util.Objects;
 
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
-public class ActivityEntryListView extends AppCompatActivity implements OnEntryItemViewClickListener, OnEntryArrayListUpdateListener {
+public class ActivityEntries extends AppCompatActivity implements OnActivityEntriesUpdateListener, OnEntryItemViewClickListener {
     TextView tv_name;
     TextView tv_total_amount;
     TextView tv_status;
     TextView tv_msg_empty_list;
 
+    ImageView iv_person_upd;
     ImageView iv_person_del;
     ImageView iv_debt_dec;
     ImageView iv_debt_inc;
@@ -114,6 +115,14 @@ public class ActivityEntryListView extends AppCompatActivity implements OnEntryI
     }
 
     @Override
+    public void onUpdPerson(Person updPerson) {
+        boolean result = sqlDatabaseHelper.updPerson(updPerson);
+        Informant.makeLogEntry(1, result);
+
+        updateEntryArrayList();
+    }
+
+    @Override
     public void onDelPerson(int personID) {
         boolean result = sqlDatabaseHelper.delPerson(personID);
         Informant.makeLogEntry(2, result);
@@ -127,6 +136,7 @@ public class ActivityEntryListView extends AppCompatActivity implements OnEntryI
         entryArrayList.addAll(sqlDatabaseHelper.getEntryArrayList(person.getID()));
         entryArrayListAdapter.notifyDataSetChanged();
 
+        tv_name.setText(person.getName());
         String totalAmount = getTotalAmount();
         tv_total_amount.setText(totalAmount);
 
@@ -150,7 +160,7 @@ public class ActivityEntryListView extends AppCompatActivity implements OnEntryI
         LocaleHelper.setLocale(this);
 
         dialogHelper = new DialogHelper(this);
-        dialogHelper.setOnEntryArrayListUpdateListener(this);
+        dialogHelper.setOnActivityEntriesUpdateListener(this);
 
         sqlDatabaseHelper = new SqlDatabaseHelper(this);
         person = sqlDatabaseHelper.getPerson(getIntent().getIntExtra("id", 0));
@@ -164,9 +174,12 @@ public class ActivityEntryListView extends AppCompatActivity implements OnEntryI
             tv_total_amount = findViewById(R.id.activity_entry_list_tv_total_amount);
             tv_status = findViewById(R.id.activity_entry_list_tv_status);
 
+            iv_person_upd = findViewById(R.id.activity_entry_list_iv_person_upd);
             iv_person_del = findViewById(R.id.activity_entry_list_iv_person_del);
             iv_debt_dec = findViewById(R.id.activity_entry_list_iv_debt_dec);
             iv_debt_inc = findViewById(R.id.activity_entry_list_iv_debt_inc);
+
+            View.OnClickListener onButtonPersonUpdClickListener = v -> dialogHelper.createUpdPersonDialog(person);
 
             View.OnClickListener onButtonPersonDelClickListener = v -> dialogHelper.createDelPersonDialog(person.getID());
 
@@ -178,6 +191,7 @@ public class ActivityEntryListView extends AppCompatActivity implements OnEntryI
             getTotalAmount();
             tv_status.setText(person.getStatus() == 0 ? getString(R.string.tv_i_owe) : getString(R.string.tv_owes_me));
 
+            iv_person_upd.setOnClickListener(onButtonPersonUpdClickListener);
             iv_person_del.setOnClickListener(onButtonPersonDelClickListener);
             iv_debt_dec.setOnClickListener(onButtonDebtDecClickListener);
             iv_debt_inc.setOnClickListener(onButtonDebtIncClickListener);
