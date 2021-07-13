@@ -79,7 +79,8 @@ public class ActivityPersons extends AppCompatActivity implements OnActivityPers
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_person_list_view);
 
-        LocaleHelper.setLocale(this);
+        PrefsHelper.setLocale(this);
+        //PrefsHelper.setTheme(this);
 
         sqlDatabaseHelper = new SqlDatabaseHelper(this);
 

@@ -18,17 +18,6 @@
     <color name="colorInactiveButtonText">#2E2929</color>
 
 
-    // Dark Theme
-    <color name="colorPrimaryAlt">#404647</color>
-    <color name="colorPrimaryDarkAlt">#303333</color>
-    <color name="colorAccentAlt">#716D6D</color>
-
-    <color name="colorTextAlt">#636363</color>
-    <color name="colorItemAmountTextAlt">#636363</color>
-    <color name="colorInactiveTextAlt">#BEBEBE</color>
-    <color name="colorActiveTextAlt">@color/colorPrimary</color>
-
-
     // Default Colors
     <color name="colorBlack">#000000</color>
     <color name="colorGray">#DFDFDF</color>

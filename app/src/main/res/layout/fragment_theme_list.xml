@@ -5,43 +5,43 @@
     android:orientation="vertical">
 
     <RelativeLayout
-        android:id="@+id/fragment_language_list_rl_en"
+        android:id="@+id/fragment_themes_rl_light"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?android:attr/selectableItemBackground"
         android:padding="10dp">
 
         <ImageView
-            android:id="@+id/fragment_language_list_iv_language_en"
+            android:id="@+id/fragment_themes_iv_theme_light"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:contentDescription="@string/iv_desc_language_en"
-            android:src="@drawable/ic_us_flag" />
+            android:contentDescription="@string/iv_desc_theme_light"
+            android:src="@drawable/ic_light" />
 
         <TextView
-            android:id="@+id/fragment_language_list_tv_language_en"
+            android:id="@+id/fragment_themes_tv_theme_en"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_toEndOf="@id/fragment_language_list_iv_language_en"
-            android:text="@string/tv_language_en"
+            android:layout_toEndOf="@id/fragment_themes_iv_theme_light"
+            android:text="@string/tv_theme_light"
             android:textColor="@color/colorPrimary"
             android:textSize="24sp"
             tools:ignore="RelativeOverlap" />
 
         <TextView
-            android:id="@+id/fragment_language_list_tv_desc_language_en"
+            android:id="@+id/fragment_themes_tv_desc_theme_light"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/fragment_language_list_iv_language_en"
+            android:layout_alignBottom="@id/fragment_themes_iv_theme_light"
             android:layout_marginStart="10dp"
-            android:layout_toEndOf="@id/fragment_language_list_iv_language_en"
-            android:text="@string/tv_desc_language_en"
+            android:layout_toEndOf="@id/fragment_themes_iv_theme_light"
+            android:text="@string/tv_desc_theme_light"
             android:textSize="16sp"
             tools:ignore="RelativeOverlap" />
 
         <ImageView
-            android:id="@+id/fragment_language_list_iv_language_en_selected"
+            android:id="@+id/fragment_themes_iv_theme_light_selected"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_alignParentEnd="true"
@@ -52,43 +52,43 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/fragment_language_list_rl_ru"
+        android:id="@+id/fragment_themes_rl_dark"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?android:attr/selectableItemBackground"
         android:padding="10dp">
 
         <ImageView
-            android:id="@+id/fragment_language_list_iv_language_ru"
+            android:id="@+id/fragment_themes_iv_theme_dark"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:contentDescription="@string/iv_desc_language_ru"
-            android:src="@drawable/ic_ru_flag" />
+            android:contentDescription="@string/iv_desc_theme_dark"
+            android:src="@drawable/ic_dark" />
 
         <TextView
-            android:id="@+id/fragment_language_list_tv_language_ru"
+            android:id="@+id/fragment_themes_tv_theme_dark"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_toEndOf="@id/fragment_language_list_iv_language_ru"
-            android:text="@string/tv_language_ru"
+            android:layout_toEndOf="@id/fragment_themes_iv_theme_dark"
+            android:text="@string/tv_theme_dark"
             android:textColor="@color/colorPrimary"
             android:textSize="24sp"
             tools:ignore="RelativeOverlap" />
 
         <TextView
-            android:id="@+id/fragment_language_list_tv_desc_language_ru"
+            android:id="@+id/fragment_themes_tv_desc_theme_dark"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/fragment_language_list_iv_language_ru"
+            android:layout_alignBottom="@id/fragment_themes_iv_theme_dark"
             android:layout_marginStart="10dp"
-            android:layout_toEndOf="@id/fragment_language_list_iv_language_ru"
-            android:text="@string/tv_desc_language_ru"
+            android:layout_toEndOf="@id/fragment_themes_iv_theme_dark"
+            android:text="@string/tv_desc_theme_dark"
             android:textSize="16sp"
             tools:ignore="RelativeOverlap" />
 
         <ImageView
-            android:id="@+id/fragment_language_list_iv_language_ru_selected"
+            android:id="@+id/fragment_themes_iv_theme_dark_selected"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_alignParentEnd="true"

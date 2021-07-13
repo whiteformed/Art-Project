@@ -28,7 +28,7 @@
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/fragment_setting_list_tv_setting_desc"
+            android:id="@+id/fragment_setting_list_tv_setting_lang_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@id/fragment_setting_list_iv_setting_language"
@@ -36,6 +36,43 @@
             android:layout_marginBottom="4dp"
             android:layout_toEndOf="@id/fragment_setting_list_iv_setting_language"
             android:text="@string/tv_desc_set_lang"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/fragment_setting_list_rl_theme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/fragment_setting_list_iv_setting_theme"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:contentDescription="@string/iv_desc_setting_lang"
+            android:src="@drawable/ic_theme" />
+
+        <TextView
+            android:id="@+id/fragment_setting_list_tv_setting_theme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/fragment_setting_list_iv_setting_theme"
+            android:text="@string/tv_set_theme"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/fragment_setting_list_tv_setting_theme_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/fragment_setting_list_iv_setting_theme"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="4dp"
+            android:layout_toEndOf="@id/fragment_setting_list_iv_setting_theme"
+            android:text="@string/tv_set_theme_desc"
             android:textSize="16sp" />
 
     </RelativeLayout>
@@ -76,5 +113,4 @@
             android:textSize="16sp" />
 
     </RelativeLayout>
-
 </LinearLayout>

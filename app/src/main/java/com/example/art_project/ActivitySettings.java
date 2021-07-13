@@ -12,7 +12,11 @@ public class ActivitySettings extends AppCompatActivity {
     ArrayList<Fragment> fragmentArrayList;
 
     public void setFragment(int fragmentID) {
-        getSupportFragmentManager().beginTransaction().replace(R.id.activity_settings_fragment_frame, fragmentArrayList.get(fragmentID)).addToBackStack(null).commit();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.activity_settings_fragment_frame, fragmentArrayList.get(fragmentID))
+                .addToBackStack(null)
+                .commit();
     }
 
     @Override
@@ -30,12 +34,14 @@ public class ActivitySettings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        LocaleHelper.setLocale(this);
+        PrefsHelper.setLocale(this);
+        //PrefsHelper.setTheme(this);
 
         fragmentArrayList = new ArrayList<>();
 
         fragmentArrayList.add(new FragmentSettingList());
         fragmentArrayList.add(new FragmentLanguageList());
+        fragmentArrayList.add(new FragmentThemeList());
         fragmentArrayList.add(new FragmentInformation());
 
         setFragment(0);

@@ -49,11 +49,13 @@
             tools:text="Amount" />
 
         <ImageView
-            android:id="@+id/item_view_person_iv_drag_handler"
+            android:id="@+id/item_view_person_iv_options"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/iv_desc_drag_handler"
-            android:src="@drawable/ic_drag_handle"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:contentDescription="@string/iv_desc_person_item_options"
+            android:src="@drawable/ic_dots_vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

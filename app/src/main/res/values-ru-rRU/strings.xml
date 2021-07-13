@@ -22,9 +22,9 @@
     <string name="hnt_person_name">Имя</string>
     <string name="tv_owe_me">Должны мне</string>
     <string name="tv_set_lang">Язык</string>
-    <string name="tv_desc_set_lang">установить язык интерфейса</string>
+    <string name="tv_desc_set_lang">выбрать язык интерфейса</string>
     <string name="tv_set_info">Информация</string>
-    <string name="tv_set_info_desc">о приложении</string>
+    <string name="tv_set_info_desc">подробнее о приложении</string>
     <string name="tv_frag_title_settings">Настройки</string>
     <string name="tv_frag_title_language">Язык</string>
     <string name="tv_frag_title_information">Информация</string>
@@ -38,4 +38,10 @@
     <string name="sb_item_removed">Запись Удалена.</string>
     <string name="tv_msg_person_edit">Изменить личность.</string>
     <string name="toast_no_empty_fields_allowed">Все поля должны быть заполнены!</string>
+    <string name="tv_theme_light">Светлая тема</string>
+    <string name="tv_theme_dark">Тёмная тема</string>
+    <string name="tv_desc_theme_light">включить светлую тему</string>
+    <string name="tv_desc_theme_dark">включить тёмную тему</string>
+    <string name="tv_set_theme">Тема</string>
+    <string name="tv_set_theme_desc">выбрать тему приложения</string>
 </resources>

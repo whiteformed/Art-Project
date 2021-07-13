@@ -157,7 +157,8 @@ public class ActivityEntries extends AppCompatActivity implements OnActivityEntr
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_entry_list_view);
 
-        LocaleHelper.setLocale(this);
+        PrefsHelper.setLocale(this);
+        //PrefsHelper.setTheme(this);
 
         dialogHelper = new DialogHelper(this);
         dialogHelper.setOnActivityEntriesUpdateListener(this);

@@ -32,7 +32,7 @@ public class FragmentLanguageList extends Fragment {
         selectLanguage();
 
         View.OnClickListener itemEnClickListener = v -> {
-            LocaleHelper.setLocalePrefs(requireActivity(), getString(R.string.pref_locale_en));
+            PrefsHelper.setLocalePrefs(requireActivity(), getString(R.string.pref_locale_en));
             selectLanguage();
 
             Intent intent = new Intent(getContext(), ActivityPersons.class);
@@ -41,7 +41,7 @@ public class FragmentLanguageList extends Fragment {
         };
 
         View.OnClickListener itemRuClickListener = v -> {
-            LocaleHelper.setLocalePrefs(requireActivity(), getString(R.string.pref_locale_ru));
+            PrefsHelper.setLocalePrefs(requireActivity(), getString(R.string.pref_locale_ru));
             selectLanguage();
 
             Intent intent = new Intent(getContext(), ActivityPersons.class);
@@ -56,10 +56,10 @@ public class FragmentLanguageList extends Fragment {
     }
 
     void selectLanguage() {
-        if (LocaleHelper.getLocalePrefs(requireActivity()).equals(getString(R.string.pref_locale_en))) {
+        if (PrefsHelper.getLocalePrefs(requireActivity()).equals(getString(R.string.pref_locale_en))) {
             iv_language_en_selected.setVisibility(View.VISIBLE);
             iv_language_ru_selected.setVisibility(View.INVISIBLE);
-        } else if (LocaleHelper.getLocalePrefs(requireActivity()).equals(getString(R.string.pref_locale_ru))) {
+        } else if (PrefsHelper.getLocalePrefs(requireActivity()).equals(getString(R.string.pref_locale_ru))) {
             iv_language_en_selected.setVisibility(View.INVISIBLE);
             iv_language_ru_selected.setVisibility(View.VISIBLE);
         }
