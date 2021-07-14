@@ -1,54 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+    android:layout_width="300dp"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
+    android:background="@drawable/dialog_background"
     android:padding="10dp">
 
     <TextView
-        android:id="@+id/dialog_person_del_tv_msg"
+        android:id="@+id/dialog_person_del_tv_msg_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="@string/tv_msg_person_del"
+        android:layout_marginStart="10dp"
+        android:text="@string/tv_msg_person_del_header"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="@color/colorPrimary"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/dialog_person_hnt_del_tv_msg_fill"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/tv_msg_del_fill"
+        android:textColor="@color/colorMsgFillText"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dialog_person_del_tv_msg_header" />
 
     <Button
         android:id="@+id/dialog_person_del_btn_yes"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="start"
         android:layout_marginTop="10dp"
         android:background="@color/colorAccent"
-        android:foreground="@drawable/ripple"
-        android:text="@string/btn_text_yes"
-        android:textColor="@color/colorPrimary"
+        android:foreground="@drawable/ripple_red"
+        android:text="@string/btn_text_del"
+        android:textColor="@color/colorRed"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/dialog_person_del_tv_msg" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/dialog_person_del_btn_no"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="4dp"
         android:background="@color/colorAccent"
-        android:foreground="@drawable/ripple"
-        android:text="@string/btn_text_no"
-        android:textColor="@color/colorPrimary"
+        android:foreground="@drawable/ripple_blue"
+        android:text="@string/btn_text_cancel"
+        android:textColor="@color/colorBlue"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/dialog_person_del_tv_msg" />
+        app:layout_constraintEnd_toStartOf="@id/dialog_person_del_btn_yes"
+        app:layout_constraintTop_toBottomOf="@id/dialog_person_hnt_del_tv_msg_fill" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

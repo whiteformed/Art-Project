@@ -10,6 +10,7 @@
     <color name="colorItemAmountText">#636363</color>
     <color name="colorInactiveText">#BEBEBE</color>
     <color name="colorActiveText">@color/colorPrimary</color>
+    <color name="colorMsgFillText">#919191</color>
 
     <color name="colorActiveButtonBackground">@color/colorPrimary</color>
     <color name="colorActiveButtonText">@color/colorAccent</color>

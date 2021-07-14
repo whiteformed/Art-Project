@@ -3,6 +3,8 @@ package com.example.art_project;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -40,6 +42,8 @@ public class DialogHelper {
         final Dialog dialog = new Dialog(context);
         dialog.setContentView(R.layout.dialog_person_add);
         dialog.setCancelable(true);
+
+        Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         Objects.requireNonNull(dialog.getWindow())
                 .setLayout(context.getResources().getDisplayMetrics().widthPixels, ViewGroup.LayoutParams.WRAP_CONTENT);
 
@@ -112,6 +116,8 @@ public class DialogHelper {
         final Dialog dialog = new Dialog(context);
         dialog.setContentView(R.layout.dialog_person_upd);
         dialog.setCancelable(true);
+
+        Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         Objects.requireNonNull(dialog.getWindow())
                 .setLayout(context.getResources().getDisplayMetrics().widthPixels, ViewGroup.LayoutParams.WRAP_CONTENT);
 
@@ -144,6 +150,8 @@ public class DialogHelper {
         final Dialog dialog = new Dialog(context);
         dialog.setContentView(R.layout.dialog_person_del);
         dialog.setCancelable(true);
+
+        Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         Objects.requireNonNull(dialog.getWindow())
                 .setLayout(context.getResources().getDisplayMetrics().widthPixels, ViewGroup.LayoutParams.WRAP_CONTENT);
 
@@ -168,6 +176,8 @@ public class DialogHelper {
         final Dialog dialog = new Dialog(context);
         dialog.setContentView(R.layout.dialog_entry_add);
         dialog.setCancelable(true);
+
+        Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         Objects.requireNonNull(dialog.getWindow())
                 .setLayout(context.getResources().getDisplayMetrics().widthPixels, ViewGroup.LayoutParams.WRAP_CONTENT);
 
@@ -201,6 +211,8 @@ public class DialogHelper {
         final Dialog dialog = new Dialog(context);
         dialog.setContentView(R.layout.dialog_entry_upd);
         dialog.setCancelable(true);
+
+        Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         Objects.requireNonNull(dialog.getWindow())
                 .setLayout(context.getResources().getDisplayMetrics().widthPixels, ViewGroup.LayoutParams.WRAP_CONTENT);
 
@@ -210,14 +222,7 @@ public class DialogHelper {
         et_amount.setText(String.valueOf(entry.getAmount()));
         et_comment.setText(entry.getComment());
 
-        Button btn_del = dialog.findViewById(R.id.dialog_entry_upd_btn_del);
         Button btn_upd = dialog.findViewById(R.id.dialog_entry_upd_btn_upd);
-
-        View.OnClickListener onButtonDelClickListener = v -> {
-            createDelEntryDialog(entry);
-
-            dialog.cancel();
-        };
 
         View.OnClickListener onButtonUpdClickListener = v -> {
             if (Objects.requireNonNull(et_amount.getText().toString().trim().equals("")) || Objects.requireNonNull(et_comment.getText().toString().trim().equals(""))) {
@@ -235,32 +240,7 @@ public class DialogHelper {
             }
         };
 
-        btn_del.setOnClickListener(onButtonDelClickListener);
         btn_upd.setOnClickListener(onButtonUpdClickListener);
-
-        dialog.show();
-    }
-
-    public void createDelEntryDialog(final Entry entry) {
-        final Dialog dialog = new Dialog(context);
-        dialog.setContentView(R.layout.dialog_entry_del);
-        dialog.setCancelable(true);
-        Objects.requireNonNull(dialog.getWindow())
-                .setLayout(context.getResources().getDisplayMetrics().widthPixels, ViewGroup.LayoutParams.WRAP_CONTENT);
-
-        Button btn_yes = dialog.findViewById(R.id.dialog_entry_del_btn_yes);
-        Button btn_no = dialog.findViewById(R.id.dialog_entry_del_btn_no);
-
-        View.OnClickListener onButtonYesClickListener = v -> {
-            onActivityEntriesUpdateListener.onDelEntry(entry.getID());
-
-            dialog.cancel();
-        };
-
-        View.OnClickListener onButtonNoClickListener = v -> dialog.cancel();
-
-        btn_yes.setOnClickListener(onButtonYesClickListener);
-        btn_no.setOnClickListener(onButtonNoClickListener);
 
         dialog.show();
     }
