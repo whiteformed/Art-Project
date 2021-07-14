@@ -1,5 +1,5 @@
 package com.example.art_project;
 
-public interface OnPersonItemViewClickListener {
+public interface OnPersonItemViewActionListener {
     void onPersonItemViewClick(int personID);
 }

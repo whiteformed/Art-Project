@@ -2,7 +2,7 @@ package com.example.art_project;
 
 public class Person {
     private int ID;          // Person ID
-    private int Status;      // 0 - My Entry, 1 - Their Entry
+    private int Status;      // 0 - My Debt, 1 - Their Debt
     private String Name;     // Person's name
 
     Person(int status, String name) {

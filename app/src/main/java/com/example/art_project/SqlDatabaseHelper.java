@@ -119,6 +119,40 @@ public class SqlDatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+//    public boolean swpPerson(int fromPerson, int toPerson) {
+//        SQLiteDatabase db = this.getWritableDatabase();
+//
+//        chgPersonID();
+//
+//        return rowsAffected != 0;
+//    }
+
+//    public void chgPersonID(int fromID, int toID) {
+//        SQLiteDatabase db = this.getWritableDatabase();
+//
+//        ContentValues contentValues = new ContentValues();
+//        contentValues.put(table_persons_column_id, toID);
+//
+//        String whereClause = table_persons_column_id + " = '" + fromID + "'";
+//
+//        int rowsAffected = db.update(table_persons, contentValues, whereClause, null);
+//
+//        db.close();
+//    }
+//
+//    public void chgPersonEntries(int fromID, int toID) {
+//        SQLiteDatabase db = this.getWritableDatabase();
+//
+//        ContentValues contentValues = new ContentValues();
+//        contentValues.put(table_entries_column_person_id, toID);
+//
+//        String whereClause = table_entries_column_person_id + " = '" + fromID + "'";
+//
+//        db.update(table_entries, contentValues, whereClause, null);
+//
+//        db.close();
+//    }
+
     public Entry getEntry(int personID, int entryID) {
         Entry entry = null;
 

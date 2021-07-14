@@ -17,14 +17,13 @@ public class PersonListAdapter extends RecyclerView.Adapter<PersonListAdapter.Re
     private final ArrayList<Person> personArrayList;
     private final int status;
 
-    private final OnPersonItemViewClickListener onPersonItemViewClickListener;
+    private final OnPersonItemViewActionListener onPersonItemViewActionListener;
 
-
-    PersonListAdapter(Context context, ArrayList<Person> personArrayList, int status, OnPersonItemViewClickListener onPersonItemViewClickListener) {
+    PersonListAdapter(Context context, ArrayList<Person> personArrayList, int status, OnPersonItemViewActionListener onPersonItemViewActionListener) {
         this.context = context;
         this.personArrayList = personArrayList;
         this.status = status;
-        this.onPersonItemViewClickListener = onPersonItemViewClickListener;
+        this.onPersonItemViewActionListener = onPersonItemViewActionListener;
     }
 
     @NonNull
@@ -50,7 +49,7 @@ public class PersonListAdapter extends RecyclerView.Adapter<PersonListAdapter.Re
         holder.tv_name.setText(personArrayList.get(position).getName());
         holder.tv_amount.setText(totalAmount);
 
-        View.OnClickListener onClickListener = v -> onPersonItemViewClickListener.onPersonItemViewClick(personArrayList.get(position).getID());
+        View.OnClickListener onClickListener = v -> onPersonItemViewActionListener.onPersonItemViewClick(personArrayList.get(position).getID());
 
         holder.itemView.setOnClickListener(onClickListener);
     }
@@ -60,7 +59,8 @@ public class PersonListAdapter extends RecyclerView.Adapter<PersonListAdapter.Re
         return personArrayList.size();
     }
 
-    static class RecyclerViewHolder extends RecyclerView.ViewHolder {
+    static class RecyclerViewHolder extends RecyclerView.ViewHolder
+    {
         TextView tv_name;
         TextView tv_amount;
         ImageView iv_status;

@@ -2,20 +2,19 @@ package com.example.art_project;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.tabs.TabLayout;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class ActivityPersons extends AppCompatActivity implements OnActivityPersonsUpdateListener, OnPersonItemViewClickListener {
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.tabs.TabLayout;
+
+public class ActivityPersons extends AppCompatActivity implements OnActivityPersonsUpdateListener, OnPersonItemViewActionListener {
     SqlDatabaseHelper sqlDatabaseHelper;
 
     DialogHelper dialogHelper;
@@ -97,10 +96,12 @@ public class ActivityPersons extends AppCompatActivity implements OnActivityPers
         fragmentTheirDebt = new FragmentTheirDebt();
 
         fragmentMyDebt.status = 0;
-        fragmentMyDebt.onPersonItemViewClickListener = this;
+        fragmentMyDebt.onPersonItemViewActionListener = this;
+        fragmentMyDebt.sqlDatabaseHelper = sqlDatabaseHelper;
 
         fragmentTheirDebt.status = 1;
-        fragmentTheirDebt.onPersonItemViewClickListener = this;
+        fragmentTheirDebt.onPersonItemViewActionListener = this;
+        fragmentTheirDebt.sqlDatabaseHelper = sqlDatabaseHelper;
 
         viewPagerAdapter.addFragment(fragmentMyDebt, getString(R.string.tv_i_owe));
         viewPagerAdapter.addFragment(fragmentTheirDebt, getString(R.string.tv_owe_me));
