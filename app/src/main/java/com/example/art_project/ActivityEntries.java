@@ -1,6 +1,5 @@
 package com.example.art_project;
 
-import android.graphics.Canvas;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -11,7 +10,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,8 +17,6 @@ import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.Objects;
-
-import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
 public class ActivityEntries extends AppCompatActivity implements OnActivityEntriesUpdateListener, OnEntryItemViewClickListener {
     TextView tv_name;
@@ -44,48 +40,28 @@ public class ActivityEntries extends AppCompatActivity implements OnActivityEntr
 
     Person person;
 
-    ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
-        @Override
-        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
-            return false;
-        }
-
-        @Override
-        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-            final int position = viewHolder.getAdapterPosition();
-
-            final Entry deletedEntry = new Entry(entryArrayList.get(position));
-
-            sqlDatabaseHelper.delEntry(deletedEntry.getID());
-            updateEntryArrayList();
-
-            Snackbar.make(recyclerView, R.string.sb_item_removed, Snackbar.LENGTH_LONG)
-                    .setActionTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorBlue))
-                    .setAction(R.string.sb_undo, v -> {
-                        sqlDatabaseHelper.addEntry(deletedEntry);
-                        updateEntryArrayList();
-                    }).show();
-        }
-
-        @Override
-        public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
-            super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
-
-            new RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
-                    .addSwipeLeftBackgroundColor(R.color.colorRed)
-                    .addSwipeLeftActionIcon(R.drawable.ic_delete)
-                    .addSwipeLeftLabel("REMOVE")
-                    .setSwipeLeftLabelColor(R.color.colorWhite)
-                    .create()
-                    .decorate();
-
-            super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
-        }
-    };
-
     @Override
     public void onEntryItemViewClick(Entry entry) {
         dialogHelper.createUpdEntryDialog(entry);
+    }
+
+    @Override
+    public void onEntryItemEditClick(Entry entry) {
+        dialogHelper.createUpdEntryDialog(entry);
+    }
+
+    @Override
+    public void onEntryItemDeleteClick(Entry entry) {
+        final Entry deletedEntry = new Entry(entry);
+
+        Snackbar.make(recyclerView, R.string.sb_item_removed, Snackbar.LENGTH_LONG)
+                .setActionTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorBlue))
+                .setAction(R.string.sb_undo, v -> {
+                    sqlDatabaseHelper.addEntry(deletedEntry);
+                    updateEntryArrayList();
+                }).show();
+
+        onDelEntry(entry.getID());
     }
 
     @Override
@@ -212,9 +188,6 @@ public class ActivityEntries extends AppCompatActivity implements OnActivityEntr
             updateEntryArrayList();
 
             recyclerView.scrollToPosition(entryArrayList.size() - 1);
-
-            ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
-            itemTouchHelper.attachToRecyclerView(recyclerView);
         }
     }
 
@@ -222,5 +195,21 @@ public class ActivityEntries extends AppCompatActivity implements OnActivityEntr
         int total = sqlDatabaseHelper.getPersonTotalAmount(person.getID());
 
         return total + getResources().getString(R.string.value);
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if (entryArrayListAdapter != null) {
+            entryArrayListAdapter.saveStates(outState);
+        }
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        if (entryArrayListAdapter != null) {
+            entryArrayListAdapter.restoreStates(savedInstanceState);
+        }
     }
 }

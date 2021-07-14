@@ -53,6 +53,7 @@
     <string name="btn_text_yes">Yes</string>
     <string name="btn_text_del">Delete</string>
     <string name="btn_text_upd">Update</string>
+    <string name="btn_text_edt">Edit</string>
     <string name="btn_text_add">Add</string>
 
     <string name="iv_desc_app_name" translatable="false">App Name Image</string>
@@ -66,6 +67,7 @@
     <string name="iv_desc_inc_debt" translatable="false">Increase Debt Image</string>
     <string name="iv_desc_entry" translatable="false">Entry Default Image</string>
     <string name="iv_desc_entry_status" translatable="false">Entry Status Image</string>
+    <string name="iv_desc_entry_swipe_item" translatable="false">Entry Swipe Item Image</string>
     <string name="iv_desc_settings" translatable="false">Setting Image</string>
     <string name="iv_desc_setting_lang" translatable="false">Setting Language Image</string>
     <string name="iv_desc_setting_info" translatable="false">Setting Info Image</string>
