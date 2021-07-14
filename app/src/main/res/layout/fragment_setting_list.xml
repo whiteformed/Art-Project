@@ -1,116 +1,127 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:id="@+id/fragment_setting_list_rl_lang"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?android:attr/selectableItemBackground"
-        android:padding="10dp">
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
 
-        <ImageView
-            android:id="@+id/fragment_setting_list_iv_setting_language"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:contentDescription="@string/iv_desc_setting_lang"
-            android:src="@drawable/ic_language" />
-
-        <TextView
-            android:id="@+id/fragment_setting_list_tv_setting_language"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:id="@+id/fragment_setting_list_rl_lang"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_toEndOf="@id/fragment_setting_list_iv_setting_language"
-            android:text="@string/tv_set_lang"
-            android:textColor="@color/colorPrimary"
-            android:textSize="24sp" />
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="10dp">
 
-        <TextView
-            android:id="@+id/fragment_setting_list_tv_setting_lang_desc"
-            android:layout_width="wrap_content"
+            <ImageView
+                android:id="@+id/fragment_setting_list_iv_setting_language"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:contentDescription="@string/iv_desc_setting_lang"
+                android:src="@drawable/ic_language" />
+
+            <TextView
+                android:id="@+id/fragment_setting_list_tv_setting_language"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/fragment_setting_list_iv_setting_language"
+                android:text="@string/tv_set_lang"
+                android:textColor="@color/colorMsgHeaderText"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/fragment_setting_list_tv_setting_lang_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/fragment_setting_list_iv_setting_language"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="4dp"
+                android:layout_toEndOf="@id/fragment_setting_list_iv_setting_language"
+                android:text="@string/tv_desc_set_lang"
+                android:textColor="@color/colorMsgFillText"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/fragment_setting_list_rl_theme"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/fragment_setting_list_iv_setting_language"
-            android:layout_marginStart="10dp"
-            android:layout_marginBottom="4dp"
-            android:layout_toEndOf="@id/fragment_setting_list_iv_setting_language"
-            android:text="@string/tv_desc_set_lang"
-            android:textSize="16sp" />
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="10dp">
 
-    </RelativeLayout>
+            <ImageView
+                android:id="@+id/fragment_setting_list_iv_setting_theme"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:contentDescription="@string/iv_desc_setting_lang"
+                android:src="@drawable/ic_theme" />
 
-    <RelativeLayout
-        android:id="@+id/fragment_setting_list_rl_theme"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?android:attr/selectableItemBackground"
-        android:padding="10dp">
+            <TextView
+                android:id="@+id/fragment_setting_list_tv_setting_theme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/fragment_setting_list_iv_setting_theme"
+                android:text="@string/tv_set_theme"
+                android:textColor="@color/colorMsgHeaderText"
+                android:textSize="24sp" />
 
-        <ImageView
-            android:id="@+id/fragment_setting_list_iv_setting_theme"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:contentDescription="@string/iv_desc_setting_lang"
-            android:src="@drawable/ic_theme" />
+            <TextView
+                android:id="@+id/fragment_setting_list_tv_setting_theme_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/fragment_setting_list_iv_setting_theme"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="4dp"
+                android:layout_toEndOf="@id/fragment_setting_list_iv_setting_theme"
+                android:text="@string/tv_set_theme_desc"
+                android:textColor="@color/colorMsgFillText"
+                android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/fragment_setting_list_tv_setting_theme"
-            android:layout_width="wrap_content"
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/fragment_setting_list_rl_info"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_toEndOf="@id/fragment_setting_list_iv_setting_theme"
-            android:text="@string/tv_set_theme"
-            android:textColor="@color/colorPrimary"
-            android:textSize="24sp" />
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="10dp">
 
-        <TextView
-            android:id="@+id/fragment_setting_list_tv_setting_theme_desc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/fragment_setting_list_iv_setting_theme"
-            android:layout_marginStart="10dp"
-            android:layout_marginBottom="4dp"
-            android:layout_toEndOf="@id/fragment_setting_list_iv_setting_theme"
-            android:text="@string/tv_set_theme_desc"
-            android:textSize="16sp" />
+            <ImageView
+                android:id="@+id/fragment_setting_list_iv_setting_info"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:contentDescription="@string/iv_desc_setting_info"
+                android:src="@drawable/ic_info" />
 
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/fragment_setting_list_tv_setting_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/fragment_setting_list_iv_setting_info"
+                android:text="@string/tv_set_info"
+                android:textColor="@color/colorMsgHeaderText"
+                android:textSize="24sp" />
 
-    <RelativeLayout
-        android:id="@+id/fragment_setting_list_rl_info"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?android:attr/selectableItemBackground"
-        android:padding="10dp">
+            <TextView
+                android:id="@+id/fragment_setting_list_tv_setting_info_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/fragment_setting_list_iv_setting_info"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="4dp"
+                android:layout_toEndOf="@id/fragment_setting_list_iv_setting_info"
+                android:text="@string/tv_set_info_desc"
+                android:textColor="@color/colorMsgFillText"
+                android:textSize="16sp" />
 
-        <ImageView
-            android:id="@+id/fragment_setting_list_iv_setting_info"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:contentDescription="@string/iv_desc_setting_info"
-            android:src="@drawable/ic_info" />
+        </RelativeLayout>
+    </LinearLayout>
 
-        <TextView
-            android:id="@+id/fragment_setting_list_tv_setting_info"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_toEndOf="@id/fragment_setting_list_iv_setting_info"
-            android:text="@string/tv_set_info"
-            android:textColor="@color/colorPrimary"
-            android:textSize="24sp" />
-
-        <TextView
-            android:id="@+id/fragment_setting_list_tv_setting_info_desc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/fragment_setting_list_iv_setting_info"
-            android:layout_marginStart="10dp"
-            android:layout_marginBottom="4dp"
-            android:layout_toEndOf="@id/fragment_setting_list_iv_setting_info"
-            android:text="@string/tv_set_info_desc"
-            android:textSize="16sp" />
-
-    </RelativeLayout>
-</LinearLayout>
+</FrameLayout>

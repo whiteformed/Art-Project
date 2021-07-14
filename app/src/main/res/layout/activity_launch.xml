@@ -6,6 +6,7 @@
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".ActivityLaunch"
+    android:background="@color/colorBackground"
     tools:ignore="UseCompoundDrawables">
 
     <ImageView

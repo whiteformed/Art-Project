@@ -7,7 +7,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fragment_person_list_rv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:background="@color/colorBackground" />
 
     <TextView
         android:id="@+id/fragment_person_list_tv_msg_empty_list"

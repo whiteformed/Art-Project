@@ -83,11 +83,11 @@ public class ActivityPersons extends AppCompatActivity implements OnActivityPers
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        PrefsHelper.setLocale(this);
+        PrefsHelper.setTheme(this);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_person_list_view);
-
-        PrefsHelper.setLocale(this);
-        //PrefsHelper.setTheme(this);
 
         sqlDatabaseHelper = new SqlDatabaseHelper(this);
 

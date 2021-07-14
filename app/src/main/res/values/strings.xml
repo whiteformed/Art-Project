@@ -17,13 +17,13 @@
     <string name="tv_i_take">I take</string>
     <string name="tv_i_give">I give</string>
 
-    <string name="tv_msg_empty_list">List is empty.</string>
-    <string name="tv_msg_person_add_header">Add person.</string>
-    <string name="tv_msg_person_edit_header">Edit person.</string>
-    <string name="tv_msg_person_del_header">Delete person?</string>
-    <string name="tv_msg_entry_add_header">Add entry.</string>
-    <string name="tv_msg_entry_upd_header">Edit entry.</string>
-    <string name="tv_msg_entry_del_header">Delete entry?</string>
+    <string name="tv_msg_empty_list">List is empty</string>
+    <string name="tv_msg_person_add_header">Add person</string>
+    <string name="tv_msg_person_edit_header">Edit person</string>
+    <string name="tv_msg_person_del_header">Delete person</string>
+    <string name="tv_msg_entry_add_header">Add entry</string>
+    <string name="tv_msg_entry_upd_header">Edit entry</string>
+    <string name="tv_msg_entry_del_header">Delete entry</string>
     <string name="tv_msg_del_fill">Are you sure? This cannot be undone.</string>
 
     <string name="tv_frag_title_settings">Settings</string>
@@ -88,7 +88,7 @@
 
     <string name="value" translatable="false">₽</string>
 
-    <string name="sb_item_removed">Entry Removed.</string>
+    <string name="sb_item_removed">Entry removed</string>
     <string name="sb_undo">UNDO</string>
 
     <string name="pref_locale_en" translatable="false">EN</string>

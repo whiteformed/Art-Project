@@ -13,6 +13,9 @@ public class ActivityLaunch extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        PrefsHelper.setLocale(this);
+        PrefsHelper.setTheme(this);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launch);
 

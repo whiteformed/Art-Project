@@ -31,11 +31,11 @@ public class ActivitySettings extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        PrefsHelper.setTheme(this);
+        PrefsHelper.setLocale(this);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-
-        PrefsHelper.setLocale(this);
-        //PrefsHelper.setTheme(this);
 
         fragmentArrayList = new ArrayList<>();
 

@@ -4,7 +4,7 @@
     android:layout_width="300dp"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:background="@drawable/dialog_background"
+    android:background="@drawable/bg_dialog"
     android:padding="10dp">
 
     <TextView
@@ -12,7 +12,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginStart="10dp"
         android:text="@string/tv_msg_person_edit_header"
         android:textAlignment="center"
         android:textAllCaps="true"
@@ -43,7 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="@color/colorAccent"
+        android:background="@color/colorActiveButtonBackground"
         android:foreground="@drawable/ripple_primary"
         android:text="@string/btn_text_upd"
         android:textColor="@color/colorPrimary"

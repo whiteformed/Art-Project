@@ -16,7 +16,7 @@
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:contentDescription="@string/iv_desc_language_en"
-            android:src="@drawable/ic_us_flag" />
+            android:src="@drawable/ic_language_en" />
 
         <TextView
             android:id="@+id/fragment_language_list_tv_language_en"
@@ -25,7 +25,7 @@
             android:layout_marginStart="10dp"
             android:layout_toEndOf="@id/fragment_language_list_iv_language_en"
             android:text="@string/tv_language_en"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/colorMsgHeaderText"
             android:textSize="24sp"
             tools:ignore="RelativeOverlap" />
 
@@ -37,6 +37,7 @@
             android:layout_marginStart="10dp"
             android:layout_toEndOf="@id/fragment_language_list_iv_language_en"
             android:text="@string/tv_desc_language_en"
+            android:textColor="@color/colorMsgFillText"
             android:textSize="16sp"
             tools:ignore="RelativeOverlap" />
 
@@ -63,7 +64,7 @@
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:contentDescription="@string/iv_desc_language_ru"
-            android:src="@drawable/ic_ru_flag" />
+            android:src="@drawable/ic_language_ru" />
 
         <TextView
             android:id="@+id/fragment_language_list_tv_language_ru"
@@ -72,7 +73,7 @@
             android:layout_marginStart="10dp"
             android:layout_toEndOf="@id/fragment_language_list_iv_language_ru"
             android:text="@string/tv_language_ru"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/colorMsgHeaderText"
             android:textSize="24sp"
             tools:ignore="RelativeOverlap" />
 
@@ -84,6 +85,7 @@
             android:layout_marginStart="10dp"
             android:layout_toEndOf="@id/fragment_language_list_iv_language_ru"
             android:text="@string/tv_desc_language_ru"
+            android:textColor="@color/colorMsgFillText"
             android:textSize="16sp"
             tools:ignore="RelativeOverlap" />
 
