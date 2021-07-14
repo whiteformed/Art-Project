@@ -1,5 +1,6 @@
 package com.example.art_project;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.PopupMenu;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -35,6 +37,7 @@ public class PersonListAdapter extends RecyclerView.Adapter<PersonListAdapter.Re
         return new RecyclerViewHolder(view);
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onBindViewHolder(@NonNull final RecyclerViewHolder holder, final int position) {
         SqlDatabaseHelper sqlDatabaseHelper = new SqlDatabaseHelper(context);
@@ -49,9 +52,21 @@ public class PersonListAdapter extends RecyclerView.Adapter<PersonListAdapter.Re
         holder.tv_name.setText(personArrayList.get(position).getName());
         holder.tv_amount.setText(totalAmount);
 
-        View.OnClickListener onClickListener = v -> onPersonItemViewActionListener.onPersonItemViewClick(personArrayList.get(position).getID());
+        holder.iv_options.setOnClickListener(v -> {
+            PopupMenu popup = new PopupMenu(v.getContext(), holder.iv_options);
+            popup.inflate(R.menu.options_menu);
+            popup.setOnMenuItemClickListener(item -> {
+                if (item.getItemId() == R.id.menu_btn_delete) {
+                    onPersonItemViewActionListener.onPersonItemViewOptionDeleteClick(personArrayList.get(position).getID());
+                }
 
-        holder.itemView.setOnClickListener(onClickListener);
+                return false;
+            });
+
+            popup.show();
+        });
+
+        holder.itemView.setOnClickListener(v -> onPersonItemViewActionListener.onPersonItemViewClick(personArrayList.get(position).getID()));
     }
 
     @Override
@@ -64,6 +79,7 @@ public class PersonListAdapter extends RecyclerView.Adapter<PersonListAdapter.Re
         TextView tv_name;
         TextView tv_amount;
         ImageView iv_status;
+        ImageView iv_options;
 
         RecyclerViewHolder(View view) {
             super(view);
@@ -71,6 +87,7 @@ public class PersonListAdapter extends RecyclerView.Adapter<PersonListAdapter.Re
             tv_name = view.findViewById(R.id.item_view_person_tv_name);
             tv_amount = view.findViewById(R.id.item_view_person_tv_amount);
             iv_status = view.findViewById(R.id.item_view_person_iv_status);
+            iv_options = view.findViewById(R.id.item_view_person_iv_options);
         }
     }
 }

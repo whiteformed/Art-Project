@@ -98,4 +98,6 @@
     <string name="pref_theme_dark" translatable="false">Dark</string>
 
     <string name="toast_no_empty_fields_allowed">No empty fields allowed!</string>
+
+    <string name="menu_title_delete">Delete</string>
 </resources>

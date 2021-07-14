@@ -41,6 +41,14 @@ public class ActivityPersons extends AppCompatActivity implements OnActivityPers
     }
 
     @Override
+    public void onPersonItemViewOptionDeleteClick(int personID) {
+        boolean result = sqlDatabaseHelper.delPerson(personID);
+        Informant.makeLogEntry(2, result);
+
+        updateFragments();
+    }
+
+    @Override
     public void onAddPerson(Person newPerson) {
         boolean result = sqlDatabaseHelper.addPerson(newPerson);
         Informant.makeLogEntry(0, result);

@@ -74,8 +74,8 @@
         android:id="@+id/activity_person_list_fab"
         android:layout_width="56dp"
         android:layout_height="56dp"
-        android:layout_gravity="end|bottom"
-        android:layout_marginEnd="40dp"
+        android:layout_gravity="center_horizontal|bottom"
+
         android:layout_marginBottom="40dp"
         android:background="@color/colorPrimary"
         android:backgroundTint="@color/colorPrimary"
