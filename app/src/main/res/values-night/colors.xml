@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    // Light Theme
-    <color name="colorPrimary">#018A9A</color>
-    <color name="colorPrimaryDark">#067987</color>
-    <color name="colorAccent">#FFFFFF</color>
-    <color name="colorBackground">#E2E2E2</color>
+    // Dark Theme
+    <color name="colorPrimary">#1F2122</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#504A4A</color>
 
-    <color name="colorText">#FFFFFF</color>
+    <color name="colorText">#3989DA</color>
     <color name="colorItemAmountText">#636363</color>
     <color name="colorInactiveText">#BEBEBE</color>
     <color name="colorActiveText">@color/colorPrimary</color>
-    <color name="colorMsgFillText">#919191</color>
 
     <color name="colorActiveButtonBackground">@color/colorPrimary</color>
-    <color name="colorActiveButtonText">@color/colorAccent</color>
-    <color name="colorActiveButtonBackgroundPressed">#027F8E</color>
+    <color name="colorActiveButtonText">#FFFEFE</color>
+    <color name="colorActiveButtonBackgroundPressed">#000000</color>
     <color name="colorInactiveButtonBackground">#BEBFBF</color>
     <color name="colorInactiveButtonText">#2E2929</color>
 
@@ -25,7 +23,6 @@
     <color name="colorGray">#DFDFDF</color>
     <color name="colorLightGray">#E2E2E2</color>
     <color name="colorRed">#F44336</color>
-    <color name="colorOrange">#FFC107</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorGreen">#62CA66</color>
     <color name="colorBlue">#1483DC</color>
