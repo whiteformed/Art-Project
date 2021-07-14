@@ -45,4 +45,5 @@
     <string name="tv_set_theme">Тема</string>
     <string name="tv_set_theme_desc">выбрать тему приложения</string>
     <string name="btn_text_edt">Изменить</string>
+    <string name="menu_title_delete">Удалить</string>
 </resources>
