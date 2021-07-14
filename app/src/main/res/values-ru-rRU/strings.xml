@@ -33,8 +33,8 @@
     <string name="tv_created">Создан</string>
     <string name="tv_created_by">Овчинниковым Д. О.</string>
     <string name="tv_created_in">в Android Studio IDE</string>
-    <string name="tv_vcs">Система контроля версий:</string>
-    <string name="tv_version">"версия: "</string>
+    <string name="tv_vcs">Система контроля версий</string>
+    <string name="tv_version">"версия:\u0020"</string>
     <string name="sb_item_removed">Запись Удалена.</string>
     <string name="tv_msg_person_edit_header">Изменить личность.</string>
     <string name="toast_no_empty_fields_allowed">Все поля должны быть заполнены!</string>

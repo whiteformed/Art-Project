@@ -6,9 +6,9 @@
     <string name="tv_created">Created</string>
     <string name="tv_created_by">by Ovchinnikov D.O.</string>
     <string name="tv_created_in">in Android Studio IDE</string>
-    <string name="tv_vcs">Version Control System:</string>
+    <string name="tv_vcs">Version Control System</string>
     <string name="tv_github" translatable="false"><u>GitHub</u></string>
-    <string name="tv_version">version: </string>
+    <string name="tv_version">version:\u0020</string>
 
     <string name="tv_i_owe">I owe</string>
     <string name="tv_owe_me">Owe me</string>
