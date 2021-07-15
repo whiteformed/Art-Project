@@ -4,9 +4,11 @@
     <color name="colorPrimary">#0C0C0C</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#3386DA</color>
-    <color name="colorBackground">#6A6262</color>
-    <color name="colorLauncherBackground">#6A6262</color>
-    <color name="colorDialogBackground">#6A6262</color>
+    <color name="colorBackground">#5C5A5A</color>
+    <color name="colorLauncherBackground">#5C5A5A</color>
+
+    <color name="colorDialogBackground">#504E4E</color>
+    <color name="colorDialogHeaderText">#3386DA</color>
 
     <color name="colorText">#2D87E3</color>
     <color name="colorItemAmountText">#3F93E8</color>
@@ -17,16 +19,18 @@
 
     <color name="colorCursor">#3386DA</color>
 
-    <color name="colorActiveButtonBackground">#6A6262</color>
-    <color name="colorActiveButtonText">#0C0C0C</color>
+    <color name="colorActiveButtonBackground">@color/colorDialogBackground</color>
+    <color name="colorActiveButtonText">#3386DA</color>
     <color name="colorActiveButtonBackgroundPressed">#000000</color>
-    <color name="colorInactiveButtonBackground">#BEBFBF</color>
+    <color name="colorInactiveButtonBackground">#3386DA</color>
     <color name="colorInactiveButtonText">#2E2929</color>
 
     <color name="colorIcons">#3386DA</color>
     <color name="colorIconDebtInc">#5AA540</color>
     <color name="colorIconDebtDec">#BF443A</color>
-    <color name="colorIconSettings">#0A0A0B</color>
+    <color name="colorIconSettings">#3C8AD8</color>
+    <color name="colorIconEntryAction">#FFFFFF</color>
+    <color name="colorIconPersonAction">#FFFFFF</color>
 
     // Default Colors
     <color name="colorBlack">#000000</color>

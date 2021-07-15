@@ -6,7 +6,9 @@
     <color name="colorAccent">#FFFFFF</color>
     <color name="colorBackground">#E2E2E2</color>
     <color name="colorLauncherBackground">#FFFFFF</color>
+
     <color name="colorDialogBackground">#FFFFFF</color>
+    <color name="colorDialogHeaderText">#018A9A</color>
 
     <color name="colorText">#FFFFFF</color>
     <color name="colorItemAmountText">#636363</color>
@@ -17,7 +19,7 @@
 
     <color name="colorCursor">#018A9A</color>
 
-    <color name="colorActiveButtonBackground">#FFFFFF</color>
+    <color name="colorActiveButtonBackground">@color/colorDialogBackground</color>
     <color name="colorActiveButtonText">@color/colorPrimary</color>
     <color name="colorActiveButtonBackgroundPressed">#027F8E</color>
     <color name="colorInactiveButtonBackground">#BEBFBF</color>
@@ -27,6 +29,8 @@
     <color name="colorIconDebtInc">#62CA66</color>
     <color name="colorIconDebtDec">#F44336</color>
     <color name="colorIconSettings">#018A9A</color>
+    <color name="colorIconEntryAction">#FFFFFF</color>
+    <color name="colorIconPersonAction">#BBD4F6</color>
 
     // Default Colors
     <color name="colorBlack">#000000</color>

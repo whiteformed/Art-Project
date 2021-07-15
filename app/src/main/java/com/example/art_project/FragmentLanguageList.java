@@ -29,11 +29,13 @@ public class FragmentLanguageList extends Fragment {
         iv_language_en_selected = view.findViewById(R.id.fragment_language_list_iv_language_en_selected);
         iv_language_ru_selected = view.findViewById(R.id.fragment_language_list_iv_language_ru_selected);
 
-        selectLanguage();
+        int selected = selectedLanguage();
 
         View.OnClickListener itemEnClickListener = v -> {
+            if (selected == 0) return;
+
             PrefsHelper.setLocalePrefs(requireActivity(), getString(R.string.pref_locale_en));
-            selectLanguage();
+            selectedLanguage();
 
             Intent intent = new Intent(getContext(), ActivityPersons.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -41,8 +43,10 @@ public class FragmentLanguageList extends Fragment {
         };
 
         View.OnClickListener itemRuClickListener = v -> {
+            if (selected == 1) return;
+
             PrefsHelper.setLocalePrefs(requireActivity(), getString(R.string.pref_locale_ru));
-            selectLanguage();
+            selectedLanguage();
 
             Intent intent = new Intent(getContext(), ActivityPersons.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -55,13 +59,19 @@ public class FragmentLanguageList extends Fragment {
         return view;
     }
 
-    void selectLanguage() {
+    int selectedLanguage() {
         if (PrefsHelper.getLocalePrefs(requireActivity()).equals(getString(R.string.pref_locale_en))) {
             iv_language_en_selected.setVisibility(View.VISIBLE);
             iv_language_ru_selected.setVisibility(View.INVISIBLE);
+
+            return 0;
         } else if (PrefsHelper.getLocalePrefs(requireActivity()).equals(getString(R.string.pref_locale_ru))) {
             iv_language_en_selected.setVisibility(View.INVISIBLE);
             iv_language_ru_selected.setVisibility(View.VISIBLE);
+
+            return 1;
         }
+
+        return 0;
     }
 }

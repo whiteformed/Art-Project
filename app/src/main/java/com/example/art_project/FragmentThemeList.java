@@ -29,11 +29,13 @@ public class FragmentThemeList extends Fragment {
         iv_theme_light_selected = view.findViewById(R.id.fragment_themes_iv_theme_light_selected);
         iv_theme_dark_selected = view.findViewById(R.id.fragment_themes_iv_theme_dark_selected);
 
-        selectTheme();
+        int selected = selectedTheme();
 
         View.OnClickListener itemLightClickListener = v -> {
+            if (selected == 0) return;
+
             PrefsHelper.setThemePrefs(requireActivity(), getString(R.string.pref_theme_light));
-            selectTheme();
+            selectedTheme();
 
             Intent intent = new Intent(getContext(), ActivityPersons.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -41,8 +43,10 @@ public class FragmentThemeList extends Fragment {
         };
 
         View.OnClickListener itemDarkClickListener = v -> {
+            if (selected == 1) return;
+
             PrefsHelper.setThemePrefs(requireActivity(), getString(R.string.pref_theme_dark));
-            selectTheme();
+            selectedTheme();
 
             Intent intent = new Intent(getContext(), ActivityPersons.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -55,13 +59,19 @@ public class FragmentThemeList extends Fragment {
         return view;
     }
 
-    void selectTheme() {
+    int selectedTheme() {
         if (PrefsHelper.getThemePrefs(requireActivity()).equals(getString(R.string.pref_theme_light))) {
             iv_theme_light_selected.setVisibility(View.VISIBLE);
             iv_theme_dark_selected.setVisibility(View.INVISIBLE);
+
+            return 0;
         } else if (PrefsHelper.getThemePrefs(requireActivity()).equals(getString(R.string.pref_theme_dark))) {
             iv_theme_light_selected.setVisibility(View.INVISIBLE);
             iv_theme_dark_selected.setVisibility(View.VISIBLE);
+
+            return 1;
         }
+
+        return 0;
     }
 }
