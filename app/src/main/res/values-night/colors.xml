@@ -21,7 +21,7 @@
 
     <color name="colorActiveButtonBackground">@color/colorDialogBackground</color>
     <color name="colorActiveButtonText">#3386DA</color>
-    <color name="colorActiveButtonBackgroundPressed">#000000</color>
+    <color name="colorActiveButtonBackgroundPressed">#3081D3</color>
     <color name="colorInactiveButtonBackground">#3386DA</color>
     <color name="colorInactiveButtonText">#2E2929</color>
 

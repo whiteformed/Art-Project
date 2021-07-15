@@ -58,13 +58,21 @@ public class EntryListAdapter extends RecyclerView.Adapter<EntryListAdapter.Recy
         holder.tv_comment.setText(entryArrayList.get(position).getComment());
         holder.tv_date.setText(entryArrayList.get(position).getDate());
 
-        holder.constraintLayout.setOnClickListener
-                (v -> entryArrayList.forEach
-                        (entry -> viewBinderHelper.closeLayout(String.valueOf(entry.getID()))));
+        holder.constraintLayout.setOnClickListener(v ->
+                entryArrayList.forEach(entry -> viewBinderHelper.closeLayout(String.valueOf(entry.getID()))));
 
-        holder.iv_edt.setOnClickListener(v -> onEntryItemViewClickListener.onEntryItemEditClick(entryArrayList.get(position)));
+        holder.iv_edt.setOnClickListener(v ->
+        {
+            viewBinderHelper.closeLayout(String.valueOf(entryArrayList.get(position).getID()));
+            onEntryItemViewClickListener.onEntryItemEditClick(entryArrayList.get(position));
+        });
 
-        holder.iv_del.setOnClickListener(v -> onEntryItemViewClickListener.onEntryItemDeleteClick(entryArrayList.get(position)));
+
+        holder.iv_del.setOnClickListener(v ->
+        {
+            viewBinderHelper.closeLayout(String.valueOf(entryArrayList.get(position).getID()));
+            onEntryItemViewClickListener.onEntryItemDeleteClick(entryArrayList.get(position));
+        });
     }
 
     @Override

@@ -19,6 +19,8 @@
             android:layout_width="70dp"
             android:layout_height="match_parent"
             android:background="@color/colorOrange"
+            android:foreground="@drawable/ripple_orange"
+            android:clickable="true"
             android:contentDescription="@string/iv_desc_entry_swipe_item"
             android:gravity="center"
             android:padding="20dp"
@@ -29,6 +31,8 @@
             android:layout_width="70dp"
             android:layout_height="match_parent"
             android:background="@color/colorRed"
+            android:foreground="@drawable/ripple_red"
+            android:clickable="true"
             android:contentDescription="@string/iv_desc_entry_swipe_item"
             android:gravity="center"
             android:padding="20dp"
@@ -37,9 +41,9 @@
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/item_view_entry_cl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/item_view_entry_cl"
         android:padding="10dp">
 
         <ImageView
