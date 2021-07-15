@@ -20,7 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/dialog_entry_add_et_amount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,7 +30,9 @@
         android:importantForAutofill="no"
         android:inputType="numberDecimal"
         android:maxLength="6"
+        android:textCursorDrawable="@drawable/sp_cursor"
         android:textSize="24sp"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dialog_entry_add_tv_msg_entry_add" />
@@ -44,6 +46,7 @@
         android:importantForAutofill="no"
         android:inputType="text"
         android:maxLength="30"
+        android:textCursorDrawable="@drawable/sp_cursor"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

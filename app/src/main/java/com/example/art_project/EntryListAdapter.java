@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.chauthai.swipereveallayout.SwipeRevealLayout;
@@ -45,8 +46,6 @@ public class EntryListAdapter extends RecyclerView.Adapter<EntryListAdapter.Recy
     public void onBindViewHolder(@NonNull final RecyclerViewHolder holder, final int position) {
         viewBinderHelper.setOpenOnlyOne(true);
         viewBinderHelper.bind(holder.swipeRevealLayout, String.valueOf(entryArrayList.get(position).getID()));
-        viewBinderHelper.closeLayout(String.valueOf(entryArrayList.get(position).getID()));
-
 
         if (entryArrayList.get(position).getStatus() == 0) {
             holder.iv_status.setImageResource(R.drawable.ic_debt_dec);
@@ -59,11 +58,13 @@ public class EntryListAdapter extends RecyclerView.Adapter<EntryListAdapter.Recy
         holder.tv_comment.setText(entryArrayList.get(position).getComment());
         holder.tv_date.setText(entryArrayList.get(position).getDate());
 
+        holder.constraintLayout.setOnClickListener
+                (v -> entryArrayList.forEach
+                        (entry -> viewBinderHelper.closeLayout(String.valueOf(entry.getID()))));
+
         holder.iv_edt.setOnClickListener(v -> onEntryItemViewClickListener.onEntryItemEditClick(entryArrayList.get(position)));
 
         holder.iv_del.setOnClickListener(v -> onEntryItemViewClickListener.onEntryItemDeleteClick(entryArrayList.get(position)));
-
-        holder.swipeRevealLayout.setOnClickListener(v -> viewBinderHelper.closeLayout(String.valueOf(entryArrayList.get(position).getID())));
     }
 
     @Override
@@ -76,6 +77,7 @@ public class EntryListAdapter extends RecyclerView.Adapter<EntryListAdapter.Recy
         TextView tv_comment;
         TextView tv_date;
         ImageView iv_status;
+        ConstraintLayout constraintLayout;
 
         SwipeRevealLayout swipeRevealLayout;
         ImageView iv_edt;
@@ -88,6 +90,7 @@ public class EntryListAdapter extends RecyclerView.Adapter<EntryListAdapter.Recy
             tv_comment = view.findViewById(R.id.item_view_entry_tv_comment);
             tv_date = view.findViewById(R.id.item_view_entry_tv_date);
             iv_status = view.findViewById(R.id.item_view_entry_iv_status);
+            constraintLayout = view.findViewById(R.id.item_view_entry_cl);
 
             swipeRevealLayout = view.findViewById(R.id.item_view_entry_srl);
             iv_edt = view.findViewById(R.id.item_entry_iv_edt);

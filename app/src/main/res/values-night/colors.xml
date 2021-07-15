@@ -15,6 +15,8 @@
     <color name="colorMsgHeaderText">#FDFDFD</color>
     <color name="colorMsgFillText">#B6B6B6</color>
 
+    <color name="colorCursor">#3386DA</color>
+
     <color name="colorActiveButtonBackground">#6A6262</color>
     <color name="colorActiveButtonText">#0C0C0C</color>
     <color name="colorActiveButtonBackgroundPressed">#000000</color>
