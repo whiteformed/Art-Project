@@ -30,7 +30,7 @@
     <color name="colorIconDebtDec">#F44336</color>
     <color name="colorIconSettings">#018A9A</color>
     <color name="colorIconEntryAction">#FFFFFF</color>
-    <color name="colorIconPersonAction">#BBD4F6</color>
+    <color name="colorIconPersonAction">#CACED3</color>
 
     // Default Colors
     <color name="colorBlack">#000000</color>
