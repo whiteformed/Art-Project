@@ -55,7 +55,7 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
             android:contentDescription="@string/iv_desc_person_item_options"
-            android:src="@drawable/ic_dots_vertical"
+            android:src="@drawable/ic_options"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

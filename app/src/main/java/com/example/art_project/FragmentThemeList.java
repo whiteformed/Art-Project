@@ -24,10 +24,10 @@ public class FragmentThemeList extends Fragment {
         view = inflater.inflate(R.layout.fragment_theme_list, container, false);
 
         rl_light = view.findViewById(R.id.fragment_themes_rl_light);
-        rl_dark = view.findViewById(R.id.fragment_themes_rl_dark);
+        rl_dark = view.findViewById(R.id.fragment_theme_list_rl_dark);
 
-        iv_theme_light_selected = view.findViewById(R.id.fragment_themes_iv_theme_light_selected);
-        iv_theme_dark_selected = view.findViewById(R.id.fragment_themes_iv_theme_dark_selected);
+        iv_theme_light_selected = view.findViewById(R.id.fragment_theme_list_iv_theme_light_selected);
+        iv_theme_dark_selected = view.findViewById(R.id.fragment_theme_list_iv_theme_dark_selected);
 
         int selected = selectedTheme();
 

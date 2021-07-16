@@ -42,11 +42,22 @@
             tools:ignore="RelativeOverlap" />
 
         <ImageView
+            android:id="@+id/fragment_language_list_iv_language_en_selected_bg"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/iv_desc_selected"
+            android:src="@drawable/sp_border_checkmark" />
+
+        <ImageView
             android:id="@+id/fragment_language_list_iv_language_en_selected"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_alignParentEnd="true"
             android:layout_centerInParent="true"
+            android:layout_marginEnd="10dp"
             android:contentDescription="@string/iv_desc_selected"
             android:src="@drawable/ic_check" />
 
@@ -90,13 +101,25 @@
             tools:ignore="RelativeOverlap" />
 
         <ImageView
+            android:id="@+id/fragment_language_list_iv_language_ru_selected_bg"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/iv_desc_selected"
+            android:src="@drawable/sp_border_checkmark" />
+
+        <ImageView
             android:id="@+id/fragment_language_list_iv_language_ru_selected"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_alignParentEnd="true"
             android:layout_centerInParent="true"
+            android:layout_marginEnd="10dp"
             android:contentDescription="@string/iv_desc_selected"
             android:src="@drawable/ic_check" />
+
 
     </RelativeLayout>
 

@@ -46,7 +46,7 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:contentDescription="@string/iv_desc_person_delete"
-                android:src="@drawable/ic_person_edit" />
+                android:src="@drawable/ic_edit_outline" />
 
             <ImageView
                 android:id="@+id/activity_entry_list_iv_person_del"
@@ -55,7 +55,7 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:contentDescription="@string/iv_desc_person_edit"
-                android:src="@drawable/ic_person_delete" />
+                android:src="@drawable/ic_delete_outline" />
 
         </LinearLayout>
 

@@ -21,7 +21,7 @@
 
     <color name="colorActiveButtonBackground">@color/colorDialogBackground</color>
     <color name="colorActiveButtonText">@color/colorPrimary</color>
-    <color name="colorActiveButtonBackgroundPressed">#027F8E</color>
+    <color name="colorActiveButtonBackgroundPressed">#CACACA</color>
     <color name="colorInactiveButtonBackground">#BEBFBF</color>
     <color name="colorInactiveButtonText">#2E2929</color>
 
@@ -30,7 +30,10 @@
     <color name="colorIconDebtDec">#F44336</color>
     <color name="colorIconSettings">#018A9A</color>
     <color name="colorIconEntryAction">#FFFFFF</color>
-    <color name="colorIconPersonAction">#CACED3</color>
+    <color name="colorIconEntryActionRed">#F44336</color>
+    <color name="colorIconEntryActionOrange">#E48901</color>
+    <color name="colorIconPersonAction">#101010</color>
+    <color name="colorIconCheckmark">#018A9A</color>
 
     // Default Colors
     <color name="colorBlack">#000000</color>

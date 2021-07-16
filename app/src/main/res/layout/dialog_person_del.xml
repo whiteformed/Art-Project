@@ -4,7 +4,7 @@
     android:layout_width="300dp"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:background="@drawable/bg_dialog"
+    android:background="@drawable/sp_dialog_bg"
     android:padding="10dp">
 
     <TextView
@@ -41,8 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="@color/colorActiveButtonBackground"
-        android:foreground="@drawable/ripple_red"
+        android:background="@drawable/rp_primary"
         android:text="@string/btn_text_del"
         android:textColor="@color/colorRed"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -54,8 +53,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="@color/colorActiveButtonBackground"
-        android:foreground="@drawable/ripple_blue"
+        android:background="@drawable/rp_primary"
         android:text="@string/btn_text_cancel"
         android:textColor="@color/colorBlue"
         app:layout_constraintBottom_toBottomOf="parent"

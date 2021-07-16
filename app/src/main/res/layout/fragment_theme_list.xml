@@ -12,89 +12,111 @@
         android:padding="10dp">
 
         <ImageView
-            android:id="@+id/fragment_themes_iv_theme_light"
+            android:id="@+id/fragment_theme_list_iv_theme_light"
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:contentDescription="@string/iv_desc_theme_light"
             android:src="@drawable/ic_theme_light" />
 
         <TextView
-            android:id="@+id/fragment_themes_tv_theme_en"
+            android:id="@+id/fragment_theme_list_tv_theme_en"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_toEndOf="@id/fragment_themes_iv_theme_light"
+            android:layout_toEndOf="@id/fragment_theme_list_iv_theme_light"
             android:text="@string/tv_theme_light"
             android:textColor="@color/colorMsgHeaderText"
             android:textSize="24sp"
             tools:ignore="RelativeOverlap" />
 
         <TextView
-            android:id="@+id/fragment_themes_tv_desc_theme_light"
+            android:id="@+id/fragment_theme_list_tv_desc_theme_light"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/fragment_themes_iv_theme_light"
+            android:layout_alignBottom="@id/fragment_theme_list_iv_theme_light"
             android:layout_marginStart="10dp"
-            android:layout_toEndOf="@id/fragment_themes_iv_theme_light"
+            android:layout_toEndOf="@id/fragment_theme_list_iv_theme_light"
             android:text="@string/tv_desc_theme_light"
             android:textColor="@color/colorMsgFillText"
             android:textSize="16sp"
             tools:ignore="RelativeOverlap" />
 
         <ImageView
-            android:id="@+id/fragment_themes_iv_theme_light_selected"
+            android:id="@+id/fragment_theme_list_iv_theme_light_selected_bg"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_alignParentEnd="true"
             android:layout_centerInParent="true"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/iv_desc_selected"
+            android:src="@drawable/sp_border_checkmark" />
+
+        <ImageView
+            android:id="@+id/fragment_theme_list_iv_theme_light_selected"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_marginEnd="10dp"
             android:contentDescription="@string/iv_desc_selected"
             android:src="@drawable/ic_check" />
 
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/fragment_themes_rl_dark"
+        android:id="@+id/fragment_theme_list_rl_dark"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?android:attr/selectableItemBackground"
         android:padding="10dp">
 
         <ImageView
-            android:id="@+id/fragment_themes_iv_theme_dark"
+            android:id="@+id/fragment_theme_list_iv_theme_dark"
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:contentDescription="@string/iv_desc_theme_dark"
             android:src="@drawable/ic_theme_dark" />
 
         <TextView
-            android:id="@+id/fragment_themes_tv_theme_dark"
+            android:id="@+id/fragment_theme_list_tv_theme_dark"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_toEndOf="@id/fragment_themes_iv_theme_dark"
+            android:layout_toEndOf="@id/fragment_theme_list_iv_theme_dark"
             android:text="@string/tv_theme_dark"
             android:textColor="@color/colorMsgHeaderText"
             android:textSize="24sp"
             tools:ignore="RelativeOverlap" />
 
         <TextView
-            android:id="@+id/fragment_themes_tv_desc_theme_dark"
+            android:id="@+id/fragment_theme_list_tv_desc_theme_dark"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/fragment_themes_iv_theme_dark"
+            android:layout_alignBottom="@id/fragment_theme_list_iv_theme_dark"
             android:layout_marginStart="10dp"
-            android:layout_toEndOf="@id/fragment_themes_iv_theme_dark"
+            android:layout_toEndOf="@id/fragment_theme_list_iv_theme_dark"
             android:text="@string/tv_desc_theme_dark"
             android:textColor="@color/colorMsgFillText"
             android:textSize="16sp"
             tools:ignore="RelativeOverlap" />
 
         <ImageView
-            android:id="@+id/fragment_themes_iv_theme_dark_selected"
+            android:id="@+id/fragment_theme_list_iv_theme_dark_selected_bg"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_alignParentEnd="true"
             android:layout_centerInParent="true"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/iv_desc_selected"
+            android:src="@drawable/sp_border_checkmark" />
+
+        <ImageView
+            android:id="@+id/fragment_theme_list_iv_theme_dark_selected"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_marginEnd="10dp"
             android:contentDescription="@string/iv_desc_selected"
             android:src="@drawable/ic_check" />
 
