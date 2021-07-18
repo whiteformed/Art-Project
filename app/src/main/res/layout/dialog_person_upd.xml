@@ -22,7 +22,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
+    <com.rengwuxian.materialedittext.MaterialEditText
         android:id="@+id/dialog_person_upd_et_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -31,12 +31,20 @@
         android:hint="@string/hnt_person_name"
         android:importantForAutofill="no"
         android:inputType="textPersonName"
-        android:maxLength="15"
+        android:maxLength="30"
+        android:maxLines="2"
+        android:textColorHint="@color/colorDialogFloatingHintText"
         android:textCursorDrawable="@drawable/sp_cursor"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dialog_person_upd_tv_msg_person_edit" />
+        app:layout_constraintTop_toBottomOf="@+id/dialog_person_upd_tv_msg_person_edit"
+        app:met_floatingLabel="highlight"
+        app:met_floatingLabelText="@string/hnt_person_name"
+        app:met_floatingLabelTextColor="@color/colorPrimary"
+        app:met_maxCharacters="30"
+        app:met_textColorHint="@color/colorDialogHintText"
+        app:met_underlineColor="@color/colorPrimary" />
 
     <Button
         android:id="@+id/dialog_person_upd_btn_upd"

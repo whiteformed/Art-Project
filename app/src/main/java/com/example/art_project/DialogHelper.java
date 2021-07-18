@@ -9,13 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
-import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
 
-import com.google.android.material.button.MaterialButton;
+import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -49,10 +48,9 @@ public class DialogHelper {
         Objects.requireNonNull(dialog.getWindow())
                 .setLayout(context.getResources().getDisplayMetrics().widthPixels, ViewGroup.LayoutParams.WRAP_CONTENT);
 
-        final EditText et_name = dialog.findViewById(R.id.dialog_person_add_et_name);
+        final MaterialEditText et_name = dialog.findViewById(R.id.dialog_person_add_et_name);
 
-        @SuppressLint("UseSwitchCompatOrMaterialCode")
-        final Switch sw = dialog.findViewById(R.id.dialog_person_add_sw);
+        @SuppressLint("UseSwitchCompatOrMaterialCode") final Switch sw = dialog.findViewById(R.id.dialog_person_add_sw);
 
         final TextView tv_i_owe = dialog.findViewById(R.id.dialog_person_add_tv_i_owe);
         final TextView tv_owe_me = dialog.findViewById(R.id.dialog_person_add_tv_owe_me);
@@ -77,8 +75,8 @@ public class DialogHelper {
                 status = 0;
             }
 
-            if (Objects.requireNonNull(et_name.getText().toString().trim().equals(""))) {
-                Informant.makeToast(context, context.getResources().getString(R.string.toast_no_empty_fields_allowed));
+            if (Objects.requireNonNull(et_name.getText()).toString().trim().equals("")) {
+                et_name.setError(context.getString(R.string.err_empty_field));
             } else {
                 Person newPerson = new Person(status, et_name.getText().toString());
 
@@ -123,15 +121,15 @@ public class DialogHelper {
         Objects.requireNonNull(dialog.getWindow())
                 .setLayout(context.getResources().getDisplayMetrics().widthPixels, ViewGroup.LayoutParams.WRAP_CONTENT);
 
-        final EditText et_name = dialog.findViewById(R.id.dialog_person_upd_et_name);
+        final MaterialEditText et_name = dialog.findViewById(R.id.dialog_person_upd_et_name);
 
         et_name.setText(String.valueOf(person.getName()));
 
         Button btn_upd = dialog.findViewById(R.id.dialog_person_upd_btn_upd);
 
         View.OnClickListener onButtonUpdClickListener = v -> {
-            if (Objects.requireNonNull(et_name.getText().toString().trim().equals(""))) {
-                Informant.makeToast(context, context.getResources().getString(R.string.toast_no_empty_fields_allowed));
+            if (Objects.requireNonNull(et_name.getText()).toString().trim().equals("")) {
+                et_name.setError(context.getString(R.string.err_empty_field));
             } else {
                 String name = et_name.getText().toString();
 
@@ -183,14 +181,20 @@ public class DialogHelper {
         Objects.requireNonNull(dialog.getWindow())
                 .setLayout(context.getResources().getDisplayMetrics().widthPixels, ViewGroup.LayoutParams.WRAP_CONTENT);
 
-        final EditText et_amount = dialog.findViewById(R.id.dialog_entry_add_et_amount);
-        final EditText et_comment = dialog.findViewById(R.id.dialog_entry_add_et_comment);
+        final MaterialEditText et_amount = dialog.findViewById(R.id.dialog_entry_add_et_amount);
+        final MaterialEditText et_comment = dialog.findViewById(R.id.dialog_entry_add_et_comment);
 
         Button btn_add = dialog.findViewById(R.id.dialog_entry_add_btn_add);
 
         View.OnClickListener onButtonAddClickListener = v -> {
-            if (Objects.requireNonNull(et_amount.getText().toString().trim().equals("")) || Objects.requireNonNull(et_comment.getText().toString().trim().equals(""))) {
-                Informant.makeToast(context, context.getResources().getString(R.string.toast_no_empty_fields_allowed));
+            if ((Objects.requireNonNull(et_amount.getText()).toString().trim().equals("")) ||
+                    Objects.requireNonNull(et_comment.getText()).toString().trim().equals("")) {
+                if (Objects.requireNonNull(et_amount.getText()).toString().trim().equals("")) {
+                    et_amount.setError(context.getString(R.string.err_empty_field));
+                }
+                if (Objects.requireNonNull(et_comment.getText()).toString().trim().equals("")) {
+                    et_comment.setError(context.getString(R.string.err_empty_field));
+                }
             } else {
                 int amount = Integer.parseInt(et_amount.getText().toString());
                 String comment = et_comment.getText().toString();
@@ -218,8 +222,8 @@ public class DialogHelper {
         Objects.requireNonNull(dialog.getWindow())
                 .setLayout(context.getResources().getDisplayMetrics().widthPixels, ViewGroup.LayoutParams.WRAP_CONTENT);
 
-        final EditText et_amount = dialog.findViewById(R.id.dialog_entry_upd_et_amount);
-        final EditText et_comment = dialog.findViewById(R.id.dialog_entry_upd_et_comment);
+        final MaterialEditText et_amount = dialog.findViewById(R.id.dialog_entry_upd_et_amount);
+        final MaterialEditText et_comment = dialog.findViewById(R.id.dialog_entry_upd_et_comment);
 
         et_amount.setText(String.valueOf(entry.getAmount()));
         et_comment.setText(entry.getComment());
@@ -227,8 +231,14 @@ public class DialogHelper {
         Button btn_upd = dialog.findViewById(R.id.dialog_entry_upd_btn_upd);
 
         View.OnClickListener onButtonUpdClickListener = v -> {
-            if (Objects.requireNonNull(et_amount.getText().toString().trim().equals("")) || Objects.requireNonNull(et_comment.getText().toString().trim().equals(""))) {
-                Informant.makeToast(context, context.getResources().getString(R.string.toast_no_empty_fields_allowed));
+            if (Objects.requireNonNull(et_amount.getText()).toString().trim().equals("") ||
+                    Objects.requireNonNull(et_comment.getText()).toString().trim().equals("")) {
+                if (Objects.requireNonNull(et_amount.getText()).toString().trim().equals("")) {
+                    et_amount.setError(context.getString(R.string.err_empty_field));
+                }
+                if (Objects.requireNonNull(et_comment.getText()).toString().trim().equals("")) {
+                    et_comment.setError(context.getString(R.string.err_empty_field));
+                }
             } else {
                 int amount = Integer.parseInt(et_amount.getText().toString());
                 String comment = et_comment.getText().toString();

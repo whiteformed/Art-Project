@@ -9,6 +9,8 @@
 
     <color name="colorDialogBackground">#FFFFFF</color>
     <color name="colorDialogHeaderText">#018A9A</color>
+    <color name="colorDialogFloatingHintText">#018A9A</color>
+    <color name="colorDialogHintText">#9D9F9F</color>
 
     <color name="colorText">#FFFFFF</color>
     <color name="colorItemAmountText">#636363</color>
@@ -32,7 +34,7 @@
     <color name="colorIconEntryAction">#FFFFFF</color>
     <color name="colorIconEntryActionRed">#F44336</color>
     <color name="colorIconEntryActionOrange">#E48901</color>
-    <color name="colorIconPersonAction">#101010</color>
+    <color name="colorIconPersonAction">#000000</color>
     <color name="colorIconCheckmark">#018A9A</color>
 
     // Default Colors

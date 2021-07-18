@@ -9,6 +9,8 @@
 
     <color name="colorDialogBackground">#504E4E</color>
     <color name="colorDialogHeaderText">#3386DA</color>
+    <color name="colorDialogFloatingHintText">#3386DA</color>
+    <color name="colorDialogHintText">#2E2E2E</color>
 
     <color name="colorText">#2D87E3</color>
     <color name="colorItemAmountText">#3F93E8</color>

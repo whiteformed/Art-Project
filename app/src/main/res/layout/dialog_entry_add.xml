@@ -21,7 +21,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textfield.TextInputEditText
+    <com.rengwuxian.materialedittext.MaterialEditText
         android:id="@+id/dialog_entry_add_et_amount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -31,27 +31,42 @@
         android:importantForAutofill="no"
         android:inputType="numberDecimal"
         android:maxLength="6"
+        android:textColorHint="@color/colorDialogFloatingHintText"
         android:textCursorDrawable="@drawable/sp_cursor"
         android:textSize="24sp"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dialog_entry_add_tv_msg_entry_add" />
+        app:layout_constraintTop_toBottomOf="@+id/dialog_entry_add_tv_msg_entry_add"
+        app:met_floatingLabel="highlight"
+        app:met_floatingLabelText="@string/hnt_entry_amount"
+        app:met_floatingLabelTextColor="@color/colorPrimary"
+        app:met_maxCharacters="6"
+        app:met_textColorHint="@color/colorDialogHintText"
+        app:met_underlineColor="@color/colorPrimary" />
 
-    <EditText
+    <com.rengwuxian.materialedittext.MaterialEditText
         android:id="@+id/dialog_entry_add_et_comment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:maxLines="3"
         android:backgroundTint="@color/colorPrimary"
         android:hint="@string/hnt_entry_comment"
         android:importantForAutofill="no"
-        android:inputType="text"
-        android:maxLength="30"
+        android:maxLength="60"
+        android:textColorHint="@color/colorDialogFloatingHintText"
         android:textCursorDrawable="@drawable/sp_cursor"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dialog_entry_add_et_amount" />
+        app:layout_constraintTop_toBottomOf="@+id/dialog_entry_add_et_amount"
+        app:met_floatingLabel="highlight"
+        app:met_floatingLabelAnimating="true"
+        app:met_floatingLabelText="@string/hnt_entry_comment"
+        app:met_floatingLabelTextColor="@color/colorPrimary"
+        app:met_maxCharacters="60"
+        app:met_textColorHint="@color/colorDialogHintText"
+        app:met_underlineColor="@color/colorPrimary" />
 
     <Button
         android:id="@+id/dialog_entry_add_btn_add"
