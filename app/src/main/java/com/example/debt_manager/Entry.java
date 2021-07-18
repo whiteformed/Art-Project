@@ -1,4 +1,4 @@
-package com.example.art_project;
+package com.example.debt_manager;
 
 public class Entry {
     private int ID = -1;        // Entry ID

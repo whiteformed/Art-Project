@@ -1,4 +1,4 @@
-package com.example.art_project;
+package com.example.debt_manager;
 
 import android.os.Bundle;
 import android.view.View;

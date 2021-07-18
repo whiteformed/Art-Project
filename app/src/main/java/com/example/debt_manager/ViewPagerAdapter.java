@@ -1,4 +1,4 @@
-package com.example.art_project;
+package com.example.debt_manager;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

@@ -1,23 +1,18 @@
-package com.example.art_project;
+package com.example.debt_manager;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.ItemTouchHelper;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Objects;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-public class FragmentTheirDebt extends Fragment {
+import java.util.ArrayList;
+
+public class FragmentMyDebt extends Fragment {
     View view;
 
     SqlDatabaseHelper sqlDatabaseHelper;
@@ -42,14 +37,12 @@ public class FragmentTheirDebt extends Fragment {
 //            Collections.swap(personArrayList, fromPosition, toPosition);
 //            Objects.requireNonNull(recyclerView.getAdapter()).notifyItemMoved(fromPosition, toPosition);
 //
-//            sqlDatabaseHelper.swpPerson(personArrayList.get(fromPosition).getID(), personArrayList.get(toPosition).getID());
+//            Toast toast = Toast.makeText(getContext(), String.valueOf(fromPosition) + String.valueOf(toPosition), Toast.LENGTH_SHORT);
+//            toast.show();
+//
+//            personArrayList.get(fromPosition).setID(toPosition);
 //
 //            return false;
-//        }
-//
-//        @Override
-//        public void onMoved(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, int fromPos, @NonNull RecyclerView.ViewHolder target, int toPos, int x, int y) {
-//            super.onMoved(recyclerView, viewHolder, fromPos, target, toPos, x, y);
 //        }
 //
 //        @Override

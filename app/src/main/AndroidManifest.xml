@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.art_project">
+    package="com.example.debt_manager">
 
     <application
         android:allowBackup="true"
@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".ActivityLaunch"
+            android:name="com.example.debt_manager.ActivityLaunch"
             android:configChanges="orientation|keyboardHidden|screenSize|locale"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity">
@@ -27,19 +27,19 @@
         </activity>
 
         <activity
-            android:name=".ActivityPersons"
+            android:name="com.example.debt_manager.ActivityPersons"
             android:configChanges="orientation|keyboardHidden|screenSize|locale"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
 
         <activity
-            android:name=".ActivityEntries"
+            android:name="com.example.debt_manager.ActivityEntries"
             android:configChanges="orientation|keyboardHidden|screenSize|locale"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
 
         <activity
-            android:name=".ActivitySettings"
+            android:name="com.example.debt_manager.ActivitySettings"
             android:configChanges="orientation|keyboardHidden|screenSize|locale"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />

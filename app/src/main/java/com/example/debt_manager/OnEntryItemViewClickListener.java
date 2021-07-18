@@ -1,4 +1,4 @@
-package com.example.art_project;
+package com.example.debt_manager;
 
 public interface OnEntryItemViewClickListener {
     void onEntryItemViewClick(Entry entry);

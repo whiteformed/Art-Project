@@ -1,4 +1,4 @@
-package com.example.art_project;
+package com.example.debt_manager;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;

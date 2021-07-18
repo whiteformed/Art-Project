@@ -1,4 +1,4 @@
-package com.example.art_project;
+package com.example.debt_manager;
 
 public interface OnActivityEntriesUpdateListener {
     void onAddEntry(Entry entry);
