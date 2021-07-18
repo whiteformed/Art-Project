@@ -41,28 +41,29 @@ public class ActivityPersons extends AppCompatActivity implements OnActivityPers
     }
 
     @Override
-    public void onPersonItemViewOptionDeleteClick(int personID) {
-        boolean result = sqlDatabaseHelper.delPerson(personID);
-        Informant.makeLogEntry(2, result);
-
-        updateFragments();
+    public void onPersonItemViewOptionEditClick(Person person) {
+        dialogHelper.createUpdPersonDialog(0, person);
     }
 
     @Override
-    public void onAddPerson(Person newPerson) {
-        boolean result = sqlDatabaseHelper.addPerson(newPerson);
+    public void onPersonItemViewOptionDeleteClick(int personID) {
+        dialogHelper.createDelPersonDialog(0, personID);
+    }
+
+    @Override
+    public void onAddPerson(Person person) {
+        boolean result = sqlDatabaseHelper.addPerson(person);
         Informant.makeLogEntry(0, result);
 
         updateFragments();
     }
 
     @Override
-    public void onUpdPerson(Person updPerson) {
-        boolean result = sqlDatabaseHelper.updPerson(updPerson);
+    public void onUpdPerson(Person person) {
+        boolean result = sqlDatabaseHelper.updPerson(person);
         Informant.makeLogEntry(1, result);
 
-        setResult(RESULT_OK);
-        finish();
+        updateFragments();
     }
 
     @Override
@@ -70,8 +71,7 @@ public class ActivityPersons extends AppCompatActivity implements OnActivityPers
         boolean result = sqlDatabaseHelper.delPerson(personID);
         Informant.makeLogEntry(2, result);
 
-        setResult(RESULT_OK);
-        finish();
+        updateFragments();
     }
 
     @Override

@@ -112,7 +112,7 @@ public class DialogHelper {
         dialog.show();
     }
 
-    public void createUpdPersonDialog(final Person person) {
+    public void createUpdPersonDialog(int caller, Person person) {
         final Dialog dialog = new Dialog(context);
         dialog.setContentView(R.layout.dialog_person_upd);
         dialog.setCancelable(true);
@@ -135,7 +135,11 @@ public class DialogHelper {
 
                 person.setName(name);
 
-                onActivityEntriesUpdateListener.onUpdPerson(person);
+                if (caller == 0) {
+                    onActivityPersonsUpdateListener.onUpdPerson(person);
+                } else if (caller == 1) {
+                    onActivityEntriesUpdateListener.onUpdPerson(person);
+                }
 
                 dialog.cancel();
             }
@@ -146,7 +150,7 @@ public class DialogHelper {
         dialog.show();
     }
 
-    public void createDelPersonDialog(final int personID) {
+    public void createDelPersonDialog(int caller, final int personID) {
         final Dialog dialog = new Dialog(context);
         dialog.setContentView(R.layout.dialog_person_del);
         dialog.setCancelable(true);
@@ -159,7 +163,11 @@ public class DialogHelper {
         Button btn_no = dialog.findViewById(R.id.dialog_person_del_btn_no);
 
         View.OnClickListener onButtonYesClickListener = v -> {
-            onActivityEntriesUpdateListener.onDelPerson(personID);
+            if (caller == 0) {
+                onActivityPersonsUpdateListener.onDelPerson(personID);
+            } else if (caller == 1) {
+                onActivityEntriesUpdateListener.onDelPerson(personID);
+            }
 
             dialog.cancel();
         };

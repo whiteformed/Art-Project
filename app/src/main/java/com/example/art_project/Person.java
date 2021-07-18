@@ -5,6 +5,12 @@ public class Person {
     private int Status;      // 0 - My Debt, 1 - Their Debt
     private String Name;     // Person's name
 
+    Person(Person person) {
+        this.ID = person.getID();
+        this.Status = person.getStatus();
+        this.Name = person.getName();
+    }
+
     Person(int status, String name) {
         this.Status = status;
         this.Name = name;

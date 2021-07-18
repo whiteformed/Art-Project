@@ -56,7 +56,10 @@ public class PersonListAdapter extends RecyclerView.Adapter<PersonListAdapter.Re
             PopupMenu popup = new PopupMenu(v.getContext(), holder.iv_options);
             popup.inflate(R.menu.options_menu);
             popup.setOnMenuItemClickListener(item -> {
-                if (item.getItemId() == R.id.menu_btn_delete) {
+                if (item.getItemId() == R.id.menu_btn_edit) {
+                    onPersonItemViewActionListener.onPersonItemViewOptionEditClick(personArrayList.get(position));
+                }
+                else if (item.getItemId() == R.id.menu_btn_delete) {
                     onPersonItemViewActionListener.onPersonItemViewOptionDeleteClick(personArrayList.get(position).getID());
                 }
 

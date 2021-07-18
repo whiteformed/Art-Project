@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 
 import androidx.fragment.app.Fragment;
@@ -16,8 +16,8 @@ public class FragmentLanguageList extends Fragment {
     RelativeLayout rl_en;
     RelativeLayout rl_ru;
 
-    ImageView iv_language_en_selected;
-    ImageView iv_language_ru_selected;
+    RadioButton rb_language_en_selected;
+    RadioButton rb_language_ru_selected;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -26,16 +26,16 @@ public class FragmentLanguageList extends Fragment {
         rl_en = view.findViewById(R.id.fragment_language_list_rl_en);
         rl_ru = view.findViewById(R.id.fragment_language_list_rl_ru);
 
-        iv_language_en_selected = view.findViewById(R.id.fragment_language_list_iv_language_en_selected);
-        iv_language_ru_selected = view.findViewById(R.id.fragment_language_list_iv_language_ru_selected);
+        rb_language_en_selected = view.findViewById(R.id.fragment_language_list_rb_language_en_selected);
+        rb_language_ru_selected = view.findViewById(R.id.fragment_language_list_rb_language_ru_selected);
 
-        int selected = selectedLanguage();
+        int selected = getSelectedLanguage();
 
         View.OnClickListener itemEnClickListener = v -> {
             if (selected == 0) return;
 
             PrefsHelper.setLocalePrefs(requireActivity(), getString(R.string.pref_locale_en));
-            selectedLanguage();
+            getSelectedLanguage();
 
             Intent intent = new Intent(getContext(), ActivityPersons.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -46,7 +46,7 @@ public class FragmentLanguageList extends Fragment {
             if (selected == 1) return;
 
             PrefsHelper.setLocalePrefs(requireActivity(), getString(R.string.pref_locale_ru));
-            selectedLanguage();
+            getSelectedLanguage();
 
             Intent intent = new Intent(getContext(), ActivityPersons.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -56,18 +56,21 @@ public class FragmentLanguageList extends Fragment {
         rl_en.setOnClickListener(itemEnClickListener);
         rl_ru.setOnClickListener(itemRuClickListener);
 
+        rb_language_en_selected.setOnClickListener(itemEnClickListener);
+        rb_language_ru_selected.setOnClickListener(itemRuClickListener);
+
         return view;
     }
 
-    int selectedLanguage() {
+    int getSelectedLanguage() {
         if (PrefsHelper.getLocalePrefs(requireActivity()).equals(getString(R.string.pref_locale_en))) {
-            iv_language_en_selected.setVisibility(View.VISIBLE);
-            iv_language_ru_selected.setVisibility(View.INVISIBLE);
+            rb_language_en_selected.setChecked(true);
+            rb_language_ru_selected.setChecked(false);
 
             return 0;
         } else if (PrefsHelper.getLocalePrefs(requireActivity()).equals(getString(R.string.pref_locale_ru))) {
-            iv_language_en_selected.setVisibility(View.INVISIBLE);
-            iv_language_ru_selected.setVisibility(View.VISIBLE);
+            rb_language_en_selected.setChecked(false);
+            rb_language_ru_selected.setChecked(true);
 
             return 1;
         }

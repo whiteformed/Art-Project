@@ -65,8 +65,8 @@ public class ActivityEntries extends AppCompatActivity implements OnActivityEntr
     }
 
     @Override
-    public void onAddEntry(Entry newEntry) {
-        boolean result = sqlDatabaseHelper.addEntry(newEntry);
+    public void onAddEntry(Entry entry) {
+        boolean result = sqlDatabaseHelper.addEntry(entry);
         Informant.makeLogEntry(0, result);
 
         updateEntryArrayList();
@@ -75,8 +75,8 @@ public class ActivityEntries extends AppCompatActivity implements OnActivityEntr
     }
 
     @Override
-    public void onUpdEntry(Entry updEntry) {
-        boolean result = sqlDatabaseHelper.updEntry(updEntry);
+    public void onUpdEntry(Entry entry) {
+        boolean result = sqlDatabaseHelper.updEntry(entry);
         Informant.makeLogEntry(1, result);
 
         updateEntryArrayList();
@@ -91,8 +91,8 @@ public class ActivityEntries extends AppCompatActivity implements OnActivityEntr
     }
 
     @Override
-    public void onUpdPerson(Person updPerson) {
-        boolean result = sqlDatabaseHelper.updPerson(updPerson);
+    public void onUpdPerson(Person person) {
+        boolean result = sqlDatabaseHelper.updPerson(person);
         Informant.makeLogEntry(1, result);
 
         updateEntryArrayList();
@@ -132,7 +132,7 @@ public class ActivityEntries extends AppCompatActivity implements OnActivityEntr
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         PrefsHelper.setTheme(this);
         PrefsHelper.setLocale(this);
-        
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_entry_list_view);
 
@@ -156,9 +156,9 @@ public class ActivityEntries extends AppCompatActivity implements OnActivityEntr
             iv_debt_dec = findViewById(R.id.activity_entry_list_iv_debt_dec);
             iv_debt_inc = findViewById(R.id.activity_entry_list_iv_debt_inc);
 
-            View.OnClickListener onButtonPersonUpdClickListener = v -> dialogHelper.createUpdPersonDialog(person);
+            View.OnClickListener onButtonPersonUpdClickListener = v -> dialogHelper.createUpdPersonDialog(1, person);
 
-            View.OnClickListener onButtonPersonDelClickListener = v -> dialogHelper.createDelPersonDialog(person.getID());
+            View.OnClickListener onButtonPersonDelClickListener = v -> dialogHelper.createDelPersonDialog(1, person.getID());
 
             View.OnClickListener onButtonDebtDecClickListener = v -> dialogHelper.createAddEntryDialog(person.getID(), 0);
 

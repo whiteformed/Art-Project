@@ -101,4 +101,5 @@
     <string name="toast_no_empty_fields_allowed">No empty fields allowed!</string>
 
     <string name="menu_title_delete">Delete</string>
+    <string name="menu_title_edit">Edit</string>
 </resources>

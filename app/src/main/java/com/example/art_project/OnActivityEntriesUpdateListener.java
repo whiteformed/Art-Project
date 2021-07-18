@@ -1,13 +1,13 @@
 package com.example.art_project;
 
 public interface OnActivityEntriesUpdateListener {
-    void onAddEntry(Entry newEntry);
+    void onAddEntry(Entry entry);
 
-    void onUpdEntry(Entry updEntry);
+    void onUpdEntry(Entry entry);
 
     void onDelEntry(int entryID);
 
-    void onUpdPerson(Person updPerson);
+    void onUpdPerson(Person person);
 
     void onDelPerson(int personID);
 }
